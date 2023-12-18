@@ -76,7 +76,7 @@ export const config: Options.Testrunner = {
 
         //config for Finpay prod. version
         'appium:app': join(process.cwd(), 'apps/FinsDefiWallet.app'),
-        'appium:bundleId': 'com.finstabledev.finsdefiwallet',
+        'appium:bundleId': `${process.env.BUNDLE_ID}`,
     }],
 
     //
