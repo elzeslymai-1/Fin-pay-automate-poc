@@ -1,3 +1,4 @@
+import { expect } from '@wdio/globals'
 import { Action } from "../mainComponent/mainFunction/Action.js";
 import { Assertion } from "../mainComponent/mainFunction/Assert.js";
 import { createWalletComponent } from "../mainComponent/component/createWalletComponent.js";

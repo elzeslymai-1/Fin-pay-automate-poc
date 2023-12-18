@@ -51,7 +51,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     afterAll(async () => {
-        await action.closeApps('com.finstabledev.finsdefiwallet')
+        await action.closeApps(`${process.env.BUNDLE_ID}`)
         //await action.removeApps('com.finstabledev.finsdefiwallet')
     })
 })
