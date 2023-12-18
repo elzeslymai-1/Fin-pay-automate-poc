@@ -1,5 +1,5 @@
 {
-  "name": "fin-pay-automate-test",
+  "name": "fin-pay-automate-poc",
   "type": "module",
   "devDependencies": {
     "@testing-library/webdriverio": "^3.2.1",
@@ -16,6 +16,8 @@
     "wdio-wait-for": "^3.0.10"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./wdio.conf.ts",
+    "ios": "wdio run ./wdio.ios.conf.ts",
+    "android": "wdio run ./wdio.android.conf.ts"
   }
 }
