@@ -1,7 +1,7 @@
 import { expect } from '@wdio/globals'
-import { Action } from "../mainComponent/mainFunction/Action.js";
-import { Assertion } from "../mainComponent/mainFunction/Assert.js";
-import { createWalletComponent } from "../mainComponent/component/createWalletComponent.js";
+import { createWalletComponent } from "../component/createWalletComponent.js";
+import { Action } from '../../mainComponent/mainFunction/Action.js'
+import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const action = new Action()
 const assert = new Assertion()
@@ -30,5 +30,9 @@ describe('Create Wallet Page Scenario',()=>{
     it('[Displayed] => Continue Btn Should be Disable',async ()=>{
         await action.waitForDisplayed(component.createWalletContinueBtn)
         await assert.checkDisabled(component.createWalletContinueBtn)
+    })
+
+    afterAll(async () => {
+        await action.closeApps(`${process.env.BUNDLE_ID}`)
     })
 })

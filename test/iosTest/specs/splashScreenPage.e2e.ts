@@ -1,7 +1,7 @@
 import { expect } from '@wdio/globals'
-import { splashScreenComponent } from '../mainComponent/component/splashScreenComponent.js'
-import { Action } from '../mainComponent/mainFunction/Action.js'
-import { Assertion } from '../mainComponent/mainFunction/Assert.js'
+import { splashScreenComponent } from '../component/splashScreenComponent.js'
+import { Action } from '../../mainComponent/mainFunction/Action.js'
+import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const component = new splashScreenComponent()
 const action = new Action()
@@ -52,6 +52,5 @@ describe('Splash Screen Page Scenario', () => {
 
     afterAll(async () => {
         await action.closeApps(`${process.env.BUNDLE_ID}`)
-        //await action.removeApps('com.finstabledev.finsdefiwallet')
     })
 })
