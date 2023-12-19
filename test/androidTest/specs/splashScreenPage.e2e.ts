@@ -1,7 +1,7 @@
 import { expect } from '@wdio/globals'
-import { splashScreenComponent } from '../mainComponent/component/splashScreenComponent.js'
-import { Action } from '../mainComponent/mainFunction/Action.js'
-import { Assertion } from '../mainComponent/mainFunction/Assert.js'
+import { splashScreenComponent } from '../component/splashScreenComponent.js'
+import { Action } from '../../mainComponent/mainFunction/Action.js'
+import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const component = new splashScreenComponent()
 const action = new Action()
@@ -9,9 +9,7 @@ const assert = new Assertion()
 
 describe('Splash Screen Page Scenario', () => {
     beforeAll(async () => {
-        //await action.launchApps(`${process.env.BUNDLE_ID}`)
-        // await action.launchAppsAndroid(`${process.env.BUNDLE_ID}`)
-        await action.launchAppsAndroid(`${process.env.BUNDLE_ID}`)
+        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
     })
 
     it('[Wording] => Check Welcome', async () => {
@@ -34,7 +32,7 @@ describe('Splash Screen Page Scenario', () => {
         await assert.checkText(component.splashScreenImportWalletBtn, 'Import a wallet')
     })
 
-    it('[Tap] => Check Create wallet Btn', async () => {
+    it('[Tap] => Create wallet Btn', async () => {
         await action.waitForDisplayed(component.splashScreenCreateWalletBtn)
         await action.click(component.splashScreenCreateWalletBtn)
 
@@ -45,7 +43,7 @@ describe('Splash Screen Page Scenario', () => {
         await action.click(component.createWalletBackBtn)
     })
 
-    it('[Tap] => Check Import wallet Btn', async () => {
+    it('[Tap] => Import wallet Btn', async () => {
         await action.waitForDisplayed(component.splashScreenImportWalletBtn)
         await action.click(component.splashScreenImportWalletBtn)
 
@@ -58,6 +56,5 @@ describe('Splash Screen Page Scenario', () => {
 
     afterAll(async () => {
         await action.closeApps(`${process.env.BUNDLE_ID}`)
-        //await action.removeApps('com.finstabledev.finsdefiwallet')
     })
 })

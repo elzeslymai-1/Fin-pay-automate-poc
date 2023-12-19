@@ -1,7 +1,6 @@
 export class createWalletComponent {
-    // ==================
+
     //  Action Component
-    // ==================
 
     splashScreenCreateWalletBtn = '~Create a new wallet'
     createWalletBackBtn = '~'
@@ -11,9 +10,7 @@ export class createWalletComponent {
     createWalletContinueBtn = '~Continue'
     createWalletMnemonicInfoBtn = ''
 
-    // ==================
     //  Assert Component
-    // ==================
     
 }
 

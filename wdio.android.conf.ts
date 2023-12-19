@@ -35,7 +35,7 @@ export const config: Options.Testrunner = {
     //
     specs: [
         [
-            "./androidTest/specs/**/**.e2e.ts"
+            "./Test/iosTest/specs/**.e2e.ts"
         ]
     ],
     // Patterns to exclude.

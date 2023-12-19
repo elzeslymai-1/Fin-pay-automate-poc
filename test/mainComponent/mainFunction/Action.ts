@@ -63,11 +63,14 @@ export class Action {
 
     async closeApps(bundleId: string) {
         await driver.terminateApp(bundleId)
-
     }
 
     async launchApps(bundleId: string) {
         await driver.executeScript('mobile: launchApp', [{ bundleId: bundleId }])
+    }
+
+    async launchAndroidApps(appID: string) {
+        await driver.activateApp(appID) // appID : PackageID
     }
 
     async moveTo(locator: string, xOffset: number, yOffset: number) {

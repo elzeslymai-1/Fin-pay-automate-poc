@@ -11,10 +11,7 @@ export class splashScreenComponent {
     createWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     importWalletTitleText = `android=new UiSelector().text("Import Wallet").className("android.view.View")`
     importWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    //  Assert Component
-    // assertTabCreateNewWalletBtn = 'XCUIElementTypeStaticText'
-    // assertTabImportWalletBtn = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Import Wallet"`]'
+    
 }
 
 
