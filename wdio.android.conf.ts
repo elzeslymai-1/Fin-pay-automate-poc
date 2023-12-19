@@ -35,8 +35,7 @@ export const config: Options.Testrunner = {
     //
     specs: [
         [
-            "./iosTest/specs/splashScreenPage.e2e.ts",
-            "./iosTest/specs/createWalletPage.e2e.ts"
+            "./androidTest/specs/**/**.e2e.ts"
         ]
     ],
     // Patterns to exclude.
@@ -67,16 +66,15 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
-        'appium:platformName': 'iOS',
-        'appium:automationName': 'XCUITest',
-        'appium:deviceName': 'iPhone 15 Pro Max',
-        'appium:platformVersion': '17.2',
+        'appium:platformName': 'Android',
+        'appium:automationName': 'UiAutomator2',
+        'appium:deviceName': 'Pixel 7 Pro API 34',
         //'pageLoadStrategy': 'none',
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/FinsDefiWallet.app'),
-        'appium:bundleId': 'com.finstabledev.finsdefiwallet',
+        'appium:app': join(process.cwd(), 'apps/finpay.apk'),
+        
     }],
 
     //
