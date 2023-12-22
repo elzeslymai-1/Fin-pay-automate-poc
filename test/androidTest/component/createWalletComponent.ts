@@ -30,5 +30,6 @@ export class createWalletComponent {
 
     // BeforeAll Component
     splashScreenCreateWalletBtn = `android=new UiSelector().text("Create a new wallet").className("android.widget.TextView")`
+    splashScreenWelcomeText = `android=new UiSelector().text("Welcome to the \nFIN PAY").className("android.widget.TextView")`
 
 }
