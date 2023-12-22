@@ -45,6 +45,15 @@ describe('Create Wallet Page Senario', () => {
         await assert.checkText(component.createWalletContinueBtn, 'Continue')
     })
 
+    it('[Tap] Check Back Btn tap',async () => {
+        await action.click(component.createWalletBackBtn)
+
+        await action.waitForDisplayed(component.splashScreenWelcomeText)
+        await assert.checkElemenDisplayed(component.splashScreenWelcomeText)
+        
+        await action.click(component.splashScreenCreateWalletBtn)
+    })
+
     it('[Tap] Check Infomation Btn tap',async () => {
         await action.click(component.createWalletInfoIconBtn)
 
@@ -106,9 +115,30 @@ describe('Create Wallet Page Senario', () => {
         await assert.checkText(component.createWalletTitleText, 'Create wallet')
     })
 
-    // === Check Create Wallet Action ===
+    // === Check Create Wallet 12-word Action ===
     it('[Tap] Check Continue with 12-word Btn',async () => {
         await action.click(component.createWallet12wordBtn)
+
+        await action.click(component.createWalletContinueBtn)
+
+        await action.waitForDisplayed(component.loadIcon)
+
+        await action.waitForDisplayed(component.loadText)
+        await assert.checkText(component.loadText, 'LOADING WALLET...')
+
+        await action.waitForDisplayed(component.successText)
+        await assert.checkText(component.successText, "You're all done!")
+
+        await action.closeApps(`${process.env.BUNDLE_ID}`)
+    })
+
+    // === Check Create Wallet 24-word Action ===
+    it('[Tap] Check Continue with 24-word Btn',async () => {
+        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
+
+        await action.click(component.splashScreenCreateWalletBtn)
+
+        await action.click(component.createWallet24wordBtn)
 
         await action.click(component.createWalletContinueBtn)
 
