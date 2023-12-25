@@ -20,49 +20,23 @@ describe('Back Up Test Senario', () => {
         await action.click(component.successBackupBtn)
     })
 
-    // === Check Android Access Music Module ===
-    it('[Display] Check Android Access Music Btn',async () => {
-        await action.waitForDisplayed(component.androidAccessAllowBtn)
-        await assert.checkText(component.androidAccessAllowBtn, 'Allow')
-
-        await action.waitForDisplayed(component.androidAccessDontAllowBtn)
-    })
-
-    it('[Tap] Check Android Access Music Allow Btn Tap',async () => {
-        await action.waitForDisplayed(component.androidAccessAllowBtn)
-        
-        await action.click(component.androidAccessAllowBtn)
-    })
-
-    // === Check Android Access Photo Module ===
-    it('[Display] Check Android Access Photo Btn',async () => {
-        await action.waitForDisplayed(component.androidAccessAllowAllBtn)
-        await assert.checkText(component.androidAccessAllowAllBtn, 'Allow all')
-
-        await action.waitForDisplayed(component.androidAccessDontAllowBtn)
-
-        await action.waitForDisplayed(component.androidAccessSelectPhotoBtn)
-        await assert.checkText(component.androidAccessSelectPhotoBtn, 'Select photos and videos')
-    })
-
-    it('[Tap] Check Android Access Photo AllowAll Btn Tap',async () => {
-        await action.waitForDisplayed(component.androidAccessAllowAllBtn)
-        
-        await action.click(component.androidAccessAllowAllBtn)
-    })
-
     // === Check Back Up Pop-up ===
-    it('[Tap] Check Back Up Pop-up Btn Tap',async () => {
-        await action.waitForDisplayed(component.backupInfoPopupBtn)
-        await assert.checkText(component.backupInfoPopupBtn, "I'm ready")
+    it('[Wording] Check Back Up Pop-up Text',async () => {
+        await action.waitForDisplayed(component.backupPagePopupText)
+        await assert.checkText(component.backupPagePopupText, "Do this step in private place")
+    })
 
-        await action.click(component.backupInfoPopupBtn)
+    it('[Tap] Check Back Up Pop-up Btn Tap',async () => {
+        await action.waitForDisplayed(component.backupPagePopupBtn)
+        await assert.checkText(component.backupPagePopupBtn, "Continue")
+
+        await action.click(component.backupPagePopupBtn)
     })
 
     // === Check Back Up Page (12 Words) ===
     it('[Wording] Check Back Up Title Text',async () => {
         await action.waitForDisplayed(component.backupPageTitleText)
-        await assert.checkText(component.backupPageTitleText, 'Back up Your Mnemonic phrase')
+        await assert.checkText(component.backupPageTitleText, 'Back up Mnemonic phrase')
     })
 
     it('[Wording] Check 12 Word Text',async () => {
@@ -72,6 +46,7 @@ describe('Back Up Test Senario', () => {
 
     it('[Display] Check Back Btn',async () => {
         await action.waitForDisplayed(component.backupPageBackBtn)
+        await assert.checkText(component.backupPageBackBtn, '')
     })
 
     it('[Display] Check Copy Btn',async () => {
@@ -81,6 +56,7 @@ describe('Back Up Test Senario', () => {
 
     it('[Display] Check Check Box',async () => {
         await action.waitForDisplayed(component.backupPageCheckbox)
+        await assert.checkAttr(component.backupPageCheckbox, 'className', 'android.widget.CheckBox')
     })
 
     it('[Display] Check Continue Btn',async () => {
@@ -90,6 +66,7 @@ describe('Back Up Test Senario', () => {
 
     it('[Tap] Check Back Btn Tap',async () => {
         await action.waitForDisplayed(component.backupPageBackBtn)
+        await assert.checkText(component.backupPageBackBtn, '')
 
         await action.click(component.backupPageBackBtn)
 
@@ -99,35 +76,22 @@ describe('Back Up Test Senario', () => {
         await action.waitForDisplayed(component.successBackupBtn)
         await action.click(component.successBackupBtn)
 
-        await action.waitForDisplayed(component.backupInfoPopupBtn)
-        await assert.checkText(component.backupInfoPopupBtn, "I'm ready")
+        await action.waitForDisplayed(component.backupPagePopupBtn)
+        await assert.checkText(component.backupPagePopupBtn, "Continue")
 
-        await action.click(component.backupInfoPopupBtn)
+        await action.click(component.backupPagePopupBtn)
     })
 
     it('[Tap] Check Copy Btn Tap',async () => {
         await action.waitForDisplayed(component.backupPageCopyBtn)
+        await assert.checkText(component.backupPageCopyBtn, 'copy to clipboard')
 
         await action.click(component.backupPageCopyBtn)
-
-        await action.waitForDisplayed(component.backupPageCopiedText)
-
-        await action.click(component.backupPageBackBtn)
-
-        await action.waitForDisplayed(component.successText)
-        await assert.checkText(component.successText, "You're all done!")
-
-        await action.waitForDisplayed(component.successBackupBtn)
-        await action.click(component.successBackupBtn)
-
-        await action.waitForDisplayed(component.backupInfoPopupBtn)
-        await assert.checkText(component.backupInfoPopupBtn, "I'm ready")
-
-        await action.click(component.backupInfoPopupBtn)
     })
 
     it('[Tap] Check Check Box Btn Tap',async () => {
         await action.waitForDisplayed(component.backupPageCheckbox)
+        await assert.checkAttr(component.backupPageCheckbox, 'className', 'android.widget.CheckBox')
 
         await action.click(component.backupPageCheckbox)
 
@@ -142,10 +106,7 @@ describe('Back Up Test Senario', () => {
         await action.click(component.backupPageContinueBtn)
 
         await action.waitForDisplayed(component.backupPageRememberPhraseText)
-        
-        await action.click(component.backupPageBackBtn)
-
-        await action.waitForDisplayed(component.successText)
+        await assert.checkText(component.backupPageRememberPhraseText, 'Remember to record your words in the same order as they appear below.')
     })
 
     afterAll(async () => {
