@@ -6,7 +6,7 @@ export class importWalletComponent {
     importWalletWrongPrivatekeyText = `android=new UiSelector().text("Invalid mnemonic phrase.").className("android.widget.TextView")`
     
     importWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    importWalletPasteBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    importWalletPasteBtn = `//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup`
     importWalletImportBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
 
     importWalletPrivatekeyField = `android=new UiSelector().className("android.widget.EditText")`
