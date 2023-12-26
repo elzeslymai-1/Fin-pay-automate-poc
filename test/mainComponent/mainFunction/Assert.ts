@@ -1,3 +1,4 @@
+import { expect } from '@wdio/globals'
 export class Assertion {
     async checkElement(locator: string) {
         await expect($(locator)).toHaveLength(1)

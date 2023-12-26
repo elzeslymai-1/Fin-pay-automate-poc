@@ -19,6 +19,28 @@ export class Action {
         await (await $(locator)).clearValue()
     }
 
+    public async swipe(from: object, to: object) {
+        await driver.touchPerform(
+            [
+                {
+                    action: 'press',
+                    options: from,
+                },
+                {
+                    action: 'wait',
+                    options: { ms: 500 },
+                },
+                {
+                    action: 'moveTo',
+                    options: to,
+                },
+                {
+                    action: 'release',
+                }
+            ]
+        );
+    }
+
     async addValue(locator: string, value: string) {
         await (await $(locator)).addValue(value)
     }
