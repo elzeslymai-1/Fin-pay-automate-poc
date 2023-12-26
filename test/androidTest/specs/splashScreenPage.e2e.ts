@@ -9,7 +9,7 @@ const assert = new Assertion()
 
 describe('Splash Screen Page Scenario', () => {
     beforeAll(async () => {
-        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
+        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
     it('[Wording] => Check Welcome', async () => {
@@ -37,7 +37,7 @@ describe('Splash Screen Page Scenario', () => {
         await action.click(component.splashScreenCreateWalletBtn)
 
         await action.waitForDisplayed(component.createWalletTitleText)
-        await assert.checkText(component.createWalletTitleText, 'Create wallet')
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
 
         await action.waitForDisplayed(component.createWalletBackBtn)
         await action.click(component.createWalletBackBtn)
@@ -55,6 +55,6 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        await action.closeApps(`${process.env.PACKAGE_ID}`)
     })
 })

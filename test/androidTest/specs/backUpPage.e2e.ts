@@ -9,7 +9,7 @@ const assert = new Assertion()
 
 describe('Back Up Test Senario', () => {
     beforeAll(async () => {
-        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
+        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)
 
@@ -110,6 +110,6 @@ describe('Back Up Test Senario', () => {
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        await action.closeApps(`${process.env.PACKAGE_ID}`)
     })
 })

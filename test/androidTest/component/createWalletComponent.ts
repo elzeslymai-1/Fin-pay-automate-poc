@@ -1,7 +1,7 @@
 export class createWalletComponent {
 
     // Create Wallet Page Component
-    createWalletTitleText = `android=new UiSelector().text("Create wallet").className("android.view.View")`
+    createWalletTitleText = `android=new UiSelector().text("Create Wallet").className("android.view.View")`
 
     createWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     createWalletInfoIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`

@@ -9,7 +9,7 @@ const assert = new Assertion()
 
 describe ('Import Wallet Page Senario', () => {
     beforeAll(async () => {
-        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
+        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenImportWalletBtn)
     })
@@ -37,7 +37,7 @@ describe ('Import Wallet Page Senario', () => {
 
     it('[Display] Check Paste Btn',async () => {
         await action.waitForDisplayed(component.importWalletPasteBtn)
-        await assert.checkText(component.importWalletPasteBtn, '')
+        await assert.checkElemenDisplayed(component.importWalletPasteBtn)
     })
 
     it('[Display] Check Import Wallet Btn',async () => {
@@ -47,18 +47,25 @@ describe ('Import Wallet Page Senario', () => {
 
     it('[Tap] Check Back Btn Tap',async () => {
         await action.waitForDisplayed(component.importWalletBackBtn)
+        await assert.checkText(component.importWalletBackBtn, '')
 
         await action.click(component.importWalletBackBtn)
 
         await action.waitForDisplayed(component.splashScreenWelcomeText)
         await assert.checkElemenDisplayed(component.splashScreenWelcomeText)
 
+        await action.waitForDisplayed(component.splashScreenImportWalletBtn)
+        await assert.checkText(component.splashScreenImportWalletBtn, 'Import a wallet')
+
         await action.click(component.splashScreenImportWalletBtn)
     })
 
     it('[Tap] Check Paste Btn Tap',async () => {
         await action.waitForDisplayed(component.importWalletPasteBtn)
+        await assert.checkElemenDisplayed(component.importWalletPasteBtn)
+
         await action.waitForDisplayed(component.importWalletPrivatekeyField)
+        await assert.checkElemenDisplayed(component.importWalletPrivatekeyField)
 
         await action.click(component.importWalletPrivatekeyField)
 
@@ -70,6 +77,7 @@ describe ('Import Wallet Page Senario', () => {
     // === Check Private Key Wrong Format ===
     it('[Tap] Check Private Key Wrong Format',async () => {
         await action.waitForDisplayed(component.importWalletPrivatekeyField)
+        await assert.checkElemenDisplayed(component.importWalletPrivatekeyField)
 
         await action.click(component.importWalletPrivatekeyField)
 
@@ -95,10 +103,11 @@ describe ('Import Wallet Page Senario', () => {
     // *** This case will create cache, Have to clear it first to run again.
     it('[Tap] Check Private Key Success',async () => {
         await action.waitForDisplayed(component.importWalletPrivatekeyField)
+        await assert.checkElemenDisplayed(component.importWalletPrivatekeyField)
 
         await action.click(component.importWalletPrivatekeyField)
 
-        await action.enterText(component.importWalletPrivatekeyField, 'unable across patch afford oval session devote female birth insect scrub bubble')
+        await action.enterText(component.importWalletPrivatekeyField, `${process.env.TEST_PRIVATEKEY}`)
         
         await action.waitForDisplayed(component.importWalletImportBtn)
         await assert.checkAttr(component.importWalletImportBtn, 'enabled', 'true')
@@ -115,6 +124,6 @@ describe ('Import Wallet Page Senario', () => {
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        await action.closeApps(`${process.env.PACKAGE_ID}`)
     })
 })
