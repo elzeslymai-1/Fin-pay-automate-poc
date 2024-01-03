@@ -1,4 +1,11 @@
 export class Action {
+    public encodeBase64(value: string) {
+        return Buffer.from(value, 'utf-8').toString('base64')
+    }
+    public async setClipboard(value: string){
+        await driver.setClipboard(this.encodeBase64(value), 'plaintext')
+    }
+
     public async waitForDisplayed(locator: string) {
         await (await $(locator)).waitForDisplayed()
     }
@@ -11,12 +18,16 @@ export class Action {
         await (await $(locator)).doubleClick()
     }
 
-    async enterText(locator: string, value: string) {
+    public async enterText(locator: string, value: string) {
         await (await $(locator)).setValue(value)
     }
 
-    async clearText(locator: string) {
+    public async clearText(locator: string) {
         await (await $(locator)).clearValue()
+    }
+
+    public async pause(value: number){
+        await driver.pause(value)
     }
 
     public async swipe(from: object, to: object) {
@@ -41,11 +52,11 @@ export class Action {
         );
     }
 
-    async addValue(locator: string, value: string) {
+    public async addValue(locator: string, value: string) {
         await (await $(locator)).addValue(value)
     }
 
-    async hideKeyboard() {
+    public async hideKeyboard() {
         await browser.hideKeyboard('pressKey', 'Done')
     }
 
@@ -57,49 +68,49 @@ export class Action {
         await (await $(locator)).selectByAttribute(attribute, value)
     }
 
-    async getText(locator: string) {
+    public async getText(locator: string) {
         await (await $(locator)).getText()
     }
 
-    async getValue(locator: string) {
+    public async getValue(locator: string) {
         await (await $(locator)).getValue()
     }
 
-    async Tap(x: number, y: number) {
+    public async Tap(x: number, y: number) {
         driver.touchAction([
             { action: 'tap', x, y },
         ])
     }
 
-    async waitForElementDisplayed(locator: string) {
+    public async waitForElementDisplayed(locator: string) {
         await (await $(locator)).waitForDisplayed()
     }
 
-    async getAttribute(locator: string, attributeName: string) {
+    public async getAttribute(locator: string, attributeName: string) {
         await (await $(locator)).getAttribute(attributeName)
     }
 
-    async acceptAlert() {
+    public async acceptAlert() {
         await driver.acceptAlert()
     }
 
-    async removeApps(bundleId: string) {
+    public async removeApps(bundleId: string) {
         await driver.removeApp(bundleId)
     }
 
-    async closeApps(bundleId: string) {
+    public async closeApps(bundleId: string) {
         await driver.terminateApp(bundleId)
     }
 
-    async launchApps(bundleId: string) {
+    public async launchApps(bundleId: string) {
         await driver.executeScript('mobile: launchApp', [{ bundleId: bundleId }])
     }
 
-    async launchAndroidApps(appID: string) {
+    public async launchAndroidApps(appID: string) {
         await driver.activateApp(appID) // appID : PackageID
     }
 
-    async moveTo(locator: string, xOffset: number, yOffset: number) {
+    public async moveTo(locator: string, xOffset: number, yOffset: number) {
         await (await $(locator)).moveTo({ xOffset, yOffset })
     }
 
