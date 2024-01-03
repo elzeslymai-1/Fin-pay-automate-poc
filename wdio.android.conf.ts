@@ -39,7 +39,8 @@ export const config: Options.Testrunner = {
             "./test/androidTest/specs/splashScreenPage.e2e.ts",
             "./test/androidTest/specs/createWalletPage.e2e.ts",
             "./test/androidTest/specs/backUpPage.e2e.ts",
-            "./test/androidTest/specs/importWalletPage.e2e.ts"
+            "./test/androidTest/specs/importWalletPage.e2e.ts",
+            "./test/androidTest/specs/homePage.e2e.ts"
         ]
     ],
     // Patterns to exclude.

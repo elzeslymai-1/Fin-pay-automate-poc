@@ -45,6 +45,10 @@ export class Action {
         await (await $(locator)).addValue(value)
     }
 
+    async hideKeyboard() {
+        await browser.hideKeyboard('pressKey', 'Done')
+    }
+
     public async selectOptionByIndex(locator: string, value: number) {
         await (await $(locator)).selectByIndex(value)
     }
