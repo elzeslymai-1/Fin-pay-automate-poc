@@ -23,6 +23,10 @@ export class Action {
         await (await $(locator)).addValue(value)
     }
 
+    async hideKeyboard(value: string, value2: string) {
+        await browser.hideKeyboard(value,value2)
+    }
+
     public async selectOptionByIndex(locator: string, value: number) {
         await (await $(locator)).selectByIndex(value)
     }

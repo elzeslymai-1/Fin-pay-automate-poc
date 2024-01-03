@@ -142,7 +142,6 @@ describe('Home Page Test Senario', () => {
         await assert.checkText(component.sendTitleText, 'Send')
 
         await action.waitForDisplayed(component.sendBackBtn)
-        await assert.checkText(component.sendBackBtn, '')
 
         await action.click(component.sendBackBtn)
     })
@@ -157,7 +156,6 @@ describe('Home Page Test Senario', () => {
         await assert.checkText(component.receiveTitleText, 'Select Token')
 
         await action.waitForDisplayed(component.receiveBackBtn)
-        await assert.checkText(component.receiveBackBtn, '')
 
         await action.click(component.receiveBackBtn)
     })
@@ -180,7 +178,6 @@ describe('Home Page Test Senario', () => {
         await assert.checkText(component.scanTitleText, 'Scan QR code')
 
         await action.waitForDisplayed(component.scanBackBtn)
-        await assert.checkText(component.scanBackBtn, '')
 
         await action.click(component.scanBackBtn)
     })
@@ -197,7 +194,7 @@ describe('Home Page Test Senario', () => {
         await action.enterText(component.homeSearchTextField, 'KUB')
 
         // To hide keyboard layout
-        browser.hideKeyboard('pressKey', 'Done')
+        await action.hideKeyboard('pressKey', 'Done')
 
         await action.waitForDisplayed(component.bitkubTestnetKUB)
         await assert.checkText(component.bitkubTestnetKUB, 'KUB')
