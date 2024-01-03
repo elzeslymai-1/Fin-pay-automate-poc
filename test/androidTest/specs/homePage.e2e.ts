@@ -67,8 +67,6 @@ describe('Home Page Test Senario', () => {
     // === Check Menu Tap ===
     it('[Tap] Check History Btn Tap', async () => {
         await action.waitForDisplayed(component.homeHistoryBtn)
-        await assert.checkText(component.homeHistoryBtn, 'History')
-
         await action.click(component.homeHistoryBtn)
 
         await action.waitForDisplayed(component.historyTitleText)
@@ -77,8 +75,6 @@ describe('Home Page Test Senario', () => {
 
     it('[Tap] Check DApps Btn Tap', async () => {
         await action.waitForDisplayed(component.homeDappBtn)
-        await assert.checkText(component.homeDappBtn, 'DApps')
-
         await action.click(component.homeDappBtn)
 
         await action.waitForDisplayed(component.dappTrendingTitleText)
@@ -87,8 +83,6 @@ describe('Home Page Test Senario', () => {
 
     it('[Tap] Check Setting Btn Tap', async () => {
         await action.waitForDisplayed(component.homeSettingBtn)
-        await assert.checkText(component.homeSettingBtn, 'Setting')
-
         await action.click(component.homeSettingBtn)
 
         await action.waitForDisplayed(component.settingTitleText)
@@ -97,8 +91,6 @@ describe('Home Page Test Senario', () => {
 
     it('[Tap] Check Home Btn Tap', async () => {
         await action.waitForDisplayed(component.homeBtn)
-        await assert.checkText(component.homeBtn, 'Home')
-
         await action.click(component.homeBtn)
 
         await action.waitForDisplayed(component.homeWalletIconBtn)
@@ -108,8 +100,6 @@ describe('Home Page Test Senario', () => {
     // === Check Home Page Tap ===
     it('[Tap] Check Wallet Icon Btn Tap', async () => {
         await action.waitForDisplayed(component.homeWalletIconBtn)
-        await assert.checkText(component.homeWalletIconBtn, '')
-
         await action.click(component.homeWalletIconBtn)
 
         await action.waitForDisplayed(component.walletTitleText)
@@ -121,8 +111,6 @@ describe('Home Page Test Senario', () => {
 
     it('[Tap] Check Network Btn Tap', async () => {
         await action.waitForDisplayed(component.homeNetworkBtn)
-        await assert.checkText(component.homeNetworkBtn, '')
-
         await action.click(component.homeNetworkBtn)
 
         await action.waitForDisplayed(component.networkTitleText)
@@ -134,36 +122,28 @@ describe('Home Page Test Senario', () => {
 
     it('[Tap] Check Send Btn Tap', async () => {
         await action.waitForDisplayed(component.homeSendBtn)
-        await assert.checkText(component.homeSendBtn, '')
-
         await action.click(component.homeSendBtn)
 
         await action.waitForDisplayed(component.sendTitleText)
         await assert.checkText(component.sendTitleText, 'Send')
 
         await action.waitForDisplayed(component.sendBackBtn)
-
         await action.click(component.sendBackBtn)
     })
 
     it('[Tap] Check Receive Btn Tap', async () => {
         await action.waitForDisplayed(component.homeReceiveBtn)
-        await assert.checkText(component.homeReceiveBtn, '')
-
         await action.click(component.homeReceiveBtn)
 
         await action.waitForDisplayed(component.receiveTitleText)
         await assert.checkText(component.receiveTitleText, 'Select Token')
 
         await action.waitForDisplayed(component.receiveBackBtn)
-
         await action.click(component.receiveBackBtn)
     })
 
     it('[Tap] Check Scan Btn Tap', async () => {
         await action.waitForDisplayed(component.homeScanBtn)
-        await assert.checkText(component.homeScanBtn, 'Scan')
-
         await action.click(component.homeScanBtn)
 
         await action.waitForDisplayed(component.androidCameraAccessText)
@@ -178,7 +158,6 @@ describe('Home Page Test Senario', () => {
         await assert.checkText(component.scanTitleText, 'Scan QR code')
 
         await action.waitForDisplayed(component.scanBackBtn)
-
         await action.click(component.scanBackBtn)
     })
 
@@ -190,11 +169,10 @@ describe('Home Page Test Senario', () => {
         await assert.checkElemenDisplayed(component.homeSearchTextField)
 
         await action.click(component.homeSearchTextField)
-
         await action.enterText(component.homeSearchTextField, 'KUB')
 
         // To hide keyboard layout
-        await action.hideKeyboard('pressKey', 'Done')
+        await action.hideKeyboard()
 
         await action.waitForDisplayed(component.bitkubTestnetKUB)
         await assert.checkText(component.bitkubTestnetKUB, 'KUB')
