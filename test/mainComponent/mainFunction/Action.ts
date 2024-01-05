@@ -1,3 +1,4 @@
+import { join } from 'path'
 export class Action {
     public encodeBase64(value: string) {
         return Buffer.from(value, 'utf-8').toString('base64')
@@ -11,18 +12,22 @@ export class Action {
     }
 
     public async click(locator: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).click()
     }
 
     public async doubleclick(locator: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).doubleClick()
     }
 
     public async enterText(locator: string, value: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).setValue(value)
     }
 
     public async clearText(locator: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).clearValue()
     }
 
@@ -53,6 +58,7 @@ export class Action {
     }
 
     public async addValue(locator: string, value: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).addValue(value)
     }
 
@@ -69,10 +75,12 @@ export class Action {
     }
 
     public async getText(locator: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).getText()
     }
 
     public async getValue(locator: string) {
+        await this.waitForDisplayed(locator)
         await (await $(locator)).getValue()
     }
 
@@ -104,6 +112,10 @@ export class Action {
 
     public async launchApps(bundleId: string) {
         await driver.executeScript('mobile: launchApp', [{ bundleId: bundleId }])
+    }
+
+    public async installApps(path: string) {
+        await driver.installApp(join(process.cwd(), path))
     }
 
     public async launchAndroidApps(appID: string) {

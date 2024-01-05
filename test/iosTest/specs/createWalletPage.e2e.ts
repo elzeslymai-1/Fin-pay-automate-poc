@@ -6,32 +6,240 @@ const action = new Action()
 const assert = new Assertion()
 const component = new createWalletComponent()
 
-describe('Create Wallet Page Scenario',()=>{
-    beforeAll(async () => {        
-       await action.launchApps(`${process.env.BUNDLE_ID}`)
+describe('Create Wallet Page Scenario', () => {
+    beforeAll(async () => {
+        // before
+        await action.installApps('apps/FinsDefiWallet.app')
 
-       await action.click(component.splashScreenCreateWalletBtn)
-    })
-    
-    it('[Wording] => Check Header Page Wording ',async ()=>{
-        await action.waitForDisplayed(component.createWalletHeaderText)
-        await assert.checkText(component.createWalletHeaderText,'Create wallet')
+        await action.launchApps(`${process.env.BUNDLE_ID}`)
+        await action.click(component.splashScreenCreateWalletBtn)
     })
 
-    it('[Displayed] => 12 Word Mnemonic Btn Should be Displayed',async ()=>{
+    it('[Display] => Check Back Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletBackBtn)
+    })
+
+    it('[Display] => Check Mnemonic Info Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletMnemonicInfoBtn)
+    })
+
+    it('[Display] => Check Mnemonic 12 Word Btn Displayed', async () => {
+        // assert
         await assert.checkElemenDisplayed(component.createWalletMnemonic12WordBtn)
     })
 
-    it('[Displayed] => 24 Word Mnemonic Btn Should be Displayed',async ()=>{
+    it('[Display] => Check Mnemonic 24 Word Btn Displayed', async () => {
+        // assert
         await assert.checkElemenDisplayed(component.createWalletMnemonic24WordBtn)
     })
 
-    it('[Displayed] => Continue Btn Should be Disable',async ()=>{
-        await action.waitForDisplayed(component.createWalletContinueBtn)
-        await assert.checkDisabled(component.createWalletContinueBtn)
+    it('[Display] => Check Continue Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletContinueBtn)
+    })
+
+    it('[Wording] => Check Title Page Wording ', async () => {
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
+    })
+
+    it('[Wording] => Check Mnemonic 12 Word Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletMnemonic12WordBtn, '12-word Mnemonic wallet A 12-word seed phrase is a collection of randomly generated words during a crypto wallet setup.')
+    })
+
+
+    it('[Wording] => Check Mnemonic 24 Word Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletMnemonic24WordBtn, '24-word Mnemonic wallet A 24-word seed phrase is a collection of randomly generated words during a crypto wallet setup.')
+    })
+
+    it('[Tab] => Check Tap Back Btn', async () => {
+        await action.click(component.createWalletBackBtn)
+
+        // assert
+        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
+
+        // after
+        await action.click(component.splashScreenCreateWalletBtn)
+    })
+
+    it('[Tab] => Check Tap Mnemonic Info Btn', async () => {
+        await action.click(component.createWalletMnemonicInfoBtn)
+
+        // assert
+        await assert.checkText(component.mnemonicInfoTitleText, 'Mnemonic code')
+
+        // after
+        await action.click(component.mnemonicInfoCloseBtn)
+    })
+
+    it('[Tab] => Check Tap 12-word Mnemonic Btn', async () => {
+        await action.click(component.createWalletMnemonic12WordBtn)
+
+        // assert
+        await assert.checkEnabled(component.createWalletContinueBtn)
+
+        // after
+        await action.click(component.createWalletBackBtn)
+        await action.click(component.splashScreenCreateWalletBtn)
+    })
+
+    it('[Tab] => Check Tap 24-word Mnemonic Btn', async () => {
+        await action.click(component.createWalletMnemonic24WordBtn)
+
+        // assert
+        await assert.checkEnabled(component.createWalletContinueBtn)
+    })
+
+    it('[Functional] => Create Wallet with 12-Mnemonic Phrase Success', async () => {
+        await action.click(component.createWalletMnemonic12WordBtn)
+        await action.click(component.createWalletContinueBtn)
+
+        // assert
+        await assert.checkText(component.createWalletLoadingText, 'LOADING WALLET...')
+        await action.pause(5000)
+        await assert.checkText(component.createWalletLoadingSuccessText, 'CREATE WALLET SUCCESS')
+        await assert.checkText(component.createWalletSuccessHeaderText, "You're all done!")
+
+        // after
+        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        await action.launchApps(`${process.env.BUNDLE_ID}`)
+    })
+
+    it('[Functional] => Create Wallet with 24-Mnemonic Phrase Success', async () => {
+        await action.click(component.splashScreenCreateWalletBtn)
+        await action.click(component.createWalletMnemonic24WordBtn)
+        await action.click(component.createWalletContinueBtn)
+
+        // assert
+        await assert.checkText(component.createWalletLoadingText, 'LOADING WALLET...')
+        await action.pause(5000)
+        await assert.checkText(component.createWalletLoadingSuccessText, 'CREATE WALLET SUCCESS')
+        await assert.checkText(component.createWalletSuccessHeaderText, "You're all done!")
+    })
+})
+
+describe('Create Wallet Success Page Scenario', () => {
+    it('[Display] => Check Header Text Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletSuccessHeaderText)
+    })
+
+    it('[Display] => Check Content Text Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletSuccessContentText)
+    })
+
+    it('[Display] => Check Continue Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletSuccessContinueBtn)
+    })
+
+    it('[Display] => Check Back up Wallet Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.createWalletSuccessBackupBtn)
+    })
+
+    it('[Wording] => Check Header Text Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletSuccessHeaderText, "You're all done!")
+    })
+
+    it('[Wording] => Check Content Text Wording', async () => {
+        //assert
+        await assert.checkText(component.createWalletSuccessContentText, "You have successfully added a new wallet")
+    })
+
+    it('[Wording] => Check Continue Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletSuccessContinueBtn, 'Continue')
+    })
+
+    it('[Wording] => Check Back up Wallet Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletSuccessBackupBtn, 'Back Up Wallet')
+    })
+
+    it('[Tab] => Check Tap Back up Wallet Btn', async () => {
+        await action.click(component.createWalletSuccessBackupBtn)
+        await action.click(component.backupWalletModalContinueBtn)
+
+        // assert
+        await assert.checkElemenDisplayed(component.backupWalletTitleText)
+
+        // after
+        await action.click(component.backupWalletBackBtn)
+    })
+
+    it('[Tab] => Check Tap Continue Btn', async () => {
+        await action.click(component.createWalletSuccessContinueBtn)
+
+        // assert
+        await assert.checkElemenDisplayed(component.homeTabHomeBtn)
     })
 
     afterAll(async () => {
+        // remove apps
+        await action.removeApps(`${process.env.BUNDLE_ID}`)
+    })
+})
+
+describe('Mnemonic Info Page Scenario', () => {
+    beforeAll(async () => {
+        await action.installApps('apps/FinsDefiWallet.app')
+        await action.launchApps(`${process.env.BUNDLE_ID}`)
+
+        await action.click(component.splashScreenCreateWalletBtn)
+        await action.click(component.createWalletMnemonicInfoBtn)
+    })
+
+    it('[Display] => Check X Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.mnemonicInfoXBtn)
+    })
+
+    it('[Display] => Check Close Btn Displayed', async () => {
+        // assert
+        await assert.checkElemenDisplayed(component.mnemonicInfoCloseBtn)
+    })
+
+    it('[Wording] => Check Mnemonic Title Page Wording', async () => {
+        // assert
+        await assert.checkText(component.mnemonicInfoTitleText, 'Mnemonic code')
+    })
+
+    it('[Wording] => Check Header Page Wording ', async () => {
+        // assert
+        await assert.checkText(component.mnemonicInfoHeaderText, 'What is the 12-24 word seed phrase in crypto wallet?')
+    })
+
+    it('[Wording] => Check Content Page Wording ', async () => {
+        // assert
+        await assert.checkText(component.mnemonicInfoContentText, 'Your seed phrase is a mnemonic code consisting of 12-24 words that is used to recover your cryptocurrency wallet. It is sometimes called a backup phrase, recovery phrase, or mnemonic sentence. It is the foundation of most modern wallets and the crypto universe in general.')
+    })
+
+    it('[Tap] => Check Tap X Btn', async () => {
+        await action.click(component.mnemonicInfoXBtn)
+
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
+
+        // after
+        await action.click(component.createWalletMnemonicInfoBtn)
+    })
+
+    it('[Tap] => Check Tap Close Btn', async () => {
+        await action.click(component.mnemonicInfoCloseBtn)
+
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
+    })
+
+    afterAll(async () => {
+        // close apps
         await action.closeApps(`${process.env.BUNDLE_ID}`)
     })
 })
