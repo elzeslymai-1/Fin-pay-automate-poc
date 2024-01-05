@@ -1,24 +1,11 @@
-export class settingComponent {
+export class customTokenComponent {
 
-    // Setting Page Component
+    // BeforeAll Components
+    homeSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
     settingTitleText = `android=new UiSelector().text("Setting").className("android.view.View")`
-    //// settingMywalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
-    settingCurrencyBtn = `android=new UiSelector().text("Currency").className("android.widget.TextView")`
-    settingNetworkManageBtn = `android=new UiSelector().text("Network Management").className("android.widget.TextView")`
-    //// settingImportWalletBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
+    homeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`
     settingCustomTokenBtn = `android=new UiSelector().text("Custom Token").className("android.widget.TextView")`
-    //// settingNotificationBtn = `android=new UiSelector().text("Notification").className("android.widget.TextView")`
-    //// settingContactsBtn = `android=new UiSelector().text("Contacts").className("android.widget.TextView")`
-    settingSessionsBtn = `android=new UiSelector().text("Sessions").className("android.widget.TextView")`
 
-    // Currency Page Component
-    currencyTitleText = `android=new UiSelector().text("Currency").className("android.view.View")`
-    currencyBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    // Network Management Component
-    networkmanagementTitleText = `android=new UiSelector().text("Add Network").className("android.view.View")`
-    networkmanagementCloseIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    
     // Custom Token Page Component
     customtokenTitleText = `android=new UiSelector().text("Custom token").className("android.view.View")`
     customtokenBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
@@ -40,16 +27,4 @@ export class settingComponent {
     customtokenAddFintoken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
     customtokenCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
     customtokenConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
-
-    // Sessions Page Component
-    sessionsTitleText = `android=new UiSelector().text("Sessions").className("android.view.View")`
-    sessionsBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    // Home with Goerli chain Component
-    homeGoerlichain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
-
-    // Menu Bar Component
-    homeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`
-    homeSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
-
 }
