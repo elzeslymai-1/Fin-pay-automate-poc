@@ -37,8 +37,8 @@ export const config: Options.Testrunner = {
         [
             // "./Test/iosTest/specs/**.e2e.ts"
             './Test/iosTest/specs/splashScreenPage.e2e.ts',
-            './Test/iosTest/specs/importWalletPage.e2e.ts'
-            
+            './Test/iosTest/specs/importWalletPage.e2e.ts',
+            './Test/iosTest/specs/createWalletPage.e2e.ts'
         ]
     ],
     // Patterns to exclude.
