@@ -126,4 +126,8 @@ export class Action {
         await (await $(locator)).moveTo({ xOffset, yOffset })
     }
 
+    async waitForExist(locator: string, timeout: number, reverse: boolean) {
+        await (await $(locator)).waitForExist({timeout, reverse})
+    }
+
 }
