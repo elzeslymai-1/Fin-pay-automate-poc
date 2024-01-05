@@ -1,59 +1,70 @@
 import { expect } from '@wdio/globals'
+import { Action } from './Action.js'
+
+const action = new Action()
 export class Assertion {
-    async checkElement(locator: string) {
+    public async checkToHaveElement(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toHaveLength(1)
     }
 
-    async checkElemenDisplayed(locator: string) {
+    public async checkElementDisplayed(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeDisplayed()
     }
 
-    async checkText(locator: string, value: string) {
+    public async checkText(locator: string, value: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toHaveText(value)
     }
 
-    async checkTextByIOSClassChain(locator: string, value: string) {
-        var selector = await $(`-ios class chain:${locator}`)
-        await expect($(selector)).toHaveText(value)
+    public async checkTextContain(locator: string, value: string) {
+        await action.waitForDisplayed(locator)
+        await expect($(locator)).toHaveText(expect.stringContaining(value))
     }
 
-    async checkTextContain(locator: string, value: string) {
-        await expect($(locator)).toHaveTextContaining(value)
-    }
-
-    async checkFocused(locator: string) {
+    public async checkFocused(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeFocused()
     }
 
-    async checkAttr(locator: string, attr: string, value: string) {
+    public async checkAttr(locator: string, attr: string, value: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toHaveAttribute(attr, value)
     }
 
-    async checkAttrContain(locator: string, attr: string, value: string) {
-        await expect($(locator)).toHaveAttributeContaining(attr, value)
+    public async checkAttrContain(locator: string, attr: string) {
+        await action.waitForDisplayed(locator)
+        await expect($(locator)).toHaveAttribute('attribute', expect.stringContaining(attr))
     }
 
-    async checkDisabled(locator: string) {
+    public async checkDisabled(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeDisabled()
     }
 
-    async checkNotDisabled(locator: string) {
+    public async checkNotDisabled(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).not.toBeDisabled()
     }
 
-    async checkEnabled(locator: string) {
+    public async checkEnabled(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeEnabled()
     }
 
-    async checkNotEnabledd(locator: string) {
+    public async checkNotEnabled(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).not.toBeEnabled()
     }
 
-    async checktoBeChecked(locator: string) {
+    public async toBeChecked(locator: string) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeChecked()
     }
 
-    async checkLength(locator: string, value: number) {
+    public async checkLength(locator: string, value: number) {
+        await action.waitForDisplayed(locator)
         await expect($(locator)).toBeElementsArrayOfSize(value)
     }
 }

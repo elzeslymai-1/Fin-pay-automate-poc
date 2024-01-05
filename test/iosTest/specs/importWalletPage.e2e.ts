@@ -34,26 +34,26 @@ describe('Import Wallet Page Senario', () => {
     it('[Display] Check Back Btn', async () => {
         //assert
         await action.waitForDisplayed(component.importWalletBackBtn)
-        await assert.checkElemenDisplayed(component.importWalletBackBtn)
+        await assert.checkElementDisplayed(component.importWalletBackBtn)
         await assert.checkText(component.importWalletBackBtn, '')
     })
 
     it('[Display] Check Private Key Field', async () => {
         //assert
         await action.waitForDisplayed(component.importWalletPrivatekeyField)
-        await assert.checkElemenDisplayed(component.importWalletPrivatekeyField)
+        await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
     })
 
     it('[Display] Check Paste Btn', async () => {
         //assert
         await action.waitForDisplayed(component.importWalletPrivatekeyField)
-        await assert.checkElemenDisplayed(component.importWalletPrivatekeyField)
+        await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
     })
 
     it('[Display] Check Import Wallet Btn', async () => {
         //assert
         await action.waitForDisplayed(component.importWalletImportBtn)
-        await assert.checkElemenDisplayed(component.importWalletImportBtn)
+        await assert.checkElementDisplayed(component.importWalletImportBtn)
         await assert.checkText(component.importWalletImportBtn, 'Import Wallet')
     })
 
@@ -70,7 +70,7 @@ describe('Import Wallet Page Senario', () => {
 
         //assert
         await action.waitForDisplayed(component.splashScreenImportWalletBtn)
-        await assert.checkElemenDisplayed(component.splashScreenImportWalletBtn)
+        await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
 
         //after
         await action.click(component.splashScreenImportWalletBtn)
@@ -165,7 +165,7 @@ describe('Import Wallet Page Senario', () => {
 
         await action.pause(3000)
 
-        await assert.checkElemenDisplayed(component.homeTabHomeBtn)
+        await assert.checkElementDisplayed(component.homeTabHomeBtn)
     })
 
     afterAll(async () => {

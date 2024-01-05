@@ -17,27 +17,27 @@ describe('Create Wallet Page Scenario', () => {
 
     it('[Display] => Check Back Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletBackBtn)
+        await assert.checkElementDisplayed(component.createWalletBackBtn)
     })
 
     it('[Display] => Check Mnemonic Info Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletMnemonicInfoBtn)
+        await assert.checkElementDisplayed(component.createWalletMnemonicInfoBtn)
     })
 
     it('[Display] => Check Mnemonic 12 Word Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletMnemonic12WordBtn)
+        await assert.checkElementDisplayed(component.createWalletMnemonic12WordBtn)
     })
 
     it('[Display] => Check Mnemonic 24 Word Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletMnemonic24WordBtn)
+        await assert.checkElementDisplayed(component.createWalletMnemonic24WordBtn)
     })
 
     it('[Display] => Check Continue Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletContinueBtn)
+        await assert.checkElementDisplayed(component.createWalletContinueBtn)
     })
 
     it('[Wording] => Check Title Page Wording ', async () => {
@@ -125,22 +125,22 @@ describe('Create Wallet Page Scenario', () => {
 describe('Create Wallet Success Page Scenario', () => {
     it('[Display] => Check Header Text Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletSuccessHeaderText)
+        await assert.checkElementDisplayed(component.createWalletSuccessHeaderText)
     })
 
     it('[Display] => Check Content Text Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletSuccessContentText)
+        await assert.checkElementDisplayed(component.createWalletSuccessContentText)
     })
 
     it('[Display] => Check Continue Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletSuccessContinueBtn)
+        await assert.checkElementDisplayed(component.createWalletSuccessContinueBtn)
     })
 
     it('[Display] => Check Back up Wallet Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.createWalletSuccessBackupBtn)
+        await assert.checkElementDisplayed(component.createWalletSuccessBackupBtn)
     })
 
     it('[Wording] => Check Header Text Wording', async () => {
@@ -168,7 +168,7 @@ describe('Create Wallet Success Page Scenario', () => {
         await action.click(component.backupWalletModalContinueBtn)
 
         // assert
-        await assert.checkElemenDisplayed(component.backupWalletTitleText)
+        await assert.checkElementDisplayed(component.backupWalletTitleText)
 
         // after
         await action.click(component.backupWalletBackBtn)
@@ -178,7 +178,7 @@ describe('Create Wallet Success Page Scenario', () => {
         await action.click(component.createWalletSuccessContinueBtn)
 
         // assert
-        await assert.checkElemenDisplayed(component.homeTabHomeBtn)
+        await assert.checkElementDisplayed(component.homeTabHomeBtn)
     })
 
     afterAll(async () => {
@@ -198,12 +198,12 @@ describe('Mnemonic Info Page Scenario', () => {
 
     it('[Display] => Check X Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.mnemonicInfoXBtn)
+        await assert.checkElementDisplayed(component.mnemonicInfoXBtn)
     })
 
     it('[Display] => Check Close Btn Displayed', async () => {
         // assert
-        await assert.checkElemenDisplayed(component.mnemonicInfoCloseBtn)
+        await assert.checkElementDisplayed(component.mnemonicInfoCloseBtn)
     })
 
     it('[Wording] => Check Mnemonic Title Page Wording', async () => {

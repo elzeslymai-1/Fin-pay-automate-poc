@@ -30,7 +30,7 @@ describe('Custom Token Page Test Senario', () => {
         await assert.checkText(component.customtokenTitleText, 'Custom token')
 
         await action.waitForDisplayed(component.customtokenBackBtn)
-        await assert.checkElemenDisplayed(component.customtokenBackBtn)
+        await assert.checkElementDisplayed(component.customtokenBackBtn)
     })
     it('[Tap] Check Custom Token Network Btn',async () => {
         await action.waitForDisplayed(component.customtokenTitleText)
@@ -47,7 +47,7 @@ describe('Custom Token Page Test Senario', () => {
         await action.click(component.customtokenNetworkBitkubChain)
 
         await action.waitForDisplayed(component.customtokenKubToken)
-        await assert.checkElemenDisplayed(component.customtokenKubToken)
+        await assert.checkElementDisplayed(component.customtokenKubToken)
     })
     it('[Tap] Check Custom Token Search Btn',async () => {
         await action.waitForDisplayed(component.customtokenSearchTextField)
@@ -88,7 +88,7 @@ describe('Custom Token Page Test Senario', () => {
         await action.click(component.customtokenConfirmBtn)
 
         await action.waitForDisplayed(component.customtokenFinToken)
-        await assert.checkElemenDisplayed(component.customtokenFinToken)
+        await assert.checkElementDisplayed(component.customtokenFinToken)
     })
     it('[Tap] Check Remove Custom Token Btn',async () => {
         await action.waitForDisplayed(component.customtokenRemoveBtn)
