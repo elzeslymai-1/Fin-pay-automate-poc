@@ -54,13 +54,13 @@ describe('Splash Screen Page Scenario', () => {
     it('[Displayed] => Create New Wallet Btn Should be Displayed',async ()=>{
         //assert
         await action.waitForDisplayed(component.splashScreenCreateWalletBtn)
-        await assert.checkElemenDisplayed(component.splashScreenCreateWalletBtn)
+        await assert.checkElementDisplayed(component.splashScreenCreateWalletBtn)
     })
 
     it('[Displayed] => Import Wallet Btn Should be Displayed',async ()=>{
         //assert
         await action.waitForDisplayed(component.splashScreenImportWalletBtn)
-        await assert.checkElemenDisplayed(component.splashScreenImportWalletBtn)
+        await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
     })
 
     it('[Tap] => Create new Wallet Btn', async () => {

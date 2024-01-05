@@ -16,7 +16,7 @@ export class Action {
         await (await $(locator)).click()
     }
 
-    public async doubleclick(locator: string) {
+    public async doubleClick(locator: string) {
         await this.waitForDisplayed(locator)
         await (await $(locator)).doubleClick()
     }
@@ -88,10 +88,6 @@ export class Action {
         driver.touchAction([
             { action: 'tap', x, y },
         ])
-    }
-
-    public async waitForElementDisplayed(locator: string) {
-        await (await $(locator)).waitForDisplayed()
     }
 
     public async getAttribute(locator: string, attributeName: string) {
