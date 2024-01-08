@@ -1,4 +1,3 @@
-import { expect } from '@wdio/globals'
 import { createWalletComponent } from '../component/createWalletComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
@@ -7,7 +6,7 @@ const component = new createWalletComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Create Wallet Page Senario', () => {
+describe('Create Wallet Page Scenario', () => {
     beforeAll(async () => {
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
@@ -15,183 +14,139 @@ describe('Create Wallet Page Senario', () => {
     })
 
     // === Check Create Wallet Page ===
-    it('[Wording] Check Create wallet',async () => {
-        await action.waitForDisplayed(component.createWalletTitleText)
-        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
-    })
-
-    it('[Display] Check Back Btn',async () => {
-        await action.waitForDisplayed(component.createWalletBackBtn)
+    it('[Display] Check Back Btn', async () => {
+        // assert
         await assert.checkText(component.createWalletBackBtn, '')
     })
 
-    it('[Display] Check Infomation Btn',async () => {
-        await action.waitForDisplayed(component.createWalletInfoIconBtn)
+    it('[Display] Check Mnemonic Info Btn', async () => {
+        // assert
         await assert.checkText(component.createWalletInfoIconBtn, '')
     })
 
-    it('[Display] Check 12-word Btn',async () => {
-        await action.waitForDisplayed(component.createWallet12wordBtn)
+    it('[Display] Check Mnemonic 12-word Btn', async () => {
+        // assert
         await assert.checkText(component.createWallet12wordBtn, '12-word Mnemonic wallet')
     })
 
-    it('[Display] Check 24-word Btn',async () => {
-        await action.waitForDisplayed(component.createWallet24wordBtn)
+    it('[Display] Check Mnemonic 24-word Btn', async () => {
+        // assert
         await assert.checkText(component.createWallet24wordBtn, '24-word Mnemonic wallet')
     })
 
-    it('[Display] Check Continue Btn',async () => {
-        await action.waitForDisplayed(component.createWalletContinueBtn)
+    it('[Display] Check Continue Btn', async () => {
+        // assert
         await assert.checkText(component.createWalletContinueBtn, 'Continue')
     })
 
-    it('[Tap] Check Back Btn tap',async () => {
-        await action.waitForDisplayed(component.createWalletBackBtn)
-        await assert.checkText(component.createWalletBackBtn, '')
+    it('[Wording] Check Create Wallet Title Wording', async () => {
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
+    })
 
+    it('[Tap] Check Back Btn tap', async () => {
         await action.click(component.createWalletBackBtn)
 
-        await action.waitForDisplayed(component.splashScreenWelcomeText)
-        await assert.checkElemenDisplayed(component.splashScreenWelcomeText)
-        
-        await action.waitForDisplayed(component.splashScreenCreateWalletBtn)
-        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
-        
+        // assert
+        await assert.checkElementDisplayed(component.splashScreenWelcomeText)
+
+        // after
         await action.click(component.splashScreenCreateWalletBtn)
     })
 
-    it('[Tap] Check Infomation Btn tap',async () => {
-        await action.waitForDisplayed(component.createWalletInfoIconBtn)
-        await assert.checkText(component.createWalletInfoIconBtn, '')
-
+    it('[Tap] Check Information Btn tap', async () => {
         await action.click(component.createWalletInfoIconBtn)
 
-        await action.waitForDisplayed(component.infoTitleText)
+        // assert
         await assert.checkText(component.infoTitleText, 'Mnemonic code')
-        
-        await action.waitForDisplayed(component.infoCloseBtn)
-        await assert.checkText(component.infoCloseBtn, 'Close')
 
+        // after
         await action.click(component.infoCloseBtn)
     })
 
     it('[Tap] Check 12-word Btn tap', async () => {
-        await action.waitForDisplayed(component.createWallet12wordBtn)
-        await assert.checkText(component.createWallet12wordBtn, '12-word Mnemonic wallet')
-        
         await action.click(component.createWallet12wordBtn)
 
-        await action.waitForDisplayed(component.createWalletContinueBtn)
+        // assert
         await assert.checkNotDisabled(component.createWalletContinueBtn)
     })
 
-    it('[Tap] Check 24-word Btn tap',async () => {
-        await action.waitForDisplayed(component.createWallet24wordBtn)
-        await assert.checkText(component.createWallet24wordBtn, '24-word Mnemonic wallet')
-
+    it('[Tap] Check 24-word Btn tap', async () => {
         await action.click(component.createWallet24wordBtn)
 
-        await action.waitForDisplayed(component.createWalletContinueBtn)
+        // assert
         await assert.checkNotDisabled(component.createWalletContinueBtn)
-    })
-
-    // === Check Information Page ===
-    it('[Wording] Check Mnemonic code',async () => {
-        await action.waitForDisplayed(component.createWalletInfoIconBtn)
-        await assert.checkText(component.createWalletInfoIconBtn, '')
-
-        await action.click(component.createWalletInfoIconBtn)
-
-        await action.waitForDisplayed(component.infoTitleText)
-        await assert.checkText(component.infoTitleText, 'Mnemonic code')
-    })
-
-    it('[Display] Check Infomation Close Icon',async () => {
-        await action.waitForDisplayed(component.infoCloseIconBtn)
-        await assert.checkText(component.infoCloseIconBtn, '')
-    })
-
-    it('[Display] Check Infomation Close Btn',async () => {
-        await action.waitForDisplayed(component.infoCloseBtn)
-        await assert.checkText(component.infoCloseBtn, 'Close')
-    })
-
-    it('[Tap] Check Infomation Close Btn',async () => {
-        await action.waitForDisplayed(component.infoCloseBtn)
-        await assert.checkText(component.infoCloseBtn, 'Close')
-
-        await action.click(component.infoCloseBtn)
-
-        await action.waitForDisplayed(component.createWalletTitleText)
-        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
-    })
-
-    it('[Tap] Check Infomation Close Icon',async () => {
-        await action.waitForDisplayed(component.createWalletInfoIconBtn)
-        await assert.checkText(component.createWalletInfoIconBtn, '')
-
-        await action.click(component.createWalletInfoIconBtn)
-
-        await action.waitForDisplayed(component.infoCloseIconBtn)
-        await assert.checkText(component.infoCloseIconBtn, '')
-
-        await action.click(component.infoCloseIconBtn)
-
-        await action.waitForDisplayed(component.createWalletTitleText)
-        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
     })
 
     // === Check Create Wallet 12-word Action ===
-    it('[Tap] Check Continue with 12-word Btn',async () => {
-        await action.waitForDisplayed(component.createWallet12wordBtn)
-        await assert.checkText(component.createWallet12wordBtn, '12-word Mnemonic wallet')
-
+    it('[Functional] Check Continue with 12-word Btn', async () => {
         await action.click(component.createWallet12wordBtn)
-
-        await action.waitForDisplayed(component.createWalletContinueBtn)
-        await assert.checkText(component.createWalletContinueBtn, 'Continue')
-
         await action.click(component.createWalletContinueBtn)
 
-        await action.waitForDisplayed(component.loadIcon)
-        await assert.checkAttr(component.loadIcon, 'displayed', 'true')
-
-        await action.waitForDisplayed(component.loadText)
+        // assert
         await assert.checkText(component.loadText, 'LOADING WALLET...')
-
-        await action.waitForDisplayed(component.successText)
         await assert.checkText(component.successText, "You're all done!")
 
+        // after
         await action.closeApps(`${process.env.PACKAGE_ID}`)
+        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
     // === Check Create Wallet 24-word Action ===
-    it('[Tap] Check Continue with 24-word Btn',async () => {
-        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
-
-        await action.waitForDisplayed(component.splashScreenCreateWalletBtn)
-        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
-
+    it('[Functional] Check Continue with 24-word Btn', async () => {
         await action.click(component.splashScreenCreateWalletBtn)
-
-        await action.waitForDisplayed(component.createWallet24wordBtn)
-        await assert.checkText(component.createWallet24wordBtn, '24-word Mnemonic wallet')
-
         await action.click(component.createWallet24wordBtn)
-
-        await action.waitForDisplayed(component.createWalletContinueBtn)
-        await assert.checkText(component.createWalletContinueBtn, 'Continue')
-
         await action.click(component.createWalletContinueBtn)
 
-        await action.waitForDisplayed(component.loadIcon)
-        await assert.checkAttr(component.loadIcon, 'displayed', 'true')
-
-        await action.waitForDisplayed(component.loadText)
+        // assert
         await assert.checkText(component.loadText, 'LOADING WALLET...')
-
-        await action.waitForDisplayed(component.successText)
         await assert.checkText(component.successText, "You're all done!")
+    })
+
+    afterAll(async () => {
+        await action.closeApps(`${process.env.PACKAGE_ID}`)
+    })
+})
+
+describe('Mnemonic Info Page Scenario', () => {
+    beforeAll(async () => {
+        await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
+
+        await action.click(component.splashScreenCreateWalletBtn)
+        await action.click(component.createWalletInfoIconBtn)
+    })
+
+    // === Check Information Page ===
+    it('[Display] Check Information Close Icon', async () => {
+        // assert
+        await assert.checkText(component.infoCloseIconBtn, '')
+    })
+    
+    it('[Display] Check Information Close Btn', async () => {
+        // assert
+        await assert.checkText(component.infoCloseBtn, 'Close')
+    })
+
+    it('[Wording] Check Mnemonic Info Title Page Wording', async () => {
+        // assert
+        await assert.checkText(component.infoTitleText, 'Mnemonic code')
+    })
+
+    it('[Tap] Check Information Close Btn', async () => {
+        await action.click(component.infoCloseBtn)
+
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
+
+        // after
+        await action.click(component.createWalletInfoIconBtn)
+    })
+
+    it('[Tap] Check Information Close Icon', async () => {
+        await action.click(component.infoCloseIconBtn)
+
+        // assert
+        await assert.checkText(component.createWalletTitleText, 'Create Wallet')
     })
 
     afterAll(async () => {
