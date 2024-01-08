@@ -40,6 +40,11 @@ describe('Create Wallet Page Scenario', () => {
         await assert.checkElementDisplayed(component.createWalletContinueBtn)
     })
 
+    it('[Display] => Check Continue Btn Should be Disabled', async () => {
+        // assert
+        await assert.checkDisabled(component.createWalletContinueBtn)
+    })
+
     it('[Wording] => Check Title Page Wording ', async () => {
         // assert
         await assert.checkText(component.createWalletTitleText, 'Create Wallet')
@@ -50,10 +55,14 @@ describe('Create Wallet Page Scenario', () => {
         await assert.checkText(component.createWalletMnemonic12WordBtn, '12-word Mnemonic wallet A 12-word seed phrase is a collection of randomly generated words during a crypto wallet setup.')
     })
 
-
     it('[Wording] => Check Mnemonic 24 Word Btn Wording', async () => {
         // assert
         await assert.checkText(component.createWalletMnemonic24WordBtn, '24-word Mnemonic wallet A 24-word seed phrase is a collection of randomly generated words during a crypto wallet setup.')
+    })
+
+    it('[Wording] => Check Continue Btn Wording ', async () => {
+        // assert
+        await assert.checkText(component.createWalletContinueBtn, 'Continue')
     })
 
     it('[Tab] => Check Tap Back Btn', async () => {
@@ -219,6 +228,11 @@ describe('Mnemonic Info Page Scenario', () => {
     it('[Wording] => Check Content Page Wording ', async () => {
         // assert
         await assert.checkText(component.mnemonicInfoContentText, 'Your seed phrase is a mnemonic code consisting of 12-24 words that is used to recover your cryptocurrency wallet. It is sometimes called a backup phrase, recovery phrase, or mnemonic sentence. It is the foundation of most modern wallets and the crypto universe in general.')
+    })
+
+    it('[Wording] => Check Close Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.mnemonicInfoCloseBtn, 'Close')
     })
 
     it('[Tap] => Check Tap X Btn', async () => {
