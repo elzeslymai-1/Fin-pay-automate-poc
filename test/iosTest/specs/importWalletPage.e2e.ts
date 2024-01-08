@@ -12,6 +12,11 @@ describe('Import Wallet Page Scenario', () => {
         await action.click(component.splashScreenImportWalletBtn)
     })
 
+    it('[Display] Check Back Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.importWalletBackBtn)
+    })
+
     it('[Display] Check Private Key Field Displayed', async () => {
         //assert
         await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
@@ -33,12 +38,17 @@ describe('Import Wallet Page Scenario', () => {
         await assert.checkDisabled(component.importWalletImportBtn)
     })
 
-    it('[Wording] Check Import Wallet Header Wording', async () => {
+    it('[Wording] Check Back Btn Wording', async () => {
+        //assert
+        await assert.checkText(component.importWalletBackBtn, '')
+    })
+
+    it('[Wording] Check Import Wallet Title Wording', async () => {
         //assert
         await assert.checkText(component.importWalletTitleText, 'Import Wallet')
     })
 
-    it('[Wording] Check Import Wallet Topic Wording', async () => {
+    it('[Wording] Check Import Wallet Header Wording', async () => {
         //assert
         await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic or Private Key')
     })
@@ -46,11 +56,6 @@ describe('Import Wallet Page Scenario', () => {
     it('[Wording] Check Import Wallet Description Wording', async () => {
         //assert
         await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.')
-    })
-
-    it('[Wording] Check Back Btn Wording', async () => {
-        //assert
-        await assert.checkText(component.importWalletBackBtn, '')
     })
 
     it('[Wording] Check Import wallet Btn Wording', async () => {
