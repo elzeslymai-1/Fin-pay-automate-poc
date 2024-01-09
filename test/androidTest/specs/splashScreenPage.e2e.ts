@@ -8,27 +8,64 @@ const assert = new Assertion()
 
 describe('Splash Screen Page Scenario', () => {
     beforeAll(async () => {
+        await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
     it('[Display] => Check Create wallet Btn', async () => {
         // assert
-        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
+        await assert.checkElementDisplayed(component.splashScreenCreateWalletBtn)
     })
 
     it('[Display] => Check Import wallet Btn', async () => {
         // assert
+        await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
+    })
+
+    it('[Wording] => Check Create wallet Btn', async () => {
+        // assert
+        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
+    })
+
+    it('[Wording] => Check Import wallet Btn', async () => {
+        // assert
         await assert.checkText(component.splashScreenImportWalletBtn, 'Import a wallet')
     })
 
-    it('[Wording] => Check Welcome', async () => {
+    it('[Wording] => Check Header [1]', async () => {
         // assert
-        await assert.checkText(component.splashScreenWelcomeText, 'Welcome to the \nFIN PAY')
+        await assert.checkText(component.splashScreenHeaderText, 'Welcome to the \nFIN PAY')
     })
 
-    it('[Wording] => Check Description', async () => {
+    it('[Wording] => Check Description [1]', async () => {
         // assert
         await assert.checkText(component.splashScreenDescriptionText, 'To get started, create a new wallet or import \none from a seed phrase.')
+    })
+
+    it('[Wording] => Check Header [2]',async () => {
+        // swipe
+        await action.swipe({x:400, y:300},{x:50, y:300})
+
+        // assert
+        await assert.checkText(component.splashScreenHeaderText2, 'All your crypto in one place')
+    })
+
+    it('[Wording] => Check Description [2]',async () => {
+        // assert
+        await assert.checkText(component.splashScreenDescriptionText2, 'Now you can trade crypto directly from the\nCrypto wallet with your existing.')
+    })
+
+    it('[Wording] => Check Header [3]',async () => {
+        // swipe
+        await action.swipe({x:400, y:300},{x:50, y:300})
+
+        // assert
+        await assert.checkText(component.splashScreenHeaderText3, 'Discover the best of Web3')
+    })
+
+    it('[Wording] => Check Description [3]',async () => {
+        // assert
+        await assert.checkText(component.splashScreenDescriptionText3, 'Find and connect to leading apps and\ncollections with the in-app browser.')
     })
 
     it('[Tap] => Create wallet Btn', async () => {
@@ -52,7 +89,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     afterAll(async () => {
-        // close apps
-        await action.closeApps(`${process.env.PACKAGE_ID}`)
+        // remove apps
+        await action.removeApps(`${process.env.PACKAGE_ID}`)
     })
 })

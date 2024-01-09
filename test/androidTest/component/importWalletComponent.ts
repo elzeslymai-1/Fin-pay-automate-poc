@@ -3,6 +3,7 @@ export class importWalletComponent {
     // Import Wallet Page Component
     importWalletTitleText = `android=new UiSelector().text("Import Wallet").className("android.view.View")`
     importWalletHeaderText = `android=new UiSelector().text("Enter Mnemonic or Private Key").className("android.widget.TextView")`
+    importWalletDescriptionText = `android=new UiSelector().text("Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.").className("android.widget.TextView")`
     importWalletWrongPrivatekeyText = `android=new UiSelector().text("Invalid mnemonic phrase.").className("android.widget.TextView")`
     
     importWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
