@@ -8,7 +8,7 @@ const assert = new Assertion()
 
 describe('Splash Screen Page Scenario', () => {
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        // await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
@@ -44,7 +44,7 @@ describe('Splash Screen Page Scenario', () => {
 
     it('[Wording] => Check Header [2]',async () => {
         // swipe
-        await action.swipe({x:400, y:300},{x:50, y:300})
+        await action.swipe()
 
         // assert
         await assert.checkText(component.splashScreenHeaderText2, 'All your crypto in one place')
@@ -57,7 +57,7 @@ describe('Splash Screen Page Scenario', () => {
 
     it('[Wording] => Check Header [3]',async () => {
         // swipe
-        await action.swipe({x:400, y:300},{x:50, y:300})
+        await action.swipe()
 
         // assert
         await assert.checkText(component.splashScreenHeaderText3, 'Discover the best of Web3')
