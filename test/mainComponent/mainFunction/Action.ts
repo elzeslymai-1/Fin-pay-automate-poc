@@ -3,7 +3,7 @@ export class Action {
     public encodeBase64(value: string) {
         return Buffer.from(value, 'utf-8').toString('base64')
     }
-    public async setClipboard(value: string){
+    public async setClipboard(value: string) {
         await driver.setClipboard(this.encodeBase64(value), 'plaintext')
     }
 
@@ -31,30 +31,34 @@ export class Action {
         await (await $(locator)).clearValue()
     }
 
-    public async pause(value: number){
+    public async pause(value: number) {
         await driver.pause(value)
     }
 
-    public async swipe(from: object, to: object) {
-        await driver.touchPerform(
-            [
-                {
-                    action: 'press',
-                    options: from,
-                },
-                {
-                    action: 'wait',
-                    options: { ms: 500 },
-                },
-                {
-                    action: 'moveTo',
-                    options: to,
-                },
-                {
-                    action: 'release',
-                }
-            ]
-        );
+    public async swipe() {
+        // Get the device screen size
+        const { width, height } = await browser.getWindowRect();
+
+        // Define the start and end coordinates for the swipe
+        const startX = width * 0.8; // 80% of the screen width
+        const startY = height / 2; // Center of the screen
+        const endX = width * 0.2; // 20% of the screen width
+        const endY = height / 2; // Center of the screen
+
+        // Perform the swipe using browser.action
+        await browser.performActions([
+            {
+                type: 'pointer',
+                id: 'finger1',
+                parameters: { pointerType: 'touch' },
+                actions: [
+                    { type: 'pointerMove', duration: 0, x: startX, y: startY },
+                    { type: 'pointerDown', button: 0 },
+                    { type: 'pointerMove', duration: 100, x: endX, y: endY },
+                    { type: 'pointerUp', button: 0 },
+                ],
+            },
+        ]);
     }
 
     public async addValue(locator: string, value: string) {
@@ -123,7 +127,7 @@ export class Action {
     }
 
     async waitForExist(locator: string, timeout: number, reverse: boolean) {
-        await (await $(locator)).waitForExist({timeout, reverse})
+        await (await $(locator)).waitForExist({ timeout, reverse })
     }
 
 }

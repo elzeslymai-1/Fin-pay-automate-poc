@@ -32,7 +32,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     it('[Wording] => Check Welcome Page Wording [2]', async () => {
-        await action.swipe({x:400, y:300},{x:50, y:300})
+        await action.swipe()
     
         //assert
         await assert.checkText(component.splashScreenWelcomeText2, 'All your crypto in one place')
@@ -44,8 +44,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     it('[Wording] => Check Welcome Page Wording [3]', async () => {
-        await action.swipe({x:400, y:300},{x:50, y:300})
-    
+        await action.swipe()
         //assert
         await assert.checkText(component.splashScreenWelcomeText3, 'Discover the best of Web3')
     })
