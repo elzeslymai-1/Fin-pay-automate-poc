@@ -6,7 +6,7 @@ const component = new backUpComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Back Up (12-Words) Test Senario', () => {
+describe('Back Up Pop Test Senario', () => {
     beforeAll(async () => {
         await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
@@ -20,7 +20,6 @@ describe('Back Up (12-Words) Test Senario', () => {
         await action.click(component.successBackupBtn)
     })
 
-    //* === Check Pop-up ===
     it('[Wording] Check Pop-up Title Text', async () => {
         //assert
         await assert.checkText(component.backupPopupText, "Do this step in private place")
@@ -48,8 +47,9 @@ describe('Back Up (12-Words) Test Senario', () => {
         // assert
         await assert.checkElementDisplayed(component.backupTitleText)
     })
+})
 
-    //* === Check Back Up Page (12 Words) ===
+describe('Back Up (12-Words) Test Senario', () => {
     it('[Wording] Check Back Up Title Text', async () => {
         // assert
         await assert.checkText(component.backupTitleText, 'Back up Mnemonic phrase')
@@ -140,7 +140,7 @@ describe('Back Up (12-Words) Test Senario', () => {
         await action.click(component.backupContinueBtn)
 
         // assert
-        await assert.checkText(component.backupRememberPhraseText, 'Remember to record your words in the same order as they appear below.')
+        await assert.checkElementDisplayed(component.correctMnemonicTitleText)
     })
 
     afterAll(async () => {
@@ -161,14 +161,8 @@ describe('Back Up (24-Words) Test Senario', () => {
 
         await action.waitForExist(component.successBackupBtn, 30000, false)
         await action.click(component.successBackupBtn)
-    })
 
-    it('[Tap] Check Pop-up Btn Tap', async () => {
-        // action
         await action.click(component.backupPopupBtn)
-
-        // assert
-        await assert.checkElementDisplayed(component.backupTitleText)
     })
 
     it('[Wording] Check 24 Word Text', async () => {
@@ -177,6 +171,39 @@ describe('Back Up (24-Words) Test Senario', () => {
 
         // assert
         await assert.checkText(component.backup24Text, '24')
+    })
+})
+
+describe('Correct Mnemonic Phrase Test Senario', () => {
+    beforeAll(async () => {
+        await action.click(component.backupCheckbox)
+
+        await action.click(component.backupContinueBtn)
+    })
+    it('[Wording] Check Correct Mnemonic Phrase Title Text',async () => {
+        // assert
+        await assert.checkText(component.correctMnemonicTitleText, 'Back up Mnemonic phrase')
+    })
+
+    it('[Wording] Check Correct Mnemonic Phrase Header Text',async () => {
+        // assert
+        await assert.checkText(component.correctMnemonicHeaderText, 'Your Mnemonic phrase')
+    })
+
+    it('[Wording] Check Correct Mnemonic Phrase Description Text',async () => {
+        // assert
+        await assert.checkText(component.correctMnemonicDescriptionText, 'Remember to record your words in the same order as they appear below.')
+    })
+
+    it('[Wording] Check Correct Mnemonic Phrase Continue Btn',async () => {
+        // assert
+        await assert.checkText(component.correctMnemonicContinueBtn, 'Continue')
+    })
+
+    it('[Display] Check Correct Mnemonic Phrase Continue Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.correctMnemonicContinueBtn)
+        await assert.checkDisabled(component.correctMnemonicContinueBtn)
     })
 
     afterAll(async () => {
