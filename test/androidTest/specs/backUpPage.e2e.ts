@@ -101,6 +101,11 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await assert.checkText(component.backupCopyBtn, 'copy to clipboard')
     })
 
+    it('[Wording] Check Check Box Text', async () => {
+        // assert
+        await assert.checkText(component.backupCheckboxText, 'I understand that if I lose my recovery phrase, I will not be able to access my funds.')
+    })
+
     it('[Wording] Check Continue Btn', async () => {
         // assert
         await assert.checkText(component.backupContinueBtn, 'Continue')
@@ -183,6 +188,11 @@ describe('Correct Mnemonic Phrase Test Scenario', () => {
 
         await action.click(component.backupContinueBtn)
     })
+
+    it('[Display] Check Mnemonic Phrase Back Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.correctMnemonicBackBtn)
+    })
     
     it('[Display] Check Mnemonic Phrase Continue Btn', async () => {
         // assert
@@ -205,11 +215,28 @@ describe('Correct Mnemonic Phrase Test Scenario', () => {
         await assert.checkText(component.correctMnemonicDescriptionText, 'Remember to record your words in the same order as they appear below.')
     })
 
+    it('[Wording] Check Mnemonic Phrase Back Btn Text', async () => {
+        // assert
+        await assert.checkText(component.correctMnemonicBackBtn, '')
+    })
+
     it('[Wording] Check Mnemonic Phrase Continue Btn', async () => {
         // assert
         await assert.checkText(component.correctMnemonicContinueBtn, 'Continue')
     })
 
+    it('[Tap] Check Correct Mnemonic Phrase Back Btn Tap',async () => {
+        // action
+        await action.click(component.correctMnemonicBackBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.backupTitleText)
+
+        // after
+        await action.click(component.backupPopupContinueBtn)
+        await action.click(component.backupCheckbox)
+        await action.click(component.backupContinueBtn)
+    })
 
     afterAll(async () => {
         await action.removeApps(`${process.env.PACKAGE_ID}`)

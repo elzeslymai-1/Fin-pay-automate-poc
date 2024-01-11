@@ -16,12 +16,14 @@ export class backUpComponent {
     backupCopyText = `android=new UiSelector().text("Copied!").className("android.widget.TextView")`
     backupCopyBtn = `android=new UiSelector().text("copy to clipboard").className("android.widget.TextView")`
     backupCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
+    backupCheckboxText = `android=new UiSelector().text("I understand that if I lose my recovery phrase, I will not be able to access my funds.").className("android.widget.TextView")`
     backupContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
 
     // Correct Mnemonic Page Component
     correctMnemonicTitleText = `android=new UiSelector().text("Back up Mnemonic phrase").className("android.view.View")`
     correctMnemonicHeaderText = `android=new UiSelector().text("Your Mnemonic phrase").className("android.widget.TextView")`
     correctMnemonicDescriptionText = `android=new UiSelector().text("Remember to record your words in the same order as they appear below.").className("android.widget.TextView")`
+    correctMnemonicBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     correctMnemonicContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
 
     // BeforeAll Component
