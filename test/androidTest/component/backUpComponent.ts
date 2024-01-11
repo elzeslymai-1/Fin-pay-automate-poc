@@ -3,8 +3,8 @@ export class backUpComponent {
     // Pop-up Component
     backupPopupText = `android=new UiSelector().text("Do this step in private place").className("android.widget.TextView")`
     backupPopupDescriptionText = `android=new UiSelector().text("Your recovery phrase is what grants you ( and anyone who has it ) access to your funds. Be sure to store it in a safe place.").className("android.widget.TextView")`
-    backupPopupBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
-
+    backupPopupContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
+    
     // Back Up Page Component
     backupTitleText = `android=new UiSelector().text("Back up Mnemonic phrase").className("android.view.View")`
     backupHeaderText = `android=new UiSelector().text("Your Mnemonic phrase").className("android.widget.TextView")`

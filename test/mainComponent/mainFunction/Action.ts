@@ -70,10 +70,10 @@ export class Action {
 
             case 'up':
 
-                startX = width / 2; // 80% of the screen width
-                startY = height * 0.8; // Center of the screen
-                endX = width / 2; // 20% of the screen width
-                endY = height * 0.2; // Center of the screen
+                startX = width / 2; // Center of the screen
+                startY = height * 0.8; // 80% of the screen width
+                endX = width / 2; // Center of the screen
+                endY = height * 0.2; // 20% of the screen width
 
                 await browser.performActions([
                     {
