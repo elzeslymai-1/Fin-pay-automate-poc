@@ -35,30 +35,61 @@ export class Action {
         await driver.pause(value)
     }
 
-    public async swipe() {
+    public async swipe(x: string) {
         // Get the device screen size
         const { width, height } = await browser.getWindowRect();
 
         // Define the start and end coordinates for the swipe
-        const startX = width * 0.8; // 80% of the screen width
-        const startY = height / 2; // Center of the screen
-        const endX = width * 0.2; // 20% of the screen width
-        const endY = height / 2; // Center of the screen
+        let startX = 0
+        let startY = 0
+        let endX = 0
+        let endY = 0
 
-        // Perform the swipe using browser.action
-        await browser.performActions([
-            {
-                type: 'pointer',
-                id: 'finger1',
-                parameters: { pointerType: 'touch' },
-                actions: [
-                    { type: 'pointerMove', duration: 0, x: startX, y: startY },
-                    { type: 'pointerDown', button: 0 },
-                    { type: 'pointerMove', duration: 100, x: endX, y: endY },
-                    { type: 'pointerUp', button: 0 },
-                ],
-            },
-        ]);
+        switch (x) {
+            case 'left':
+
+                startX = width * 0.8; // 80% of the screen width
+                startY = height / 2; // Center of the screen
+                endX = width * 0.2; // 20% of the screen width
+                endY = height / 2; // Center of the screen
+
+                await browser.performActions([
+                    {
+                        type: 'pointer',
+                        id: 'finger1',
+                        parameters: { pointerType: 'touch' },
+                        actions: [
+                            { type: 'pointerMove', duration: 0, x: startX, y: startY },
+                            { type: 'pointerDown', button: 0 },
+                            { type: 'pointerMove', duration: 100, x: endX, y: endY },
+                            { type: 'pointerUp', button: 0 },
+                        ],
+                    },
+                ]);
+                break
+
+            case 'up':
+
+                startX = width / 2; // 80% of the screen width
+                startY = height * 0.8; // Center of the screen
+                endX = width / 2; // 20% of the screen width
+                endY = height * 0.2; // Center of the screen
+
+                await browser.performActions([
+                    {
+                        type: 'pointer',
+                        id: 'finger1',
+                        parameters: { pointerType: 'touch' },
+                        actions: [
+                            { type: 'pointerMove', duration: 0, x: startX, y: startY },
+                            { type: 'pointerDown', button: 0 },
+                            { type: 'pointerMove', duration: 100, x: endX, y: endY },
+                            { type: 'pointerUp', button: 0 },
+                        ],
+                    },
+                ]);
+                break
+        }
     }
 
     public async addValue(locator: string, value: string) {
