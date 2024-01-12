@@ -9,7 +9,7 @@ export class homeComponent {
     homeScanBtn = `android=new UiSelector().text("Scan").className("android.widget.TextView")`
     // // homeBuyBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeSearchIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeSearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
+    homeSearchTextField = `android=new UiSelector().className("android.widget.EditText")`
 
     // Wallet pop-up Component
     walletTitleText = `android=new UiSelector().text("Wallets").className("android.widget.TextView")`
@@ -45,10 +45,10 @@ export class homeComponent {
     scanBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Menu Bar
-    homeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`
-    homeHistoryBtn = `android=new UiSelector().text("History").className("android.widget.TextView")`
-    homeDappBtn = `android=new UiSelector().text("DApps").className("android.widget.TextView")`
-    homeSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
+    menuHomeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`
+    menuHistoryBtn = `android=new UiSelector().text("History").className("android.widget.TextView")`
+    menuDappBtn = `android=new UiSelector().text("DApps").className("android.widget.TextView")`
+    menuSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
 
     // Bitkub Chain Testnet Token Component (Home)
     bitkubTestnetWTK = `android=new UiSelector().text("WTK").className("android.widget.TextView")`

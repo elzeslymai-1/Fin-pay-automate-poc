@@ -1,4 +1,3 @@
-import { expect } from '@wdio/globals'
 import { homeComponent } from '../component/homeComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
@@ -7,179 +6,230 @@ const component = new homeComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Home Page Test Senario', () => {
+describe('Home Menu Bar Test Senario', () => {
     beforeAll(async () => {
+        await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
+
+        await action.click(component.splashScreenCreateWalletBtn)
+
+        await action.click(component.createWallet12wordBtn)
+
+        await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
+
+        await action.click(component.successContinueBtn)
     })
 
-    // === Check Menu Bar ===
     it('[Display] Check Home Btn', async () => {
-        await action.waitForDisplayed(component.homeBtn)
-        await assert.checkText(component.homeBtn, 'Home')
+        // assert
+        await assert.checkElementDisplayed(component.menuHomeBtn)
     })
 
     it('[Display] Check History Btn', async () => {
-        await action.waitForDisplayed(component.homeHistoryBtn)
-        await assert.checkText(component.homeHistoryBtn, 'History')
+        // assert
+        await assert.checkElementDisplayed(component.menuHistoryBtn)
     })
 
     it('[Display] Check DApps Btn', async () => {
-        await action.waitForDisplayed(component.homeDappBtn)
-        await assert.checkText(component.homeDappBtn, 'DApps')
+        // assert
+        await assert.checkElementDisplayed(component.menuDappBtn)
     })
 
     it('[Display] Check Setting Btn', async () => {
-        await action.waitForDisplayed(component.homeSettingBtn)
-        await assert.checkText(component.homeSettingBtn, 'Setting')
+        // assert
+        await assert.checkElementDisplayed(component.menuSettingBtn)
     })
 
-    // === Check Home Page ===
+    it('[Wording] Check Menu Home Btn', async () => {
+        // assert
+        await assert.checkText(component.menuHomeBtn, 'Home')
+    })
+
+    it('[Wording] Check Menu History Btn', async () => {
+        // assert
+        await assert.checkText(component.menuHistoryBtn, 'History')
+    })
+
+    it('[Wording] Check Menu DApps Btn', async () => {
+        // assert
+        await assert.checkText(component.menuDappBtn, 'DApps')
+    })
+
+    it('[Wording] Check Menu Setting Btn', async () => {
+        // assert
+        await assert.checkText(component.menuSettingBtn, 'Setting')
+    })
+
+    it('[Tap] Check Menu History Btn Tap',async () => {
+        // action
+        await action.click(component.menuHistoryBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.historyTitleText)
+    })
+
+    it('[Tap] Check Menu DApps Btn Tap',async () => {
+        // action
+        await action.click(component.menuDappBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.dappTrendingTitleText)
+    })
+
+    it('[Tap] Check Menu Setting Btn Tap',async () => {
+        // action
+        await action.click(component.menuSettingBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.settingTitleText)
+    })
+
+    it('[Tap] Check Menu Home Btn Tap',async () => {
+        // action
+        await action.click(component.menuHomeBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletIconBtn)
+    })
+})
+
+describe('Home Page Test Senario', () => {
     it('[Display] Check Wallet Icon Btn', async () => {
-        await action.waitForDisplayed(component.homeWalletIconBtn)
-        await assert.checkText(component.homeWalletIconBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletIconBtn)
     })
 
     it('[Display] Check Network Btn', async () => {
-        await action.waitForDisplayed(component.homeNetworkBtn)
-        await assert.checkText(component.homeNetworkBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeNetworkBtn)
     })
 
     it('[Display] Check Send Btn', async () => {
-        await action.waitForDisplayed(component.homeSendBtn)
-        await assert.checkText(component.homeSendBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeSendBtn)
     })
 
     it('[Display] Check Receive Btn', async () => {
-        await action.waitForDisplayed(component.homeReceiveBtn)
-        await assert.checkText(component.homeReceiveBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeReceiveBtn)
     })
 
     it('[Display] Check Scan Btn', async () => {
-        await action.waitForDisplayed(component.homeScanBtn)
-        await assert.checkText(component.homeScanBtn, 'Scan')
+        // assert
+        await assert.checkElementDisplayed(component.homeScanBtn)
     })
 
-    it('[Display] Check Search Btn', async () => {
-        await action.waitForDisplayed(component.homeSearchIconBtn)
-        await assert.checkText(component.homeSearchIconBtn, '')
+    it('[Display] Check Search TextField', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.homeSearchTextField)
     })
 
-    // === Check Menu Tap ===
-    it('[Tap] Check History Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeHistoryBtn)
-        await action.click(component.homeHistoryBtn)
-
-        await action.waitForDisplayed(component.historyTitleText)
-        await assert.checkText(component.historyTitleText, 'Transactions History')
-    })
-
-    it('[Tap] Check DApps Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeDappBtn)
-        await action.click(component.homeDappBtn)
-
-        await action.waitForDisplayed(component.dappTrendingTitleText)
-        await assert.checkText(component.dappTrendingTitleText, 'Trending DApps')
-    })
-
-    it('[Tap] Check Setting Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeSettingBtn)
-        await action.click(component.homeSettingBtn)
-
-        await action.waitForDisplayed(component.settingTitleText)
-        await assert.checkText(component.settingTitleText, 'Setting')
-    })
-
-    it('[Tap] Check Home Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeBtn)
-        await action.click(component.homeBtn)
-
-        await action.waitForDisplayed(component.homeWalletIconBtn)
+    it('[Wording] Check Wallet Icon Btn',async () => {
+        // assert
         await assert.checkText(component.homeWalletIconBtn, '')
     })
 
-    // === Check Home Page Tap ===
+    it('[Wording] Check Network Btn Text',async () => {
+        // assert
+        await assert.checkText(component.homeNetworkBtn, '')
+    })
+
+    it('[Wording] Check Send Btn Text',async () => {
+        // assert
+        await assert.checkText(component.homeSendBtn, '')
+    })
+
+    it('[Wording] Check Receive Btn Text',async () => {
+        // assert
+        await assert.checkText(component.homeReceiveBtn, '')
+    })
+
+    it('[Wording] Check Scan Btn Text',async () => {
+        // assert
+        await assert.checkText(component.homeScanBtn, 'Scan')
+    })
+
     it('[Tap] Check Wallet Icon Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeWalletIconBtn)
+        // action
         await action.click(component.homeWalletIconBtn)
 
-        await action.waitForDisplayed(component.walletTitleText)
-        await assert.checkText(component.walletTitleText, 'Wallets')
+        // assert
+        await assert.checkElementDisplayed(component.walletTitleText)
 
-        // To close wallet pop-up
+        // after (close pop-up)
         await action.click(component.homeWalletIconBtn)
     })
 
     it('[Tap] Check Network Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeNetworkBtn)
+        // action
         await action.click(component.homeNetworkBtn)
 
-        await action.waitForDisplayed(component.networkTitleText)
-        await assert.checkText(component.networkTitleText, 'Select Network')
+        // assert
+        await assert.checkElementDisplayed(component.networkTitleText)
 
-        // To close network pop-up
+        // after (close pop-up)
         await action.click(component.homeNetworkBtn)
     })
 
     it('[Tap] Check Send Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeSendBtn)
+        // action
         await action.click(component.homeSendBtn)
 
-        await action.waitForDisplayed(component.sendTitleText)
-        await assert.checkText(component.sendTitleText, 'Send')
+        // assert
+        await assert.checkElementDisplayed(component.sendTitleText)
 
-        await action.waitForDisplayed(component.sendBackBtn)
+        // after (back to Home)
         await action.click(component.sendBackBtn)
     })
 
     it('[Tap] Check Receive Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeReceiveBtn)
+        // action
         await action.click(component.homeReceiveBtn)
 
-        await action.waitForDisplayed(component.receiveTitleText)
-        await assert.checkText(component.receiveTitleText, 'Select Token')
+        // assert
+        await assert.checkElementDisplayed(component.receiveTitleText)
 
-        await action.waitForDisplayed(component.receiveBackBtn)
+        // after (back to Home)
         await action.click(component.receiveBackBtn)
     })
 
     it('[Tap] Check Scan Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeScanBtn)
+        // action
         await action.click(component.homeScanBtn)
 
-        await action.waitForDisplayed(component.androidCameraAccessText)
-        await assert.checkText(component.androidCameraAccessText, 'Allow Fins: Defi Wallet to take pictures and record video?')
-
-        await action.waitForDisplayed(component.androidWhileuseappBtn)
-        await assert.checkText(component.androidWhileuseappBtn, 'While using the app')
-
+        // action (for handle permission access)
         await action.click(component.androidWhileuseappBtn)
 
-        await action.waitForDisplayed(component.scanTitleText)
-        await assert.checkText(component.scanTitleText, 'Scan QR code')
+        // assert
+        await assert.checkElementDisplayed(component.scanTitleText)
 
-        await action.waitForDisplayed(component.scanBackBtn)
+        // after (bacl to Home)
         await action.click(component.scanBackBtn)
     })
 
-    it('[Tap] Check Search Btn', async () => {
-        await action.waitForDisplayed(component.homeSearchIconBtn)
-        await assert.checkText(component.homeSearchIconBtn, '')
-
-        await action.waitForDisplayed(component.homeSearchTextField)
-        await assert.checkElemenDisplayed(component.homeSearchTextField)
-
-        await action.click(component.homeSearchTextField)
+    it('[Search] Check Search Function', async () => {
+        // action
         await action.enterText(component.homeSearchTextField, 'KUB')
 
-        // To hide keyboard layout
-        await action.hideKeyboard()
+        // assert
+        await assert.checkElementDisplayed(component.bitkubTestnetKUB)
 
-        await action.waitForDisplayed(component.bitkubTestnetKUB)
-        await assert.checkText(component.bitkubTestnetKUB, 'KUB')
+        // action (for check exist)
+        await action.waitForExist(component.bitkubTestnetWTK, 2000, true)
+
+        // action
+        await action.enterText(component.homeSearchTextField, 'WTK')
+
+        // assert
+        await assert.checkElementDisplayed(component.bitkubTestnetWTK)
+
+        // action (for check exist)
+        await action.waitForExist(component.bitkubTestnetKUB, 2000, true)
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.PACKAGE_ID}`)
+        await action.removeApps(`${process.env.PACKAGE_ID}`)
     })
 
 })
