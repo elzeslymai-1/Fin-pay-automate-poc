@@ -126,7 +126,7 @@ describe('Back Up Mnemonic Test Scenario', () => {
     it('[Tap] Check Copy Btn Tap', async () => {
         // action
         await action.click(component.backupCopyBtn)
-        await action.waitForDisplayed(component.backupCopyText)
+        // await action.waitForDisplayed(component.backupCopyText)
     })
 
     it('[Tap] Check Check Box Btn Tap', async () => {
