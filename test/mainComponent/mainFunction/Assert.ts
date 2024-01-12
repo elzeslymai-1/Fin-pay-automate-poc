@@ -13,6 +13,11 @@ export class Assertion {
         await expect($(locator)).toBeDisplayed()
     }
 
+    public async checkElementNotDisplayed(locator: string) {
+        await action.waitForDisplayed(locator)
+        await expect($(locator)).not.toBeDisplayed()
+    }
+
     public async checkText(locator: string, value: string) {
         await action.waitForDisplayed(locator)
         await expect($(locator)).toHaveText(value)
