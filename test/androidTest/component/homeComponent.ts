@@ -3,11 +3,12 @@ export class homeComponent {
     // Home Component
     homeWalletIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeNetworkBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    // // homeNotiIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeSendBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeReceiveBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeNotiIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeCopyAddressBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
+    homeReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
     homeScanBtn = `android=new UiSelector().text("Scan").className("android.widget.TextView")`
-    // // homeBuyBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
     homeSearchIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeSearchTextField = `android=new UiSelector().className("android.widget.EditText")`
 
@@ -52,7 +53,42 @@ export class homeComponent {
 
     // Bitkub Chain Testnet Token Component (Home)
     bitkubTestnetWTK = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
+    bitkubTestnetWTKFullName = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
+
     bitkubTestnetKUB = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    bitkubTestnetKUBFullName = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+
+    // Token card Component
+    tokencardWTKTitletext = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
+    tokencardWTKChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
+    tokencardWTKTokenNameText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
+    tokencardWTKTokenFullNameText = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
+    tokencardWTKWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
+
+    tokencardKUBTitletext = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    tokencardKUBChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
+    tokencardKUBTokenNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    tokencardKUBTokenFullNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    tokencardKUBWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
+
+    tokencardBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    tokencardSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
+    tokencardReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
+    tokencardBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
+    tokencardQRCodeTab = `android=new UiSelector().text("QR Code").className("android.widget.TextView")`
+    tokencardInfoTab = `android=new UiSelector().text("Information").className("android.widget.TextView")`
+
+    tokencardInfoText = `android=new UiSelector().text("Token Info").className("android.widget.TextView")`
+    tokencardInfoSymbolText = `android=new UiSelector().text("Token Symbol").className("android.widget.TextView")`
+    tokencardInfoNameText = `android=new UiSelector().text("Token Name").className("android.widget.TextView")`
+    tokencardInfoCirculationText = `android=new UiSelector().text("Total circulation").className("android.widget.TextView")`
+    tokencardInfoAboutText = `android=new UiSelector().text("About").className("android.widget.TextView")`
+
+    tokencardSendTitleText = `android=new UiSelector().text("Send").className("android.view.View")`
+    tokencardSendBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+
+    tokencardReceiveTitleText = `android=new UiSelector().text("Receive Token").className("android.view.View")`
+    tokencardReceiveBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // BeforeAll Component
     splashScreenCreateWalletBtn = `android=new UiSelector().text("Create a new wallet").className("android.widget.TextView")`
