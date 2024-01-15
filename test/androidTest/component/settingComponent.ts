@@ -4,7 +4,7 @@ export class settingComponent {
     settingTitleText = `android=new UiSelector().text("Setting").className("android.view.View")`
     settingGeneralText = `android=new UiSelector().text("General").className("android.widget.TextView")`
     settingOthersText = `android=new UiSelector().text("Others").className("android.widget.TextView")`
-    settingMywalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
+    settingMyWalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
     settingCurrencyBtn = `android=new UiSelector().text("Currency").className("android.widget.TextView")`
     settingNetworkManageBtn = `android=new UiSelector().text("Network Management").className("android.widget.TextView")`
     settingImportWalletBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
@@ -13,42 +13,49 @@ export class settingComponent {
     settingContactsBtn = `android=new UiSelector().text("Contacts").className("android.widget.TextView")`
     settingSessionsBtn = `android=new UiSelector().text("Sessions").className("android.widget.TextView")`
 
+    // XPATH
+    settingMyaWalletBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup' 
+    settingImportWalletBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup'
+    settingNotificationBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[8]/android.view.ViewGroup'
+    settingContactsBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.view.ViewGroup'
+
+
     // Currency Page Component
     currencyTitleText = `android=new UiSelector().text("Currency").className("android.view.View")`
     currencyBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Network Management Component
-    networkmanagementTitleText = `android=new UiSelector().text("Add Network").className("android.view.View")`
-    networkmanagementCloseIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    networkManagementTitleText = `android=new UiSelector().text("Add Network").className("android.view.View")`
+    networkManagementCloseIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     
     // Custom Token Page Component
-    customtokenTitleText = `android=new UiSelector().text("Custom token").className("android.view.View")`
-    customtokenBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    customtokenSearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
-    customtokenSearchTextFieldKub = `android=new UiSelector().text("kub").className("android.widget.EditText")`
-    customtokenNetworkBtn = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
-    customtokenRemoveBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    customTokenTitleText = `android=new UiSelector().text("Custom token").className("android.view.View")`
+    customTokenBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    customTokenSearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
+    customTokenSearchTextFieldKub = `android=new UiSelector().text("kub").className("android.widget.EditText")`
+    customTokenNetworkBtn = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
+    customTokenRemoveBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
-    customtokenNetworkTitleText = `android=new UiSelector().text("Select Network").className("android.widget.TextView")`
-    customtokenNetworkBitkubChain = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
-    customtokenNetworkGoerliChain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
+    customTokenNetworkTitleText = `android=new UiSelector().text("Select Network").className("android.widget.TextView")`
+    customTokenNetworkBitkubChain = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
+    customTokenNetworkGoerliChain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
 
-    customtokenKubToken = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
-    customtokenWToken = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
-    customtokenFinToken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
+    customTokenKubToken = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    customTokenWToken = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
+    customTokenFinToken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
 
-    customtokenAddcustomtokenBtn = `android=new UiSelector().text("Add Custom Token").className("android.widget.TextView")`
-    customtokenTokenAddressTextField = `android=new UiSelector().text("Token address (0x...)").className("android.widget.EditText")`
-    customtokenAddFintoken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
-    customtokenCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
-    customtokenConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
+    customTokenAddCustomTokenBtn = `android=new UiSelector().text("Add Custom Token").className("android.widget.TextView")`
+    customTokenTokenAddressTextField = `android=new UiSelector().text("Token address (0x...)").className("android.widget.EditText")`
+    customTokenAddFinToken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
+    customTokenCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
+    customTokenConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
 
     // Sessions Page Component
     sessionsTitleText = `android=new UiSelector().text("Sessions").className("android.view.View")`
     sessionsBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Home with Goerli chain Component
-    homeGoerlichain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
+    homeGoerliChain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
 
     // Menu Bar Component
     homeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`

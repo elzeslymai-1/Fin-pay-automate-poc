@@ -6,7 +6,7 @@ const component = new settingComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Setting Page Test Senario', () => {
+describe('Setting Page Test Scenario', () => {
     beforeAll(async () => {
         await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
@@ -26,8 +26,7 @@ describe('Setting Page Test Senario', () => {
     // === Check Setting Page ===
     it('[Display] Check My Wallet Btn',async () => {
         // assert (under development feature)
-        await assert.checkElementDisplayed(component.settingMywalletBtn)
-        // await assert.checkDisabled(component.settingMywalletBtn)
+        await assert.checkElementDisplayed(component.settingMyWalletBtn)
     })
 
     it('[Display] Check Currency Btn',async () => {
@@ -43,7 +42,6 @@ describe('Setting Page Test Senario', () => {
     it('[Display] Check Import Wallet Btn',async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.settingImportWalletBtn)
-        // await assert.checkDisabled(component.settingImportWalletBtn)
     })
 
     it('[Display] Check Custom Token Btn',async () => {
@@ -54,13 +52,11 @@ describe('Setting Page Test Senario', () => {
     it('[Display] Check Notification Btn',async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.settingNotificationBtn)
-        // await assert.checkDisabled(component.settingNotificationBtn)
     })
 
     it('[Display] Check Contacts Btn',async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.settingContactsBtn)
-        // await assert.checkDisabled(component.settingContactsBtn)
     })
 
     it('[Display] Check Sessions Btn',async () => {
@@ -68,6 +64,26 @@ describe('Setting Page Test Senario', () => {
         await assert.checkElementDisplayed(component.settingSessionsBtn)
     })
 
+    it('[Display] Check My Wallet Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingMyaWalletBtnXpath)
+    })
+    
+    it('[Display] Check Import Wallet Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingImportWalletBtnXpath)
+    })
+    
+    it('[Display]Check Notification Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingNotificationBtnXpath)
+    })
+    
+    it('[Display] Check Contacts Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingContactsBtnXpath)
+    })
+    
     it('[Wording] Check Setting Title Text',async () => {
         // assert
         await assert.checkText(component.settingTitleText, 'Setting')
@@ -119,10 +135,10 @@ describe('Setting Page Test Senario', () => {
         await action.click(component.settingNetworkManageBtn)
 
         // assert
-        await assert.checkElementDisplayed(component.networkmanagementTitleText)
+        await assert.checkElementDisplayed(component.networkManagementTitleText)
 
         // after (back to Setting)
-        await action.click(component.networkmanagementCloseIconBtn)
+        await action.click(component.networkManagementCloseIconBtn)
     })
 
     it('[Tap] Check Custom Token Btn',async () => {
@@ -130,10 +146,10 @@ describe('Setting Page Test Senario', () => {
         await action.click(component.settingCustomTokenBtn)
 
         // assert
-        await assert.checkElementDisplayed(component.customtokenTitleText)
+        await assert.checkElementDisplayed(component.customTokenTitleText)
 
         // after (back to Setting)
-        await action.click(component.customtokenBackBtn)
+        await action.click(component.customTokenBackBtn)
     })
 
     it('[Tap] Check Sessions Btn Tap',async () => {
