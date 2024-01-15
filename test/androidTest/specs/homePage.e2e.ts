@@ -108,6 +108,7 @@ describe('Home Page Test Scenario', () => {
     it('[Display] Check Notification Btn', async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.homeNotiIconBtn)
+        await assert.checkDisabled(component.homeNotiIconBtn)
     })
 
     it('[Display] Check Copy Address Btn', async () => {
@@ -132,7 +133,8 @@ describe('Home Page Test Scenario', () => {
 
     it('[Display] Check Buy Btn', async () => {
         // assert (under development feature)
-        await assert.checkElementDisplayed(component.homeBuyBtn)
+        await assert.checkElementDisplayed(component.homeBuyBtnXpath)
+        await assert.checkDisabled(component.homeBuyBtnXpath)
     })
 
     it('[Display] Check Search TextField', async () => {
@@ -207,6 +209,8 @@ describe('Home Page Test Scenario', () => {
         // assert
         await assert.checkElementDisplayed(component.walletTitleText)
 
+        await assert.checkDisabled(component.walletSettingBtnXpath)
+
         // after (close pop-up)
         await action.click(component.homeWalletIconBtn)
     })
@@ -264,24 +268,26 @@ describe('Home Page Test Scenario', () => {
         await action.click(component.scanBackBtn)
     })
 
-    it('[Tap] Check Token Card Btn Tap', async () => {
+    it('[Tap] Check KUB Token Card Btn Tap', async () => {
         // action (KUB)
         await action.click(component.bitkubTestnetKUB)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardKUBTitleText)
+        await assert.checkElementDisplayed(component.tokenCardKUBTitleText)
 
         // after (back to Home)
-        await action.click(component.tokencardBackBtn)
+        await action.click(component.tokenCardBackBtn)
+    })
 
+    it('[Tap] Check WTK Token Card Btn Tap', async () => {
         // action (WTK)
         await action.click(component.bitkubTestnetWTK)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardWTKTitleText)
+        await assert.checkElementDisplayed(component.tokenCardWTKTitleText)
 
         // after (back to Home)
-        await action.click(component.tokencardBackBtn)
+        await action.click(component.tokenCardBackBtn)
     })
 
     it('[Search] Check Search Function', async () => {
@@ -306,6 +312,38 @@ describe('Home Page Test Scenario', () => {
         // after (clear text)
         await action.clearText(component.homeSearchTextField)
     })
+
+    it('[Function] Change Network Chain',async () => {
+        // action
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkAddNetworkBtn)
+
+        await action.click(component.networkManagementCustomTab)
+
+        await action.click(component.networkManagementAddcustomnetBtn)
+
+        // (Add and Switch to Goerli Chainnet)
+        await action.enterText(component.customnetNetworkUrlTextField, `${process.env.TEST_URL}`)
+        await action.pause(5000)
+
+        await action.click(component.customnetConfirmBtn)
+
+        await action.click(component.addnetSuccessSwitchgoerliBtn)
+
+        // action (Check Network Chain Name)
+        await action.click(component.goerliETH)
+
+        // assert
+        await assert.checkText(component.tokenCardETHChainNameText, 'goerli')
+
+        // after (back to Home) (change network chain to Bitkub Testnet)
+        await action.click(component.tokenCardBackBtn)
+
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkBitkubBtn)
+    })
 })
 
 describe('[KUB] Token Card Test Scenario', () => {
@@ -315,87 +353,87 @@ describe('[KUB] Token Card Test Scenario', () => {
 
     it('[Display] Check Back Btn', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardBackBtn)
+        await assert.checkElementDisplayed(component.tokenCardBackBtn)
     })
 
     it('[Display] Check Send Btn', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardSendBtn)
+        await assert.checkElementDisplayed(component.tokenCardSendBtn)
     })
 
     it('[Display] Check Receive Btn', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardReceiveBtn)
+        await assert.checkElementDisplayed(component.tokenCardReceiveBtn)
     })
 
     it('[Display] Check Buy Btn', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardBuyBtn)
+        await assert.checkElementDisplayed(component.tokenCardBuyBtn)
     })
 
     it('[Display] Check QR Code tab', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardQRCodeTab)
+        await assert.checkElementDisplayed(component.tokenCardQRCodeTab)
     })
 
     it('[Display] Check Information tab', async () => {
         // assert
-        await assert.checkElementDisplayed(component.tokencardInfoTab)
+        await assert.checkElementDisplayed(component.tokenCardInfoTab)
     })
 
     it('[Wording] Check Token Card title text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBTitleText, 'KUB')
+        await assert.checkText(component.tokenCardKUBTitleText, 'KUB')
     })
 
     it('[Wording] Check Token Card Chain name text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBChainNameText, 'Bitkub Chain Testnet')
+        await assert.checkText(component.tokenCardKUBChainNameText, 'Bitkub Chain Testnet')
     })
 
     it('[Wording] Check Token Card Token Name text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBTokenNameText, 'KUB')
+        await assert.checkText(component.tokenCardKUBTokenNameText, 'KUB')
     })
 
     it('[Wording] Check Token Card Token Fullname text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBTokenFullNameText, 'KUB')
+        await assert.checkText(component.tokenCardKUBTokenFullNameText, 'KUB')
     })
 
     it('[Wording] Check Token Card Send Btn text', async () => {
         // assert
-        await assert.checkText(component.tokencardSendBtn, 'Send')
+        await assert.checkText(component.tokenCardSendBtn, 'Send')
     })
 
     it('[Wording] Check Token Card Receive Btn text', async () => {
         // assert
-        await assert.checkText(component.tokencardReceiveBtn, 'Receive')
+        await assert.checkText(component.tokenCardReceiveBtn, 'Receive')
     })
 
     it('[Wording] Check Token Card Buy Btn text', async () => {
         // assert
-        await assert.checkText(component.tokencardBuyBtn, 'Buy')
+        await assert.checkText(component.tokenCardBuyBtn, 'Buy')
     })
 
     it('[Wording] Check Token Card QR Code tab text', async () => {
         // assert
-        await assert.checkText(component.tokencardQRCodeTab, 'QR Code')
+        await assert.checkText(component.tokenCardQRCodeTab, 'QR Code')
     })
 
     it('[Wording] Check Token Card Information tab text', async () => {
         // assert
-        await assert.checkText(component.tokencardInfoTab, 'Information')
+        await assert.checkText(component.tokenCardInfoTab, 'Information')
     })
 
     it('[Wording] Check Token Card Warning text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBWarningText, 'Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.')
+        await assert.checkText(component.tokenCardKUBWarningText, 'Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.')
     })
 
     it('[Tap] Check Token Card Back Btn tap', async () => {
         // action
-        await action.click(component.tokencardBackBtn)
+        await action.click(component.tokenCardBackBtn)
 
         // assert
         await assert.checkElementDisplayed(component.menuHomeBtn)
@@ -407,39 +445,39 @@ describe('[KUB] Token Card Test Scenario', () => {
 
     it('[Tap] Check Token Card Send Btn tap', async () => {
         // action
-        await action.click(component.tokencardSendBtn)
+        await action.click(component.tokenCardSendBtn)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardSendTitleText)
+        await assert.checkElementDisplayed(component.tokenCardSendTitleText)
 
         // after (back to Token Card)
-        await action.click(component.tokencardSendBackBtn)
+        await action.click(component.tokenCardSendBackBtn)
     })
 
     it('[Tap] Check Token Card Receive Btn tap', async () => {
         // action
-        await action.click(component.tokencardReceiveBtn)
+        await action.click(component.tokenCardReceiveBtn)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardReceiveTitleText)
+        await assert.checkElementDisplayed(component.tokenCardReceiveTitleText)
 
         // after (back to Token Card)
-        await action.click(component.tokencardReceiveBackBtn)
+        await action.click(component.tokenCardReceiveBackBtn)
     })
 
     it('[Tap] Check Token Card QR Code tab tap', async () => {
         // action
-        await action.click(component.tokencardInfoTab)
+        await action.click(component.tokenCardInfoTab)
 
         // assert
-        await assert.checkText(component.tokencardInfoText, 'Token Info')
-        await assert.checkText(component.tokencardInfoSymbolText, 'Token Symbol')
-        await assert.checkText(component.tokencardInfoNameText, 'Token Name')
-        await assert.checkText(component.tokencardInfoCirculationText, 'Total circulation')
-        await assert.checkText(component.tokencardInfoAboutText, 'About')
+        await assert.checkText(component.tokenCardInfoText, 'Token Info')
+        await assert.checkText(component.tokenCardInfoSymbolText, 'Token Symbol')
+        await assert.checkText(component.tokenCardInfoNameText, 'Token Name')
+        await assert.checkText(component.tokenCardInfoCirculationText, 'Total circulation')
+        await assert.checkText(component.tokenCardInfoAboutText, 'About')
 
         // after (back to Home)
-        await action.click(component.tokencardBackBtn)
+        await action.click(component.tokenCardBackBtn)
     })
 })
 
@@ -448,29 +486,108 @@ describe('[WTK] Token Card Test Scenario', () => {
         await action.click(component.bitkubTestnetWTK)
     })
 
+    it('[Display] Check Back Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBackBtn)
+    })
+
+    it('[Display] Check Send Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendBtn)
+    })
+
+    it('[Display] Check Receive Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveBtn)
+    })
+
+    it('[Display] Check Buy Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBuyBtn)
+    })
+
+    it('[Display] Check QR Code tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardQRCodeTab)
+    })
+
+    it('[Display] Check Information tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardInfoTab)
+    })
+
     it('[Wording] Check Token Card title text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKTitleText, 'WTK')
+        await assert.checkText(component.tokenCardWTKTitleText, 'WTK')
     })
 
     it('[Wording] Check Token Card Chain name text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKChainNameText, 'Bitkub Chain Testnet')
+        await assert.checkText(component.tokenCardWTKChainNameText, 'Bitkub Chain Testnet')
     })
 
     it('[Wording] Check Token Card Token Name text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKTokenNameText, 'WTK')
+        await assert.checkText(component.tokenCardWTKTokenNameText, 'WTK')
     })
 
     it('[Wording] Check Token Card Token Fullname text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKTokenFullNameText, 'WToken')
+        await assert.checkText(component.tokenCardWTKTokenFullNameText, 'WToken')
     })
 
     it('[Wording] Check Token Card Warning text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKWarningText, 'Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.')
+        await assert.checkText(component.tokenCardWTKWarningText, 'Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.')
+    })
+
+    it('[Tap] Check Token Card Back Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardBackBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.menuHomeBtn)
+
+        // after (back to Token Card)
+        await action.click(component.bitkubTestnetKUB)
+        await action.pause(1000)
+    })
+
+    it('[Tap] Check Token Card Send Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardSendBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardSendBackBtn)
+    })
+
+    it('[Tap] Check Token Card Receive Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardReceiveBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardReceiveBackBtn)
+    })
+
+    it('[Tap] Check Token Card QR Code tab tap', async () => {
+        // action
+        await action.click(component.tokenCardInfoTab)
+
+        // assert
+        await assert.checkText(component.tokenCardInfoText, 'Token Info')
+        await assert.checkText(component.tokenCardInfoSymbolText, 'Token Symbol')
+        await assert.checkText(component.tokenCardInfoNameText, 'Token Name')
+        await assert.checkText(component.tokenCardInfoCirculationText, 'Total circulation')
+        await assert.checkText(component.tokenCardInfoAboutText, 'About')
+
+        // after (back to Home)
+        await action.click(component.tokenCardBackBtn)
     })
 
     afterAll(async () => {
