@@ -2,13 +2,15 @@ export class settingComponent {
 
     // Setting Page Component
     settingTitleText = `android=new UiSelector().text("Setting").className("android.view.View")`
-    //// settingMywalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
+    settingGeneralText = `android=new UiSelector().text("General").className("android.widget.TextView")`
+    settingOthersText = `android=new UiSelector().text("Others").className("android.widget.TextView")`
+    settingMywalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
     settingCurrencyBtn = `android=new UiSelector().text("Currency").className("android.widget.TextView")`
     settingNetworkManageBtn = `android=new UiSelector().text("Network Management").className("android.widget.TextView")`
-    //// settingImportWalletBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
+    settingImportWalletBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
     settingCustomTokenBtn = `android=new UiSelector().text("Custom Token").className("android.widget.TextView")`
-    //// settingNotificationBtn = `android=new UiSelector().text("Notification").className("android.widget.TextView")`
-    //// settingContactsBtn = `android=new UiSelector().text("Contacts").className("android.widget.TextView")`
+    settingNotificationBtn = `android=new UiSelector().text("Notification").className("android.widget.TextView")`
+    settingContactsBtn = `android=new UiSelector().text("Contacts").className("android.widget.TextView")`
     settingSessionsBtn = `android=new UiSelector().text("Sessions").className("android.widget.TextView")`
 
     // Currency Page Component
@@ -52,4 +54,9 @@ export class settingComponent {
     homeBtn = `android=new UiSelector().text("Home").className("android.widget.TextView")`
     homeSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
 
+    // BeforeAll Component
+    splashScreenCreateWalletBtn = `android=new UiSelector().text("Create a new wallet").className("android.widget.TextView")`
+    createWallet12wordBtn = `android=new UiSelector().text("12-word Mnemonic wallet").className("android.widget.TextView")`
+    createWalletContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
+    successContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
 }
