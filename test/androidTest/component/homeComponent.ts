@@ -8,17 +8,13 @@ export class homeComponent {
     homeSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
     homeReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
     homeScanBtn = `android=new UiSelector().text("Scan").className("android.widget.TextView")`
-    // vv- This one for checkText -vv
     homeBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
-    // vv- This one for checkDisable -vv
-    homeBuyBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup[4]`
     homeSearchIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeSearchTextField = `android=new UiSelector().className("android.widget.EditText")`
 
     // Wallet pop-up Component
     walletTitleText = `android=new UiSelector().text("Wallets").className("android.widget.TextView")`
-    //walletSettingBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    walletSettingBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]`
+    walletSettingBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     walletSearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
 
     // Network pop-up Component
@@ -103,7 +99,7 @@ export class homeComponent {
     tokenCardBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     tokenCardSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
     tokenCardReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
-    // vv- Can't find enable = false in Buy Btn here -vv
+    //* vv- Can't find enable = false in Buy Btn here -vv
     tokenCardBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
     tokenCardQRCodeTab = `android=new UiSelector().text("QR Code").className("android.widget.TextView")`
     tokenCardInfoTab = `android=new UiSelector().text("Information").className("android.widget.TextView")`
@@ -119,6 +115,10 @@ export class homeComponent {
 
     tokenCardReceiveTitleText = `android=new UiSelector().text("Receive Token").className("android.view.View")`
     tokenCardReceiveBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+
+    // XPATH
+    homeBuyBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup[4]`
+    walletSettingBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]`
 
     // BeforeAll Component
     splashScreenCreateWalletBtn = `android=new UiSelector().text("Create a new wallet").className("android.widget.TextView")`

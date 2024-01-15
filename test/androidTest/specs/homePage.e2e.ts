@@ -108,6 +108,10 @@ describe('Home Page Test Scenario', () => {
     it('[Display] Check Notification Btn', async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.homeNotiIconBtn)
+    })
+
+    it('[Display] Check Notification Btn should be Disable', async () => {
+        // assert
         await assert.checkDisabled(component.homeNotiIconBtn)
     })
 
@@ -134,6 +138,10 @@ describe('Home Page Test Scenario', () => {
     it('[Display] Check Buy Btn', async () => {
         // assert (under development feature)
         await assert.checkElementDisplayed(component.homeBuyBtnXpath)
+    })
+
+    it('[Display] Check Buy Btn should be Disable', async () => {
+        // assert
         await assert.checkDisabled(component.homeBuyBtnXpath)
     })
 
@@ -209,6 +217,7 @@ describe('Home Page Test Scenario', () => {
         // assert
         await assert.checkElementDisplayed(component.walletTitleText)
 
+        // assert (under development feature)
         await assert.checkDisabled(component.walletSettingBtnXpath)
 
         // after (close pop-up)
