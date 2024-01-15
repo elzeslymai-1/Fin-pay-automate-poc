@@ -26,7 +26,7 @@ describe('Setting Page Test Scenario', () => {
     // === Check Setting Page ===
     it('[Display] Check My Wallet Btn',async () => {
         // assert (under development feature)
-        await assert.checkElementDisplayed(component.settingMyWalletBtn)
+        await assert.checkElementDisplayed(component.settingMyWalletBtnXpath)
     })
 
     it('[Display] Check Currency Btn',async () => {
@@ -66,7 +66,7 @@ describe('Setting Page Test Scenario', () => {
 
     it('[Display] Check My Wallet Btn Should be Disable',async () => {
         // assert
-        await assert.checkDisabled(component.settingMyaWalletBtnXpath)
+        await assert.checkDisabled(component.settingMyWalletBtnXpath)
     })
     
     it('[Display] Check Import Wallet Btn Should be Disable',async () => {
@@ -94,9 +94,24 @@ describe('Setting Page Test Scenario', () => {
         await assert.checkText(component.settingGeneralText, 'General')
     })
 
+    it('[Wording] Check Setting My Wallet Text',async () => {
+        // assert
+        await assert.checkText(component.settingMyWalletBtn, 'My Wallet')
+    })
+
+    it('[Wording] Check Setting My Wallet Amount Text',async () => {
+        // assert
+        await assert.checkText(component.settingMyWalletAmountText, '1 wallets')
+    })
+
     it('[Wording] Check Setting Currency Btn Text',async () => {
         // assert
         await assert.checkText(component.settingCurrencyBtn, 'Currency')
+    })
+
+    it('[Wording] Check Setting Currency Typer Text',async () => {
+        // assert
+        await assert.checkText(component.settingCurrencyTypeText, 'USD')
     })
 
     it('[Wording] Check Setting Network Management Btn Text',async () => {

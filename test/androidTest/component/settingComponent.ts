@@ -5,7 +5,9 @@ export class settingComponent {
     settingGeneralText = `android=new UiSelector().text("General").className("android.widget.TextView")`
     settingOthersText = `android=new UiSelector().text("Others").className("android.widget.TextView")`
     settingMyWalletBtn = `android=new UiSelector().text("My Wallet").className("android.widget.TextView")`
+    settingMyWalletAmountText = `android=new UiSelector().text("1 wallets").className("android.widget.TextView")`
     settingCurrencyBtn = `android=new UiSelector().text("Currency").className("android.widget.TextView")`
+    settingCurrencyTypeText = `android=new UiSelector().text("USD").className("android.widget.TextView")`
     settingNetworkManageBtn = `android=new UiSelector().text("Network Management").className("android.widget.TextView")`
     settingImportWalletBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
     settingCustomTokenBtn = `android=new UiSelector().text("Custom Token").className("android.widget.TextView")`
@@ -14,7 +16,7 @@ export class settingComponent {
     settingSessionsBtn = `android=new UiSelector().text("Sessions").className("android.widget.TextView")`
 
     // XPATH
-    settingMyaWalletBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup' 
+    settingMyWalletBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup' 
     settingImportWalletBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup'
     settingNotificationBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[8]/android.view.ViewGroup'
     settingContactsBtnXpath = '//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.view.ViewGroup'
