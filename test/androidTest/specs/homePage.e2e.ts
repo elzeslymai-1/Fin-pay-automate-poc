@@ -6,7 +6,7 @@ const component = new homeComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Home Menu Bar Test Senario', () => {
+describe('Home Menu Bar Test Scenario', () => {
     beforeAll(async () => {
         await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
@@ -94,7 +94,7 @@ describe('Home Menu Bar Test Senario', () => {
     })
 })
 
-describe('Home Page Test Senario', () => {
+describe('Home Page Test Scenario', () => {
     it('[Display] Check Wallet Icon Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.homeWalletIconBtn)
@@ -269,7 +269,7 @@ describe('Home Page Test Senario', () => {
         await action.click(component.bitkubTestnetKUB)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardKUBTitletext)
+        await assert.checkElementDisplayed(component.tokencardKUBTitleText)
 
         // after (back to Home)
         await action.click(component.tokencardBackBtn)
@@ -278,7 +278,7 @@ describe('Home Page Test Senario', () => {
         await action.click(component.bitkubTestnetWTK)
 
         // assert
-        await assert.checkElementDisplayed(component.tokencardWTKTitletext)
+        await assert.checkElementDisplayed(component.tokencardWTKTitleText)
 
         // after (back to Home)
         await action.click(component.tokencardBackBtn)
@@ -308,7 +308,7 @@ describe('Home Page Test Senario', () => {
     })
 })
 
-describe('[KUB] Token Card Test Senario', () => {
+describe('[KUB] Token Card Test Scenario', () => {
     beforeAll(async () => {
         await action.click(component.bitkubTestnetKUB)
     })
@@ -345,7 +345,7 @@ describe('[KUB] Token Card Test Senario', () => {
 
     it('[Wording] Check Token Card title text', async () => {
         // assert
-        await assert.checkText(component.tokencardKUBTitletext, 'KUB')
+        await assert.checkText(component.tokencardKUBTitleText, 'KUB')
     })
 
     it('[Wording] Check Token Card Chain name text', async () => {
@@ -443,14 +443,14 @@ describe('[KUB] Token Card Test Senario', () => {
     })
 })
 
-describe('[WTK] Token Card Test Senario', () => {
+describe('[WTK] Token Card Test Scenario', () => {
     beforeAll(async () => {
         await action.click(component.bitkubTestnetWTK)
     })
 
     it('[Wording] Check Token Card title text', async () => {
         // assert
-        await assert.checkText(component.tokencardWTKTitletext, 'WTK')
+        await assert.checkText(component.tokencardWTKTitleText, 'WTK')
     })
 
     it('[Wording] Check Token Card Chain name text', async () => {

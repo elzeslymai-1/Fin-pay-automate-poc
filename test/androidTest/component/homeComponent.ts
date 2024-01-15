@@ -59,13 +59,13 @@ export class homeComponent {
     bitkubTestnetKUBFullName = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
 
     // Token card Component
-    tokencardWTKTitletext = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
+    tokencardWTKTitleText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
     tokencardWTKChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
     tokencardWTKTokenNameText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
     tokencardWTKTokenFullNameText = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
     tokencardWTKWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
-    tokencardKUBTitletext = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    tokencardKUBTitleText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
     tokencardKUBChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
     tokencardKUBTokenNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
     tokencardKUBTokenFullNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
