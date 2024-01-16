@@ -6,10 +6,10 @@ export class importWalletComponent {
     // Import Wallet Page Component
     importWalletBackBtn = '~'
     importWalletTitleText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Import Wallet"`]'
-    importWalletHeaderText = '~Enter Mnemonic or Private Key'
-    importWalletDescriptionText = '~Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.'
+    importWalletHeaderText = '~Enter Mnemonic'
+    importWalletDescriptionText = '~Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases for all wallet types.'
     importWalletPrivatekeyField = 'XCUIElementTypeTextView'
-    importWalletPasteBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Private Key/ Mnemonic phrase 12 word/ Mnemonic phrase 24 word."`][3]/XCUIElementTypeOther[2]'
+    importWalletPasteBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Mnemonic phrase 12 word/ Mnemonic phrase 24 word."`][3]/XCUIElementTypeOther[2]'
     importWalletImportBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Import Wallet"`]'
     importWalletMnemonicErrorMessageText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Invalid mnemonic phrase."`]'
     

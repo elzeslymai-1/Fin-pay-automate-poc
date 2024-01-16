@@ -9,8 +9,7 @@ const component = new createWalletComponent()
 describe('Create Wallet Page Scenario', () => {
     beforeAll(async () => {
         // before
-        await action.installApps('apps/FinsDefiWallet.app')
-
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
         await action.click(component.splashScreenCreateWalletBtn)
     })
@@ -198,7 +197,7 @@ describe('Create Wallet Success Page Scenario', () => {
 
 describe('Mnemonic Info Page Scenario', () => {
     beforeAll(async () => {
-        await action.installApps('apps/FinsDefiWallet.app')
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)
@@ -253,7 +252,7 @@ describe('Mnemonic Info Page Scenario', () => {
     })
 
     afterAll(async () => {
-        // close apps
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        // remove apps
+        await action.removeApps(`${process.env.BUNDLE_ID}`)
     })
 })
