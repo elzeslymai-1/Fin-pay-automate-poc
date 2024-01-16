@@ -78,7 +78,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/FinsDefiWallet.app'),
+        'appium:app': join(process.cwd(), 'apps/FinPay.app'),
         'appium:bundleId': `${process.env.BUNDLE_ID}`,
     }],
 
