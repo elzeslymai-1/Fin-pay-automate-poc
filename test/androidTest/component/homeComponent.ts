@@ -11,6 +11,7 @@ export class homeComponent {
     homeBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
     homeSearchIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeSearchTextField = `android=new UiSelector().className("android.widget.EditText")`
+    homeSearchNoResultText = `android=new UiSelector().text("No result").className("android.widget.TextView")`
 
     // Wallet pop-up Component
     walletTitleText = `android=new UiSelector().text("Wallets").className("android.widget.TextView")`
@@ -21,6 +22,7 @@ export class homeComponent {
     networkTitleText = `android=new UiSelector().text("Select Network").className("android.widget.TextView")`
     networkAddNetworkBtn = `android=new UiSelector().text("Add Network").className("android.widget.TextView")`
     networkBitkubBtn = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
+    networkGoerliBtn = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
 
     // Network Management Component
     networkManagementTitleText = `android=new UiSelector().text("Add Network").className("android.view.View")`
@@ -79,7 +81,8 @@ export class homeComponent {
     bitkubTestnetKUBFullName = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
 
     // Goerli Chain Token Component (Home)
-    goerliETH = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
+    goerliChainETH = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
+    goerliChainETHFullName = `android=new UiSelector().text("Goerli").className("android.widget.TextView")`
 
     // Token card Component
     tokenCardWTKTitleText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
@@ -94,7 +97,11 @@ export class homeComponent {
     tokenCardKUBTokenFullNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
     tokenCardKUBWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
+    tokenCardETHTitleText = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
     tokenCardETHChainNameText = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
+    tokenCardETHTokenNameText = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
+    tokenCardETHTokenFullNameText = `android=new UiSelector().text("Goerli").className("android.widget.TextView")`
+    tokenCardETHWarningText = `android=new UiSelector().text("Only send goerli (ETH) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
     tokenCardBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     tokenCardSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`

@@ -200,6 +200,11 @@ describe('Home Page Test Scenario', () => {
         await assert.checkText(component.homeBuyBtn, 'Buy')
     })
 
+    it('[Wording] Check Search TextField placeholder', async () => {
+        // assert
+        await assert.checkText(component.homeSearchTextField, 'Search...')
+    })
+
     it('[Wording] Check KUB token text', async () => {
         // assert
         await assert.checkText(component.bitkubTestnetKUB, 'KUB')
@@ -299,6 +304,17 @@ describe('Home Page Test Scenario', () => {
         await action.click(component.tokenCardBackBtn)
     })
 
+    it('[Search] Check Search no result function',async () => {
+        // action
+        await action.enterText(component.homeSearchTextField, 'ETH')
+
+        // assert
+        await assert.checkElementDisplayed(component.homeSearchNoResultText)
+
+        // after (clear text)
+        await action.clearText(component.homeSearchTextField)
+    })
+
     it('[Search] Check Search Function', async () => {
         // action
         await action.enterText(component.homeSearchTextField, 'KUB')
@@ -341,7 +357,7 @@ describe('Home Page Test Scenario', () => {
         await action.click(component.addnetSuccessSwitchgoerliBtn)
 
         // action (Check Network Chain Name)
-        await action.click(component.goerliETH)
+        await action.click(component.goerliChainETH)
 
         // assert
         await assert.checkText(component.tokenCardETHChainNameText, 'goerli')
@@ -490,9 +506,13 @@ describe('[KUB] Token Card Test Scenario', () => {
     })
 })
 
-describe('[WTK] Token Card Test Scenario', () => {
+describe('[ETH] Token Card Test Scenario', () => {
     beforeAll(async () => {
-        await action.click(component.bitkubTestnetWTK)
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkGoerliBtn)
+
+        await action.click(component.goerliChainETH)
     })
 
     it('[Display] Check Back Btn', async () => {
@@ -527,27 +547,27 @@ describe('[WTK] Token Card Test Scenario', () => {
 
     it('[Wording] Check Token Card title text', async () => {
         // assert
-        await assert.checkText(component.tokenCardWTKTitleText, 'WTK')
+        await assert.checkText(component.tokenCardETHTitleText, 'ETH')
     })
 
     it('[Wording] Check Token Card Chain name text', async () => {
         // assert
-        await assert.checkText(component.tokenCardWTKChainNameText, 'Bitkub Chain Testnet')
+        await assert.checkText(component.tokenCardETHChainNameText, 'goerli')
     })
 
     it('[Wording] Check Token Card Token Name text', async () => {
         // assert
-        await assert.checkText(component.tokenCardWTKTokenNameText, 'WTK')
+        await assert.checkText(component.tokenCardETHTokenNameText, 'ETH')
     })
 
     it('[Wording] Check Token Card Token Fullname text', async () => {
         // assert
-        await assert.checkText(component.tokenCardWTKTokenFullNameText, 'WToken')
+        await assert.checkText(component.tokenCardETHTokenFullNameText, 'Goerli')
     })
 
     it('[Wording] Check Token Card Warning text', async () => {
         // assert
-        await assert.checkText(component.tokenCardWTKWarningText, 'Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.')
+        await assert.checkText(component.tokenCardETHWarningText, 'Only send goerli (ETH) network assets to this address. Sending any other coins may result in permanent loss.')
     })
 
     it('[Tap] Check Token Card Back Btn tap', async () => {
@@ -558,7 +578,7 @@ describe('[WTK] Token Card Test Scenario', () => {
         await assert.checkElementDisplayed(component.menuHomeBtn)
 
         // after (back to Token Card)
-        await action.click(component.bitkubTestnetKUB)
+        await action.click(component.goerliChainETH)
         await action.pause(1000)
     })
 
