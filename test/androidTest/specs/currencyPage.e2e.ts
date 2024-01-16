@@ -40,6 +40,11 @@ describe('Currency Page Test Senario', () => {
         await assert.checkText(component.currencyBackBtn, '')
     })
 
+    it('[Wording] Check Currency Search place holder text', async () => {
+        // assert
+        await assert.checkText(component.currencySearchTextField, 'Search...')
+    })
+
     it('[Wording] Check Currency Title text', async () => {
         // assert
         await assert.checkText(component.currencyTitleText, 'Currency')
@@ -100,6 +105,17 @@ describe('Currency Page Test Senario', () => {
         await action.click(component.homeSettingBtn)
 
         await action.click(component.settingCurrencyBtn)
+    })
+
+    it('[Search] Check Search not found',async () => {
+        // action
+        await action.enterText(component.currencySearchTextField, 'Martians')
+
+        // assert
+        await assert.checkElementDisplayed(component.currencySearchNotfoundText)
+
+        // after (clear text)
+        await action.clearText(component.currencySearchTextField)
     })
 
     it('[Search] Check Search Btn', async () => {

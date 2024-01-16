@@ -13,7 +13,8 @@ export class currencyComponent {
     // Currency Page Component
     currencyTitleText = `android=new UiSelector().text("Currency").className("android.view.View")`
     currencyBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    currencySearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
+    currencySearchTextField = `android=new UiSelector().className("android.widget.EditText")`
+    currencySearchNotfoundText = `android=new UiSelector().text("Not Found").className("android.widget.TextView")`
 
     currencyJPY = `android=new UiSelector().text("JPY - Japanese Yen").className("android.widget.TextView")`
     currencyEUR = `android=new UiSelector().text("EUR - Euro").className("android.widget.TextView")`
