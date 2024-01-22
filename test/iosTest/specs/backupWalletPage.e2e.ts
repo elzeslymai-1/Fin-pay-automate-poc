@@ -1,14 +1,15 @@
-import { backUpWalletComponent } from '../component/backupWalletComponent.js'
+import { BackUpWalletComponent, BackUpWalletModel } from '../component/backupWalletComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
-const component = new backUpWalletComponent()
+const component = new BackUpWalletComponent()
+const model = new BackUpWalletModel()
 const action = new Action()
 const assert = new Assertion()
 
 describe('Backup Modal Test Scenario', () => {
     beforeAll(async () => {
-        await action.installApps('apps/FinsDefiWallet.app')
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
 
         // create wallet
@@ -53,22 +54,22 @@ describe('Back Up Mnemonic Test Scenario', () => {
         // assert
         await assert.checkElementDisplayed(component.backupWalletBackBtn)
     })
-    
+
     it('[Display] Check Copy Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupWalletCopyBtn)
     })
-    
+
     it('[Display] Check Check Box', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupWalletCheckboxBtn)
     })
-    
+
     it('[Display] Check Continue Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupWalletContinueBtn)
     })
-    
+
     it('[Display] Check Continue Btn Should be Disabled', async () => {
         // assert
         await assert.checkDisabled(component.backupWalletContinueBtn)
@@ -149,23 +150,6 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
     })
 
-    it('[Functional] Backup with 12-Mnemonic Phrase', async () => {
-        //action
-        await action.click(component.splashScreenCreateWalletBtn)
-        await action.click(component.createWalletMnemonic12WordBtn)
-        await action.click(component.createWalletContinueBtn)
-        await action.pause(3000)
-        await action.click(component.createWalletSuccessBackupBtn)
-        await action.click(component.backupWalletModalContinueBtn)
-
-        // assert
-        await assert.checkText(component.backupWallet12Text, '12')
-
-        // after
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
-        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
-    })
-
     it('[Functional] Backup with 24-Mnemonic Phrase', async () => {
         //action
         await action.click(component.splashScreenCreateWalletBtn)
@@ -179,13 +163,32 @@ describe('Back Up Mnemonic Test Scenario', () => {
 
         // assert
         await assert.checkText(component.backupWallet24Text, '24')
+
+        // after
+        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        await action.launchApps(`${process.env.BUNDLE_ID}`)
+    })
+
+    it('[Functional] Backup with 12-Mnemonic Phrase', async () => {
+        //action
+        await action.click(component.splashScreenCreateWalletBtn)
+        await action.click(component.createWalletMnemonic12WordBtn)
+        await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
+        await action.click(component.createWalletSuccessBackupBtn)
+        await action.click(component.backupWalletModalContinueBtn)
+
+        // assert
+        await assert.checkText(component.backupWallet12Text, '12')
     })
 })
 
-describe('Correct Mnemonic Phrase Test Scenario', () => {
+describe('Pick Mnemonic Phrase Test Scenario', () => {
     beforeAll(async () => {
-        await action.click(component.backupWalletCheckboxBtn)
+        // set clipboard
+        await action.click(component.backupWalletCopyBtn)
 
+        await action.click(component.backupWalletCheckboxBtn)
         await action.click(component.backupWalletContinueBtn)
     })
 
@@ -236,9 +239,101 @@ describe('Correct Mnemonic Phrase Test Scenario', () => {
 
         // assert
         await assert.checkText(component.backupWalletTitleText, 'Back up Mnemonic phrase')
+
+        // after
+        await action.click(component.backupWalletModalContinueBtn)
+        await action.click(component.backupWalletCheckboxBtn)
+        await action.click(component.backupWalletContinueBtn)
+    })
+
+    it('[Tap] Mnemonic Phrase Btn', async () => {
+        // action on model
+        await model.setMnemonic(await action.getClipboard())
+        await model.setPosition()
+
+        // assert on model
+        await model.checkMnemonicBtnDisable()
+
+        // after 
+        await model.clearPosition()
+        await action.click(component.pickMnemonicBackBtn)
+        await action.click(component.backupWalletModalContinueBtn)
+        await action.click(component.backupWalletCheckboxBtn)
+        await action.click(component.backupWalletContinueBtn)
+    })
+
+    it('[Functional] Pick Incorrect Mnemonic', async () => {
+        // assert on model
+        await model.setPosition()
+        await model.checkShowCorrectMnemonic()
+
+        // after 
+        await model.clearPosition()
+        await action.click(component.pickMnemonicBackBtn)
+        await action.click(component.backupWalletModalContinueBtn)
+        await action.click(component.backupWalletCheckboxBtn)
+        await action.click(component.backupWalletContinueBtn)
+    })
+
+    it('[Functional] Pick Correct Mnemonic', async () => {
+        // action on model
+        await model.setPosition()
+        await model.checkSelectMnemonicPhrase()
+
+        // assert
+        await assert.checkNotDisabled(component.pickMnemonicContinueBtn)
+    })
+
+    it('[Tap] Check Tap Continue Btn', async () => {
+        // action
+        await action.click(component.pickMnemonicContinueBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.backupSuccessDoneBtn)
+    })
+})
+
+describe('Backup Success Test Scenario', () => {
+    it('[Display] Check Backup Success Header Text', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.backupSuccessHeaderText)
+    })
+
+    it('[Display] Check Backup Success Content Text', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.backupSuccessContentText)
+    })
+
+    it('[Display] Check Done Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.backupSuccessDoneBtn)
+    })
+
+    it('[Wording] Check Backup Success Header Wording', async () => {
+        // assert
+        await assert.checkText(component.backupSuccessHeaderText, 'You are ready to safely manage your crypto')
+    })
+
+    it('[Wording] Check Backup Success Content Wording', async () => {
+        // assert
+        await assert.checkText(component.backupSuccessContentText, 'Don’t show your recovery phrase to anyone.')
+    })
+
+    it('[Wording] Check Done Btn Wording', async () => {
+        // assert
+        await assert.checkText(component.backupSuccessDoneBtn, 'Done')
+    })
+
+    it('[Tap] Check Tap Done Btn', async () => {
+        // action
+        await action.click(component.backupSuccessDoneBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.homeTabHomeBtn)
     })
 
     afterAll(async () => {
+        // remove apps
         await action.removeApps(`${process.env.BUNDLE_ID}`)
     })
 })

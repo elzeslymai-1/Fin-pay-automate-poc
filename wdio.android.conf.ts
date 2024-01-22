@@ -42,6 +42,8 @@ export const config: Options.Testrunner = {
             // "./test/androidTest/specs/importWalletPage.e2e.ts",
             "./test/androidTest/specs/homePage.e2e.ts",
             // "./test/androidTest/specs/settingPage.e2e.ts",
+            // "./test/androidTest/specs/homePage.e2e.ts",
+            "./test/androidTest/specs/settingPage.e2e.ts",
             // "./test/androidTest/specs/currencyPage.e2e.ts",
             // "./test/androidTest/specs/customNetworkPage.e2e.ts",
             // "./test/androidTest/specs/customTokenPage.e2e.ts",
