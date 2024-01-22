@@ -8,6 +8,7 @@ const assert = new Assertion()
 
 describe('Splash Screen Page Scenario', () => {
     beforeAll(async () => {
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
     })
 
@@ -32,7 +33,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     it('[Wording] => Check Welcome Page Wording [2]', async () => {
-        await action.swipe()
+        await action.swipe('left')
     
         //assert
         await assert.checkText(component.splashScreenWelcomeText2, 'All your crypto in one place')
@@ -44,7 +45,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     it('[Wording] => Check Welcome Page Wording [3]', async () => {
-        await action.swipe()
+        await action.swipe('left')
         //assert
         await assert.checkText(component.splashScreenWelcomeText3, 'Discover the best of Web3')
     })
@@ -85,7 +86,7 @@ describe('Splash Screen Page Scenario', () => {
     })
 
     afterAll(async () => {
-        // close apps
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        // remove apps
+        await action.removeApps(`${process.env.BUNDLE_ID}`)
     })
 })
