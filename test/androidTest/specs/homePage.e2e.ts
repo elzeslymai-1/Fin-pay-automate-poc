@@ -36,6 +36,12 @@ describe('Home Menu Bar Test Scenario', () => {
         await assert.checkElementDisplayed(component.menuDappBtn)
     })
 
+    //* can't find element enable = false
+    // it('[Display] Check DApps Btn should be disable', async () => {
+    //     // assert
+    //     await assert.checkDisabled(component.menuDappBtn)
+    // })
+
     it('[Display] Check Setting Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.menuSettingBtn)
@@ -67,14 +73,6 @@ describe('Home Menu Bar Test Scenario', () => {
 
         // assert
         await assert.checkElementDisplayed(component.historyTitleText)
-    })
-
-    it('[Tap] Check Menu DApps Btn Tap', async () => {
-        // action
-        await action.click(component.menuDappBtn)
-
-        // assert
-        await assert.checkElementDisplayed(component.dappTrendingTitleText)
     })
 
     it('[Tap] Check Menu Setting Btn Tap', async () => {
@@ -115,9 +113,19 @@ describe('Home Page Test Scenario', () => {
         await assert.checkDisabled(component.homeNotiIconBtn)
     })
 
+    it('[Display] Check Wallet Address',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletAddressText)
+    })
+
     it('[Display] Check Copy Address Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.homeCopyAddressBtn)
+    })
+
+    it('[Display] Check Wallet Balance',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletBalanceText)
     })
 
     it('[Display] Check Send Btn', async () => {

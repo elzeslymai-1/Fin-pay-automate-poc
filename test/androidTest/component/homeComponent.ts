@@ -4,13 +4,14 @@ export class homeComponent {
     homeWalletIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeNetworkBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
     homeNotiIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeWalletAddressText = `android=new UiSelector().resourceId("home-walletsection-wallet")`
+    homeWalletBalanceText = `android=new UiSelector().resourceId("home-walletsection-balance")`
     homeCopyAddressBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
-    homeReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
-    homeScanBtn = `android=new UiSelector().text("Scan").className("android.widget.TextView")`
-    homeBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
-    homeSearchIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeSearchTextField = `android=new UiSelector().className("android.widget.EditText")`
+    homeSendBtn = `android=new UiSelector().resourceId("home-actiondockitem-Send")`
+    homeReceiveBtn = `android=new UiSelector().resourceId("home-actiondockitem-Receive")`
+    homeScanBtn = `android=new UiSelector().resourceId("home-actiondockitem-Scan")`
+    homeBuyBtn = `android=new UiSelector().resourceId("home-actiondockitem-Buy")`
+    homeSearchTextField = `android=new UiSelector().resourceId("home-walletmodal-search")`
     homeSearchNoResultText = `android=new UiSelector().text("No result").className("android.widget.TextView")`
 
     // Wallet pop-up Component
@@ -104,10 +105,10 @@ export class homeComponent {
     tokenCardETHWarningText = `android=new UiSelector().text("Only send goerli (ETH) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
     tokenCardBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    tokenCardSendBtn = `android=new UiSelector().text("Send").className("android.widget.TextView")`
-    tokenCardReceiveBtn = `android=new UiSelector().text("Receive").className("android.widget.TextView")`
+    tokenCardSendBtn = `android=new UiSelector().resourceId("home-actiondockitem-Send")`
+    tokenCardReceiveBtn = `android=new UiSelector().resourceId("home-actiondockitem-Receive")`
     //* vv- Can't find enable = false in Buy Btn here -vv
-    tokenCardBuyBtn = `android=new UiSelector().text("Buy").className("android.widget.TextView")`
+    tokenCardBuyBtn = `android=new UiSelector().resourceId("home-actiondockitem-Buy")`
     tokenCardQRCodeTab = `android=new UiSelector().text("QR Code").className("android.widget.TextView")`
     tokenCardInfoTab = `android=new UiSelector().text("Information").className("android.widget.TextView")`
 
