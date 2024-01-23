@@ -1,4 +1,3 @@
-import { expect } from '@wdio/globals'
 import { customTokenComponent } from '../component/customTokenComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
@@ -10,97 +9,162 @@ const assert = new Assertion()
 describe('Custom Token Page Test Senario', () => {
 
     beforeAll(async () => {
+        await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
-        await action.waitForDisplayed(component.homeSettingBtn)
+        await action.click(component.splashScreenCreateWalletBtn)
+
+        await action.click(component.createWallet12wordBtn)
+
+        await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
+
+        await action.click(component.successContinueBtn)
 
         await action.click(component.homeSettingBtn)
 
-        await action.waitForDisplayed(component.settingTitleText)
-        await assert.checkText(component.settingTitleText, 'Setting')
+        await action.click(component.settingCustomTokenBtn)
     })
 
-    // === Check Custom Token Page ===
-    it('[Tap] Check Custom Token Btn',async () => {
-        await action.waitForDisplayed(component.settingCustomTokenBtn)
-
-        await action.click(component.settingCustomTokenBtn)
-
-        await action.waitForDisplayed(component.customtokenTitleText)
-        await assert.checkText(component.customtokenTitleText, 'Custom token')
-
-        await action.waitForDisplayed(component.customtokenBackBtn)
+    it('[Display] Check Back Btn',async () => {
+        // assert
         await assert.checkElementDisplayed(component.customtokenBackBtn)
     })
-    it('[Tap] Check Custom Token Network Btn',async () => {
-        await action.waitForDisplayed(component.customtokenTitleText)
+
+    it('[Display] Check Network Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.customtokenNetworkKUBBtn)
+    })
+
+    it('[Display] Check Search TextField',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.customtokenSearchTextField)
+    })
+
+    it('[Display] Check Add Custom Token Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.customtokenAddcustomtokenBtn)
+    })
+
+    it('[Wording] Check Title Text',async () => {
+        // assert
         await assert.checkText(component.customtokenTitleText, 'Custom token')
+    })
 
-        // Click network icon
-        await action.Tap(1313, 241)
+    it('[Wording] Check Search Placeholder Text',async () => {
+        // assert
+        await assert.checkText(component.customtokenSearchPlaceholderText, 'Search...')
+    })
 
-        await action.waitForDisplayed(component.customtokenNetworkTitleText)
-        await assert.checkText(component.customtokenNetworkTitleText, 'Select Network')
+    it('[Wording] Check Token Header Text',async () => {
+        // assert
+        await assert.checkText(component.customtokenTokenHeaderText, 'Token')
+    })
 
-        await action.waitForDisplayed(component.customtokenNetworkBitkubChain)
+    it('[Wording] Check Custom Token Header Text',async () => {
+        // assert
+        await assert.checkText(component.customtokenCustomTokenHeaderText, 'Custom Token')
+    })
 
-        await action.click(component.customtokenNetworkBitkubChain)
+    it('[Wording] Check Add Custom Token Btn Text',async () => {
+        // assert
+        await assert.checkText(component.customtokenAddcustomtokenBtn, 'Add Custom Token')
+    })
 
-        await action.waitForDisplayed(component.customtokenKubToken)
+    it('[Tap] Check Back Btn Tap',async () => {
+        // action
+        await action.click(component.customtokenBackBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.settingCustomTokenBtn)
+
+        // after (back to Custom Token)
+        await action.click(component.settingCustomTokenBtn)
+    })
+
+    it('[Function] Check Change Network Btn Tap',async () => {
+        // action
+        await action.click(component.customtokenNetworkKUBBtn)
+        
+        // assert
+        await assert.checkText(component.networkTitleText, 'Select Network')
+
+        // action (for add network goerli)
+        await action.click(component.networkAddnetworkBtn)
+
+        await action.click(component.addnetworkCustomTab)
+
+        await action.click(component.customTabAddNetwork)
+
+        await action.enterText(component.customNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.pause(3000)
+
+        await action.click(component.customNetworkConfirmBtn)
+
+        await action.click(component.switchToGoerli)
+
+        await action.click(component.homeSettingBtn)
+        await action.click(component.settingCustomTokenBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.customtokenGoerliToken)
+
+        // action
+        await action.click(component.customtokenNetworkGoerliBtn)
+
+        await action.click(component.networkBitkubChain)
+
+        // assert
         await assert.checkElementDisplayed(component.customtokenKubToken)
     })
-    it('[Tap] Check Custom Token Search Btn',async () => {
-        await action.waitForDisplayed(component.customtokenSearchTextField)
-        
-        await action.enterText(component.customtokenSearchTextField, 'kub')
+    
+    it('[Function] Check Add Custom Token Btn',async () => {
+        // action
+        await action.click(component.customtokenNetworkKUBBtn)
 
-        await action.waitForDisplayed(component.customtokenKubToken)
-        await assert.checkText(component.customtokenKubToken, 'KUB')
-
-        await action.waitForExist(component.customtokenWToken, 2000, true)
-
-        await action.clearText(component.customtokenSearchTextFieldKub)
-    })
-    it('[Tap] Check Add Custom Token Btn',async () => {
-        // Click network icon
-        await action.Tap(1313, 241)
-
-        await action.waitForDisplayed(component.customtokenNetworkGoerliChain)
-
-        await action.click(component.customtokenNetworkGoerliChain)
-
-        await action.waitForDisplayed(component.customtokenAddcustomtokenBtn)
-        await assert.checkText(component.customtokenAddcustomtokenBtn, 'Add Custom Token')
+        await action.click(component.networkGoerliChain)
         
         await action.click(component.customtokenAddcustomtokenBtn)
 
-        await action.waitForDisplayed(component.customtokenTokenAddressTextField)
-
         await action.enterText(component.customtokenTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
 
-        await action.waitForDisplayed(component.customtokenAddFintoken)
+        // assert
         await assert.checkText(component.customtokenAddFintoken, 'FinTestToken')
 
+        // action
         await action.click(component.customtokenCheckbox)
-
-        await action.waitForDisplayed(component.customtokenConfirmBtn)
 
         await action.click(component.customtokenConfirmBtn)
 
-        await action.waitForDisplayed(component.customtokenFinToken)
-        await assert.checkElementDisplayed(component.customtokenFinToken)
+        // assert
+        await assert.checkElementDisplayed(component.customtokenFintestToken)
     })
-    it('[Tap] Check Remove Custom Token Btn',async () => {
-        await action.waitForDisplayed(component.customtokenRemoveBtn)
-
+    it('[Function] Check Remove Custom Token Btn',async () => {
+        // action
         await action.click(component.customtokenRemoveBtn)
 
-        await action.waitForExist(component.customtokenFinToken, 2000, true)
+        await action.waitForExist(component.customtokenFintestToken, 3000, true)
 
-        await action.click(component.customtokenBackBtn)
+        // after (change network to BitKubTestnet)
+        await action.click(component.customtokenNetworkGoerliBtn)
+
+        await action.click(component.networkBitkubChain)
+    })
+
+    it('[Search] Check Search TextField',async () => {
+        //action        
+        await action.enterText(component.customtokenSearchTextField, 'kub')
+
+        // assert
+        await assert.checkText(component.customtokenKubToken, 'KUB')
+
+        // action
+        await action.waitForExist(component.customtokenWToken, 2000, true)
+
+        await action.clearText(component.customtokenSearchTextField)
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.PACKAGE_ID}`)
+        await action.removeApps(`${process.env.PACKAGE_ID}`)
     })
 })
