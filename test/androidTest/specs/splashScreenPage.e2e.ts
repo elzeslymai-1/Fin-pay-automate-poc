@@ -22,27 +22,27 @@ describe('Splash Screen Page Scenario', () => {
         await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
     })
 
-    it('[Wording] => Check Create wallet Btn', async () => {
+    it('[Wording] => Check Create wallet Btn Text', async () => {
         // assert
-        await assert.checkText(component.splashScreenCreateWalletBtn, 'Create a new wallet')
+        await assert.checkText(component.splashScreenCreateWalletBtnText, 'Create a new wallet')
     })
 
-    it('[Wording] => Check Import wallet Btn', async () => {
+    it('[Wording] => Check Import wallet Btn Text', async () => {
         // assert
-        await assert.checkText(component.splashScreenImportWalletBtn, 'Import a wallet')
+        await assert.checkText(component.splashScreenImportWalletBtnText, 'Import a wallet')
     })
 
-    it('[Wording] => Check Header [1]', async () => {
+    it('[Wording] => Check Header [1] Text', async () => {
         // assert
         await assert.checkText(component.splashScreenHeaderText, 'Welcome to the \nFIN PAY')
     })
 
-    it('[Wording] => Check Description [1]', async () => {
+    it('[Wording] => Check Description [1] Text', async () => {
         // assert
         await assert.checkText(component.splashScreenDescriptionText, 'To get started, create a new wallet or import \none from a seed phrase.')
     })
 
-    it('[Wording] => Check Header [2]',async () => {
+    it('[Wording] => Check Header [2] Text',async () => {
         // swipe
         await action.swipe()
 
@@ -50,12 +50,12 @@ describe('Splash Screen Page Scenario', () => {
         await assert.checkText(component.splashScreenHeaderText2, 'All your crypto in one place')
     })
 
-    it('[Wording] => Check Description [2]',async () => {
+    it('[Wording] => Check Description [2] Text',async () => {
         // assert
         await assert.checkText(component.splashScreenDescriptionText2, 'Now you can trade crypto directly from the\nCrypto wallet with your existing.')
     })
 
-    it('[Wording] => Check Header [3]',async () => {
+    it('[Wording] => Check Header [3] Text',async () => {
         // swipe
         await action.swipe()
 
@@ -63,7 +63,7 @@ describe('Splash Screen Page Scenario', () => {
         await assert.checkText(component.splashScreenHeaderText3, 'Discover the best of Web3')
     })
 
-    it('[Wording] => Check Description [3]',async () => {
+    it('[Wording] => Check Description [3] Text',async () => {
         // assert
         await assert.checkText(component.splashScreenDescriptionText3, 'Find and connect to leading apps and\ncollections with the in-app browser.')
     })
