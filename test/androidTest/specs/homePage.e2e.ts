@@ -100,7 +100,7 @@ describe('Home Page Test Scenario', () => {
 
     it('[Display] Check Network Btn', async () => {
         // assert
-        await assert.checkElementDisplayed(component.homeNetworkBtn)
+        await assert.checkElementDisplayed(component.homeNetworkDropdownBtn)
     })
 
     it('[Display] Check Notification Btn', async () => {
@@ -110,7 +110,7 @@ describe('Home Page Test Scenario', () => {
 
     it('[Display] Check Notification Btn should be Disable', async () => {
         // assert
-        await assert.checkDisabled(component.homeNotiIconBtn)
+        await assert.checkDisabled(component.homeNotiIconBtnText)
     })
 
     it('[Display] Check Wallet Address',async () => {
@@ -145,12 +145,12 @@ describe('Home Page Test Scenario', () => {
 
     it('[Display] Check Buy Btn', async () => {
         // assert (under development feature)
-        await assert.checkElementDisplayed(component.homeBuyBtnXpath)
+        await assert.checkElementDisplayed(component.homeBuyBtn)
     })
 
     it('[Display] Check Buy Btn should be Disable', async () => {
         // assert
-        await assert.checkDisabled(component.homeBuyBtnXpath)
+        await assert.checkDisabled(component.homeBuyBtn)
     })
 
     it('[Display] Check Search TextField', async () => {
@@ -175,12 +175,12 @@ describe('Home Page Test Scenario', () => {
 
     it('[Wording] Check Network Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeNetworkBtn, '')
+        await assert.checkText(component.homeNetworkDropdownBtn, '')
     })
 
     it('[Wording] Check Notification Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeNotiIconBtn, '')
+        await assert.checkText(component.homeNotiIconBtnText, '')
     })
 
     it('[Wording] Check Copy Address Btn Text', async () => {
@@ -190,22 +190,22 @@ describe('Home Page Test Scenario', () => {
 
     it('[Wording] Check Send Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeSendBtn, 'Send')
+        await assert.checkText(component.homeSendBtnText, 'Send')
     })
 
     it('[Wording] Check Receive Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeReceiveBtn, 'Receive')
+        await assert.checkText(component.homeReceiveBtnText, 'Receive')
     })
 
     it('[Wording] Check Scan Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeScanBtn, 'Scan')
+        await assert.checkText(component.homeScanBtnText, 'Scan')
     })
 
     it('[Wording] Check Buy Btn Text', async () => {
         // assert
-        await assert.checkText(component.homeBuyBtn, 'Buy')
+        await assert.checkText(component.homeBuyBtnText, 'Buy')
     })
 
     it('[Wording] Check Search TextField placeholder', async () => {
@@ -231,7 +231,7 @@ describe('Home Page Test Scenario', () => {
         await assert.checkElementDisplayed(component.walletTitleText)
 
         // assert (under development feature)
-        await assert.checkDisabled(component.walletSettingBtnXpath)
+        await assert.checkDisabled(component.walletSettingBtn)
 
         // after (close pop-up)
         await action.click(component.homeWalletIconBtn)
@@ -239,13 +239,13 @@ describe('Home Page Test Scenario', () => {
 
     it('[Tap] Check Network Btn Tap', async () => {
         // action
-        await action.click(component.homeNetworkBtn)
+        await action.click(component.homeNetworkDropdownBtn)
 
         // assert
         await assert.checkElementDisplayed(component.networkTitleText)
 
         // after (close pop-up)
-        await action.click(component.homeNetworkBtn)
+        await action.click(component.homeNetworkDropdownBtn)
     })
 
     it('[Tap] Check Copy Address Btn Tap',async () => {
@@ -348,7 +348,7 @@ describe('Home Page Test Scenario', () => {
 
     it('[Function] Change Network Chain',async () => {
         // action
-        await action.click(component.homeNetworkBtn)
+        await action.click(component.homeNetworkDropdownBtn)
 
         await action.click(component.networkAddNetworkBtn)
 
@@ -373,7 +373,7 @@ describe('Home Page Test Scenario', () => {
         // after (back to Home) (change network chain to Bitkub Testnet)
         await action.click(component.tokenCardBackBtn)
 
-        await action.click(component.homeNetworkBtn)
+        await action.click(component.homeNetworkDropdownBtn)
 
         await action.click(component.networkBitkubBtn)
     })
@@ -516,7 +516,7 @@ describe('[KUB] Token Card Test Scenario', () => {
 
 describe('[ETH] Token Card Test Scenario', () => {
     beforeAll(async () => {
-        await action.click(component.homeNetworkBtn)
+        await action.click(component.homeNetworkDropdownBtn)
 
         await action.click(component.networkGoerliBtn)
 

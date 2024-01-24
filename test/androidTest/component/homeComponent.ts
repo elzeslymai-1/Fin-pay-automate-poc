@@ -2,21 +2,34 @@ export class homeComponent {
 
     // Home Component
     homeWalletIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeNetworkBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeNotiIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeNetworkDropdownBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    homeNetworkBtnText = `android=new UiSelector().resourceId("home-chainselect-name")`
+
+    homeNotiIconBtn = `android=new UiSelector().resourceId("home-headersection-notification")`
+    homeNotiIconBtnText = `android=new UiSelector().text("").className("android.widget.TextView")`
+
     homeWalletAddressText = `android=new UiSelector().resourceId("home-walletsection-wallet")`
     homeWalletBalanceText = `android=new UiSelector().resourceId("home-walletsection-balance")`
     homeCopyAddressBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    homeSendBtn = `android=new UiSelector().resourceId("home-actiondockitem-Send")`
-    homeReceiveBtn = `android=new UiSelector().resourceId("home-actiondockitem-Receive")`
-    homeScanBtn = `android=new UiSelector().resourceId("home-actiondockitem-Scan")`
-    homeBuyBtn = `android=new UiSelector().resourceId("home-actiondockitem-Buy")`
+    
+    homeSendBtn = `android=new UiSelector().resourceId("home-actiondock-send")`
+    homeSendBtnText = `android=new UiSelector().resourceId("home-actiondockitem-Send")`
+    
+    homeReceiveBtn = `android=new UiSelector().resourceId("home-actiondock-receive")`
+    homeReceiveBtnText = `android=new UiSelector().resourceId("home-actiondockitem-Receive")`
+    
+    homeScanBtn = `android=new UiSelector().resourceId("home-actiondock-scan")`
+    homeScanBtnText = `android=new UiSelector().resourceId("home-actiondockitem-Scan")`
+    
+    homeBuyBtn = `android=new UiSelector().resourceId("home-actiondock-buy")`
+    homeBuyBtnText = `android=new UiSelector().resourceId("home-actiondockitem-Buy")`
+
     homeSearchTextField = `android=new UiSelector().resourceId("home-walletmodal-search")`
     homeSearchNoResultText = `android=new UiSelector().text("No result").className("android.widget.TextView")`
 
     // Wallet pop-up Component
     walletTitleText = `android=new UiSelector().text("Wallets").className("android.widget.TextView")`
-    walletSettingBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    walletSettingBtn = `android=new UiSelector().resourceId("home-walletmodal-settingbtn")`
     walletSearchTextField = `android=new UiSelector().text("Search...").className("android.widget.EditText")`
 
     // Network pop-up Component
@@ -88,20 +101,20 @@ export class homeComponent {
     // Token card Component
     tokenCardWTKTitleText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
     tokenCardWTKChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
-    tokenCardWTKTokenNameText = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
-    tokenCardWTKTokenFullNameText = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
+    tokenCardWTKTokenNameText = `android=new UiSelector().resourceId("home-walletcardsymbol-WTK")`
+    tokenCardWTKTokenFullNameText = `android=new UiSelector().resourceId("home-walletcardname-WToken")`
     tokenCardWTKWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (WTK) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
     tokenCardKUBTitleText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
     tokenCardKUBChainNameText = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
-    tokenCardKUBTokenNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
-    tokenCardKUBTokenFullNameText = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
+    tokenCardKUBTokenNameText = `android=new UiSelector().resourceId("home-walletcardsymbol-KUB")`
+    tokenCardKUBTokenFullNameText = `android=new UiSelector().resourceId("home-walletcardname-KUB")`
     tokenCardKUBWarningText = `android=new UiSelector().text("Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
     tokenCardETHTitleText = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
     tokenCardETHChainNameText = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
-    tokenCardETHTokenNameText = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
-    tokenCardETHTokenFullNameText = `android=new UiSelector().text("Goerli").className("android.widget.TextView")`
+    tokenCardETHTokenNameText = `android=new UiSelector().resourceId("home-walletcardsymbol-ETH")`
+    tokenCardETHTokenFullNameText = `android=new UiSelector().resourceId("home-walletcardname-Goerli")`
     tokenCardETHWarningText = `android=new UiSelector().text("Only send goerli (ETH) network assets to this address. Sending any other coins may result in permanent loss.").className("android.widget.TextView")`
 
     tokenCardBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
@@ -123,10 +136,6 @@ export class homeComponent {
 
     tokenCardReceiveTitleText = `android=new UiSelector().text("Receive Token").className("android.view.View")`
     tokenCardReceiveBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    // XPATH
-    homeBuyBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup[4]`
-    walletSettingBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]`
 
     // BeforeAll Component
     splashScreenCreateWalletBtn = `android=new UiSelector().text("Create a new wallet").className("android.widget.TextView")`
