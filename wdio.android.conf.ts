@@ -40,10 +40,10 @@ export const config: Options.Testrunner = {
             // "./test/androidTest/specs/createWalletPage.e2e.ts",
             // "./test/androidTest/specs/backUpPage.e2e.ts",
             // "./test/androidTest/specs/importWalletPage.e2e.ts",
-            "./test/androidTest/specs/homePage.e2e.ts",
+            // "./test/androidTest/specs/homePage.e2e.ts",
             // "./test/androidTest/specs/settingPage.e2e.ts",
             // "./test/androidTest/specs/homePage.e2e.ts",
-            "./test/androidTest/specs/settingPage.e2e.ts",
+            // "./test/androidTest/specs/settingPage.e2e.ts",
             // "./test/androidTest/specs/currencyPage.e2e.ts",
             // "./test/androidTest/specs/customNetworkPage.e2e.ts",
             // "./test/androidTest/specs/customTokenPage.e2e.ts",
@@ -84,7 +84,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/build-1703563821608.apk'),
+        'appium:app': join(process.cwd(), 'apps/build-1705630721060.apk'),
         
     }],
 
