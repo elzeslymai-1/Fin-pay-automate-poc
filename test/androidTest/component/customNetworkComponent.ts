@@ -2,70 +2,93 @@ export class customNetworkComponent {
 
     // Network Management Component
     networkManagementTitleText = `android=new UiSelector().text("Add Network").className("android.view.View")`
-    networkManagementXBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    networkManagementPopularTab = `android=new UiSelector().text("POPULAR").className("android.widget.TextView")`
 
+    networkManagementXBtn = `android=new UiSelector().resourceId("addnetwork-header-closebtn")`
+
+    networkManagementPopularTab = `android=new UiSelector().text("POPULAR").className("android.widget.TextView")`
     networkManagementCustomTab = `android=new UiSelector().text("CUSTOM NETWORK").className("android.widget.TextView")`
 
     // Popular Tab Component
-    popularTabBitkubChainTestnet = `android=new UiSelector().text("Bitkub Chain Testnet").className("android.widget.TextView")`
+    popularTabBitkubChainTestnet = `android=new UiSelector().resourceId("addnetwork-chainlist-Bitkub Chain Testnet")`
 
     // Custom Network Tab Component
+    customTabNoNetworkText = `android=new UiSelector().text("No Custom Network").className("android.widget.TextView")`
     customTabAddCustomNetworkBtn = `android=new UiSelector().text("Add Custom Network").className("android.widget.TextView")`
     customTabGoerliRemoveBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Confirm Remove Pop-up Component
-    confirmRemoveTitleText = `android=new UiSelector().text("Remove goerli Chain").className("android.widget.TextView")`
-    confirmRemoveText = `android=new UiSelector().text("Assets on removed networks will no longer be displayed.").className("android.widget.TextView")`
+    confirmRemoveTitleText = `android=new UiSelector().resourceId("removechain-bottomsheet-title")`
+    confirmRemoveText = `android=new UiSelector().resourceId("removechain-bottomsheet-subtitle")`
 
-    confirmRemoveRemoveBtn = `android=new UiSelector().text("Remove").className("android.widget.TextView")`
-    confirmRemoveCancelBtn = `android=new UiSelector().text("Cancel").className("android.widget.TextView")`
+    confirmRemoveRemoveBtn = `android=new UiSelector().resourceId("removechain-bottomsheetbtn-remove")`
+    confirmRemoveRemoveBtnText = `android=new UiSelector().text("Remove").className("android.widget.TextView")`
+
+    confirmRemoveCancelBtn = `android=new UiSelector().resourceId("removechain-bottomsheetbtn-cancel")`
+    confirmRemoveCancelBtnText = `android=new UiSelector().text("Cancel").className("android.widget.TextView")`
 
     // Custom Network Component
+    customNetworkLayout = `android=new UiSelector().className("android.widget.FrameLayout")`
+
     customNetworkTitleText = `android=new UiSelector().text("Custom Network").className("android.view.View")`
-    customNetworkBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    customNetworkXBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    customNetworkWarningText = `android=new UiSelector().text("A Malicious network provider can lie about the state of the blockchain and record your network activity. Only add networks you trust.").className("android.widget.TextView")`
 
-    customNetworkNetworkNameText = `android=new UiSelector().text("Network Name").className("android.widget.TextView")`
-    customNetworkNetworkNameInfoBtn = `android=new UiSelector().text("").className("android.widget.TextView").index(2)`
-    customNetworkNetworkNameInfoText = `android=new UiSelector().text("The name associated with this network.").className("android.widget.TextView")`
-    customNetworkNetworkNameTextField = `android=new UiSelector().className("android.widget.EditText").index(3)`
+    customNetworkBackBtn = `android=new UiSelector().resourceId("addcustomnetwork-header-backbtn")`
+    customNetworkBackBtnText = `android=new UiSelector().text("").className("android.widget.TextView")`
 
-    customNetworkNetworkURLText = `android=new UiSelector().text("Network URL").className("android.widget.TextView")`
-    customNetworkNetworkURLInfoBtn = `android=new UiSelector().text("").className("android.widget.TextView").index(6)`
-    customNetworkNetworkURLInfoText = `android=new UiSelector().text("The URL used to access this network.").className("android.widget.TextView")`
-    customNetworkNetworkUrlTextField = `android=new UiSelector().className("android.widget.EditText").index(7)`
+    customNetworkXBtn = `android=new UiSelector().resourceId("addcustomnetwork-header-closebtn")`
 
-    customNetworkChainIDText = `android=new UiSelector().text("Chain ID").className("android.widget.TextView")`
-    customNetworkChainIDInfoBtn = `android=new UiSelector().text("").className("android.widget.TextView").index(10)`
-    customNetworkChainIDInfoText = `android=new UiSelector().text("The chain ID used to sign transactions for this network.").className("android.widget.TextView")`
-    customNetworkChainIDTextField = `android=new UiSelector().className("android.widget.EditText").index(11)`
+    customNetworkWarningText = `android=new UiSelector().resourceId("addcustomnetwork-warning-text")`
+
+    customNetworkNetworkNameInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-name")`
+    customNetworkNetworkNameText = `android=new UiSelector().resourceId("addcustomnetwork-form-name")`
+    customNetworkNetworkNameInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView")`
+    customNetworkNetworkNameInfoText = `android=new UiSelector().resourceId("tooltip-text-name")`
+    customNetworkNetworkNameTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-name")`
+
+    customNetworkNetworkURLText = `android=new UiSelector().resourceId("addcustomnetwork-form-url")`
+    customNetworkNetworkURLInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-url")`
+    customNetworkNetworkURLInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(6)`
+    customNetworkNetworkURLInfoText = `android=new UiSelector().resourceId("tooltip-text-url")`
+    customNetworkNetworkUrlTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-url")`
+
+    customNetworkChainIDText = `android=new UiSelector().resourceId("addcustomnetwork-form-chainid")`
+    customNetworkChainIDInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-chainid")`
+    customNetworkChainIDInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(10)`
+    customNetworkChainIDInfoText = `android=new UiSelector().resourceId("tooltip-text-chainid")`
+    customNetworkChainIDTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-chainid")`
     
-    customNetworkSymbolText = `android=new UiSelector().text("Symbol").className("android.widget.TextView")`
-    customNetworkSymbolInfoBtn = `android=new UiSelector().text("").className("android.widget.TextView").index(14)`
-    customNetworkSymbolInfoText = `android=new UiSelector().text("The ticker symbol displayed for this network’s currency.").className("android.widget.TextView")`
-    customNetworkSymbolTextField = `android=new UiSelector().className("android.widget.EditText").index(15)`
+    customNetworkSymbolText = `android=new UiSelector().resourceId("addcustomnetwork-form-symbol")`
+    customNetworkSymbolInfoBtn = `android=new UiSelector().text("").resourceId("addcustomnetwork-tooltip-symbol")`
+    customNetworkSymbolInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(14)`
+    customNetworkSymbolInfoText = `android=new UiSelector().resourceId("tooltip-text-symbol")`
+    customNetworkSymbolTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-symbol")`
     
-    customNetworkBlockExplorerText = `android=new UiSelector().text("Block Explorer URL (Optional)").className("android.widget.TextView")`
-    customNetworkBlockExplorerInfoBtn = `android=new UiSelector().text("").className("android.widget.TextView").index(18)`
-    customNetworkBlockExplorerInfoText = `android=new UiSelector().text("The URL used as the block explorer for this network.").className("android.widget.TextView")`
-    customNetworkBlockExplorerTextField = `android=new UiSelector().className("android.widget.EditText").index(19)`
+    customNetworkExplorerText = `android=new UiSelector().resourceId("addcustomnetwork-form-blockexplorer")`
+    customNetworkExplorerInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-blockexplorer")`
+    customNetworkExplorerInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(18)`
+    customNetworkExplorerInfoText = `android=new UiSelector().resourceId("tooltip-text-blockexplorer")`
+    customNetworkExplorerTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-blockexplorer")`
 
-    customNetworkCancelBtn = `android=new UiSelector().text("Cancel").className("android.widget.TextView")`
-    customNetworkConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
+    customNetworkCancelBtn = `android=new UiSelector().resourceId("addcustomnetwork-btn-cancel")`
+    customNetworkCancelBtnText = `android=new UiSelector().text("Cancel").className("android.widget.TextView")`
 
-    customNetworkNetworkNameRequired = `android=new UiSelector().text("Network Name is required").className("android.widget.TextView")`
-    customNetworkSymbolRequired = `android=new UiSelector().text("Symbol is required").className("android.widget.TextView")`
+    customNetworkConfirmBtn = `android=new UiSelector().resourceId("addcustomnetwork-btn-confirm")`
+    customNetworkConfirmBtnText = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
+
+    customNetworkNetworkNameError = `android=new UiSelector().resourceId("addcustomnetwork-texterror-name")`    
+    customNetworkURLError = `android=new UiSelector().resourceId("addcustomnetwork-texterror-url")`
+    customNetworkChainIdError = `android=new UiSelector().resourceId("addcustomnetwork-texterror-chainid")`
+    customNetworkSymbolError = `android=new UiSelector().resourceId("addcustomnetwork-texterror-symbol")`
+    customNetworkExplorerError = `android=new UiSelector().resourceId("addcustomnetwork-texterror-blockexplorer")`
 
     // Add Network Success
-    addNetworkSuccessTitleText = `android=new UiSelector().text("Add a network success").className("android.widget.TextView")`
+    addNetworkSuccessTitleText = `android=new UiSelector().resourceId("addcustomchain-bottomsheet-title")`
+    addNetworkSuccessDescriptionText = `android=new UiSelector().resourceId("addcustomchain-bottomsheet-subtitle")`
     addNetworkSuccessSwitchGoerliBtn = `android=new UiSelector().text("Switch to goerli").className("android.widget.TextView")`
     addNetworkSuccessDismissBtn = `android=new UiSelector().text("Dismiss").className("android.widget.TextView")`
 
     // Home with Goerli chain Component
-    homeGoerliChain = `android=new UiSelector().text("goerli").className("android.widget.TextView")`
-    homeETHToken = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
+    homeChain = `android=new UiSelector().resourceId("home-chainselect-name")`
+    homeETHToken = `android=new UiSelector().resourceId("home-walletcardsymbol-ETH")`
 
     // BeforeAll Component
     homeSettingBtn = `android=new UiSelector().text("Setting").className("android.widget.TextView")`
@@ -76,5 +99,4 @@ export class customNetworkComponent {
     createWallet12wordBtn = `android=new UiSelector().text("12-word Mnemonic wallet").className("android.widget.TextView")`
     createWalletContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
     successContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
-
 }
