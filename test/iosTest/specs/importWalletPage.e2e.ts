@@ -8,7 +8,8 @@ const assert = new Assertion()
 
 describe('Import Wallet Page Scenario', () => {
     beforeAll(async () => {
-        await action.launchAndroidApps(`${process.env.BUNDLE_ID}`)
+        await action.installApps('apps/FinPay.app')
+        await action.launchApps(`${process.env.BUNDLE_ID}`)
         await action.click(component.splashScreenImportWalletBtn)
     })
 
@@ -50,12 +51,12 @@ describe('Import Wallet Page Scenario', () => {
 
     it('[Wording] Check Import Wallet Header Wording', async () => {
         //assert
-        await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic or Private Key')
+        await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic')
     })
 
     it('[Wording] Check Import Wallet Description Wording', async () => {
         //assert
-        await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.')
+        await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases for all wallet types.')
     })
 
     it('[Wording] Check Import wallet Btn Wording', async () => {

@@ -3,8 +3,16 @@ export class Action {
     public encodeBase64(value: string) {
         return Buffer.from(value, 'utf-8').toString('base64')
     }
+
+    public decodeBase64(value: string) {
+        return Buffer.from(value, 'base64').toString('utf-8')
+    }
     public async setClipboard(value: string) {
         await driver.setClipboard(this.encodeBase64(value), 'plaintext')
+    }
+
+    public async getClipboard() {
+        return this.decodeBase64(await driver.getClipboard('plaintext'))
     }
 
     public async waitForDisplayed(locator: string) {
@@ -116,7 +124,7 @@ export class Action {
 
     public async getValue(locator: string) {
         await this.waitForDisplayed(locator)
-        await (await $(locator)).getValue()
+        return (await (await $(locator)).getValue())
     }
 
     public async Tap(x: number, y: number) {

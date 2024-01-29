@@ -38,7 +38,8 @@ export const config: Options.Testrunner = {
             // "./Test/iosTest/specs/**.e2e.ts"
             './Test/iosTest/specs/splashScreenPage.e2e.ts',
             './Test/iosTest/specs/importWalletPage.e2e.ts',
-            './Test/iosTest/specs/createWalletPage.e2e.ts'
+            './Test/iosTest/specs/createWalletPage.e2e.ts',
+            './Test/iosTest/specs/backupWalletPage.e2e.ts'
         ]
     ],
     // Patterns to exclude.
@@ -77,7 +78,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/FinsDefiWallet.app'),
+        'appium:app': join(process.cwd(), 'apps/FinPay.app'),
         'appium:bundleId': `${process.env.BUNDLE_ID}`,
     }],
 

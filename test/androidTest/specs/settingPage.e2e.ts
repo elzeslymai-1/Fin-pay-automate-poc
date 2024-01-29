@@ -1,4 +1,3 @@
-import { expect } from '@wdio/globals'
 import { settingComponent } from '../component/settingComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
@@ -7,161 +6,179 @@ const component = new settingComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Setting Page Test Senario', () => {
+describe('Setting Page Test Scenario', () => {
     beforeAll(async () => {
+        await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
-        await action.waitForDisplayed(component.homeSettingBtn)
+        await action.click(component.splashScreenCreateWalletBtn)
+
+        await action.click(component.createWallet12wordBtn)
+
+        await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
+
+        await action.click(component.successContinueBtn)
 
         await action.click(component.homeSettingBtn)
-
-        await action.waitForDisplayed(component.settingTitleText)
-        await assert.checkText(component.settingTitleText, 'Setting')
     })
 
     // === Check Setting Page ===
+    it('[Display] Check My Wallet Btn',async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.settingMyWalletBtnXpath)
+    })
+
+    it('[Display] Check Currency Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.settingCurrencyBtn)
+    })
+
+    it('[Display] Check Network Management Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.settingNetworkManageBtn)
+    })
+
+    it('[Display] Check Import Wallet Btn',async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.settingImportWalletBtn)
+    })
+
+    it('[Display] Check Custom Token Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.settingCustomTokenBtn)
+    })
+
+    it('[Display] Check Notification Btn',async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.settingNotificationBtn)
+    })
+
+    it('[Display] Check Contacts Btn',async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.settingContactsBtn)
+    })
+
+    it('[Display] Check Sessions Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.settingSessionsBtn)
+    })
+
+    it('[Display] Check My Wallet Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingMyWalletBtnXpath)
+    })
+    
+    it('[Display] Check Import Wallet Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingImportWalletBtnXpath)
+    })
+    
+    it('[Display]Check Notification Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingNotificationBtnXpath)
+    })
+    
+    it('[Display] Check Contacts Btn Should be Disable',async () => {
+        // assert
+        await assert.checkDisabled(component.settingContactsBtnXpath)
+    })
+    
     it('[Wording] Check Setting Title Text',async () => {
-        await action.waitForDisplayed(component.settingTitleText)
+        // assert
         await assert.checkText(component.settingTitleText, 'Setting')
     })
-    it('[Display] Check Currency Btn',async () => {
-        await action.waitForDisplayed(component.settingCurrencyBtn)
-        await assert.checkElemenDisplayed(component.settingCurrencyBtn)
+
+    it('[Wording] Check Setting General Text',async () => {
+        // assert
+        await assert.checkText(component.settingGeneralText, 'General')
     })
-    it('[Display] Check Network Management Btn',async () => {
-        await action.waitForDisplayed(component.settingNetworkManageBtn)
-        await assert.checkElemenDisplayed(component.settingNetworkManageBtn)
+
+    it('[Wording] Check Setting My Wallet Text',async () => {
+        // assert
+        await assert.checkText(component.settingMyWalletBtn, 'My Wallet')
     })
-    it('[Display] Check Custom Token Btn',async () => {
-        await action.waitForDisplayed(component.settingCustomTokenBtn)
-        await assert.checkElemenDisplayed(component.settingCustomTokenBtn)
+
+    it('[Wording] Check Setting My Wallet Amount Text',async () => {
+        // assert
+        await assert.checkText(component.settingMyWalletAmountText, '1 wallets')
     })
-    it('[Display] Check Sessions Btn',async () => {
-        await action.waitForDisplayed(component.settingSessionsBtn)
-        await assert.checkElemenDisplayed(component.settingSessionsBtn)
+
+    it('[Wording] Check Setting Currency Btn Text',async () => {
+        // assert
+        await assert.checkText(component.settingCurrencyBtn, 'Currency')
     })
+
+    it('[Wording] Check Setting Currency Typer Text',async () => {
+        // assert
+        await assert.checkText(component.settingCurrencyTypeText, 'USD')
+    })
+
+    it('[Wording] Check Setting Network Management Btn Text',async () => {
+        // assert
+        await assert.checkText(component.settingNetworkManageBtn, 'Network Management')
+    })
+
+    it('[Wording] Check Setting Custom Token Btn Text',async () => {
+        // assert
+        await assert.checkText(component.settingCustomTokenBtn, 'Custom Token')
+    })
+
+    it('[Wording] Check Setting Others Text',async () => {
+        // assert
+        await assert.checkText(component.settingOthersText, 'Others')
+    })
+
+    it('[Wording] Check Setting Sessions Btn Text',async () => {
+        // assert
+        await assert.checkText(component.settingSessionsBtn, 'Sessions')
+    })
+
     it('[Tap] Check Currency Btn Tap',async () => {
-        await action.waitForDisplayed(component.settingCurrencyBtn)
-        
+        // action        
         await action.click(component.settingCurrencyBtn)
 
-        await action.waitForDisplayed(component.currencyTitleText)
-        await assert.checkText(component.currencyTitleText, 'Currency')
+        // assert
+        await assert.checkElementDisplayed(component.currencyTitleText)
 
+        // after (back to Setting)
         await action.click(component.currencyBackBtn)
     })
+
     it('[Tap] Check Network Management Btn',async () => {
-        await action.waitForDisplayed(component.settingNetworkManageBtn)
-        
+        // action
         await action.click(component.settingNetworkManageBtn)
 
-        await action.waitForDisplayed(component.networkmanagementTitleText)
-        await assert.checkText(component.networkmanagementTitleText, 'Add Network')
+        // assert
+        await assert.checkElementDisplayed(component.networkManagementTitleText)
 
-        await action.click(component.networkmanagementCloseIconBtn)
+        // after (back to Setting)
+        await action.click(component.networkManagementCloseIconBtn)
     })
+
     it('[Tap] Check Custom Token Btn',async () => {
-        await action.waitForDisplayed(component.settingCustomTokenBtn)
-        
+        // action
         await action.click(component.settingCustomTokenBtn)
 
-        await action.waitForDisplayed(component.customtokenTitleText)
-        await assert.checkText(component.customtokenTitleText, 'Custom token')
+        // assert
+        await assert.checkElementDisplayed(component.customTokenTitleText)
 
-        await action.click(component.customtokenBackBtn)
+        // after (back to Setting)
+        await action.click(component.customTokenBackBtn)
     })
+
     it('[Tap] Check Sessions Btn Tap',async () => {
-        await action.waitForDisplayed(component.settingSessionsBtn)
-        
+        // action        
         await action.click(component.settingSessionsBtn)
 
-        await action.waitForDisplayed(component.sessionsTitleText)
+        // assert
         await assert.checkText(component.sessionsTitleText, 'Sessions')
 
+        // after (back to Setting)
         await action.click(component.sessionsBackBtn)
     })
 
-    // // === Check Custom Token Page ===
-    // it('[Tap] Check Custom Token Btn',async () => {
-    //     await action.waitForDisplayed(component.settingCustomTokenBtn)
-
-    //     await action.click(component.settingCustomTokenBtn)
-
-    //     await action.waitForDisplayed(component.customtokenTitleText)
-    //     await assert.checkText(component.customtokenTitleText, 'Custom token')
-
-    //     await action.waitForDisplayed(component.customtokenBackBtn)
-    //     await assert.checkElemenDisplayed(component.customtokenBackBtn)
-    // })
-    // it('[Tap] Check Custom Token Network Btn',async () => {
-    //     await action.waitForDisplayed(component.customtokenTitleText)
-    //     await assert.checkText(component.customtokenTitleText, 'Custom token')
-
-    //     // Click network icon
-    //     await action.Tap(1313, 241)
-
-    //     await action.waitForDisplayed(component.customtokenNetworkTitleText)
-    //     await assert.checkText(component.customtokenNetworkTitleText, 'Select Network')
-
-    //     await action.waitForDisplayed(component.customtokenNetworkBitkubChain)
-
-    //     await action.click(component.customtokenNetworkBitkubChain)
-
-    //     await action.waitForDisplayed(component.customtokenKubToken)
-    //     await assert.checkElemenDisplayed(component.customtokenKubToken)
-    // })
-    // it('[Tap] Check Custom Token Search Btn',async () => {
-    //     await action.waitForDisplayed(component.customtokenSearchTextField)
-        
-    //     await action.enterText(component.customtokenSearchTextField, 'kub')
-
-    //     await action.waitForDisplayed(component.customtokenKubToken)
-    //     await assert.checkText(component.customtokenKubToken, 'KUB')
-
-    //     await action.waitForExist(component.customtokenWToken, 2000, true)
-
-    //     await action.clearText(component.customtokenSearchTextFieldKub)
-    // })
-    // it('[Tap] Check Add Custom Token Btn',async () => {
-    //     // Click network icon
-    //     await action.Tap(1313, 241)
-
-    //     await action.waitForDisplayed(component.customtokenNetworkGoerliChain)
-
-    //     await action.click(component.customtokenNetworkGoerliChain)
-
-    //     await action.waitForDisplayed(component.customtokenAddcustomtokenBtn)
-    //     await assert.checkText(component.customtokenAddcustomtokenBtn, 'Add Custom Token')
-        
-    //     await action.click(component.customtokenAddcustomtokenBtn)
-
-    //     await action.waitForDisplayed(component.customtokenTokenAddressTextField)
-
-    //     await action.enterText(component.customtokenTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
-
-    //     await action.waitForDisplayed(component.customtokenAddFintoken)
-    //     await assert.checkText(component.customtokenAddFintoken, 'FinTestToken')
-
-    //     await action.click(component.customtokenCheckbox)
-
-    //     await action.waitForDisplayed(component.customtokenConfirmBtn)
-
-    //     await action.click(component.customtokenConfirmBtn)
-
-    //     await action.waitForDisplayed(component.customtokenFinToken)
-    //     await assert.checkElemenDisplayed(component.customtokenFinToken)
-    // })
-    // it('[Tap] Check Remove Custom Token Btn',async () => {
-    //     await action.waitForDisplayed(component.customtokenRemoveBtn)
-
-    //     await action.click(component.customtokenRemoveBtn)
-
-    //     await action.waitForExist(component.customtokenFinToken, 2000, true)
-
-    //     await action.click(component.customtokenBackBtn)
-    // })
-
     afterAll(async () => {
-        await action.closeApps(`${process.env.PACKAGE_ID}`)
+        await action.removeApps(`${process.env.PACKAGE_ID}`)
     })
 })
