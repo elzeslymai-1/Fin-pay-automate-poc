@@ -13,7 +13,7 @@ describe('Select Token Page Test Scenario',() => {
 
         await action.click(component.splashScreenCreateWalletBtn)
 
-        await action.click(component.createWallet12wordBtn)
+        await action.click(component.createWallet12WordBtn)
         await action.click(component.createWalletContinueBtn)
         await action.pause(5000)
 
@@ -89,7 +89,7 @@ describe('Select Token Page Test Scenario',() => {
     })
 
     it('[Tap] => Check KUB Token Tap',async () => {
-        // aciton
+        // action
         await action.click(component.selectTokenKUBToken)
 
         // assert
@@ -100,7 +100,7 @@ describe('Select Token Page Test Scenario',() => {
     })
 
     it('[Tap] => Check WTK Token Tap',async () => {
-        // aciton
+        // action
         await action.click(component.selectTokenWTKToken)
 
         // assert
@@ -231,12 +231,12 @@ describe('Receive Token Page Test Scenario',() => {
         await assert.checkText(component.receiveSetAmountBtn, 'Set Amount')
     })
 
-    it('[Wording] => Check Bottm Text 1',async () => {
+    it('[Wording] => Check Bottom Text 1',async () => {
         // assert
         await assert.checkText(component.receiveBottomText1, 'Only send')
     })
     
-    it('[Wording] => Check Bottm Text Chain name',async () => {
+    it('[Wording] => Check Bottom Text Chain name',async () => {
         // assert
         await assert.checkText(component.receiveBottomTextBitkub, 'Bitkub Chain Testnet (KUB)')
     })
@@ -293,7 +293,7 @@ describe('Receive Token Page Test Scenario',() => {
         // action
         await action.click(component.receiveCopyBtn)
 
-        //* This case is inconsistant.
+        //* This case is inconsistent.
         // assert
         // await assert.checkElementDisplayed(component.receiveCopiedText)
     })

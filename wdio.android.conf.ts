@@ -41,11 +41,11 @@ export const config: Options.Testrunner = {
             // "./test/androidTest/specs/backUpPage.e2e.ts",
             // "./test/androidTest/specs/importWalletPage.e2e.ts",
             // "./test/androidTest/specs/homePage.e2e.ts",
-            "./test/androidTest/specs/receivePage.e2e.ts",
             // "./test/androidTest/specs/settingPage.e2e.ts",
             // "./test/androidTest/specs/currencyPage.e2e.ts",
             // "./test/androidTest/specs/customNetworkPage.e2e.ts",
             // "./test/androidTest/specs/customTokenPage.e2e.ts",
+            "./test/androidTest/specs/receivePage.e2e.ts",
         ]
     ],
     // Patterns to exclude.
@@ -83,7 +83,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/build-1705630721060.apk'),
+        'appium:app': join(process.cwd(), `${process.env.PATH_APK}`),
         
     }],
 
