@@ -43,7 +43,7 @@ export class CreateWalletComponent {
     homeTabHomeBtn = '~Home, tab, 1 of 4'
 }
 
-export class CreateWalletModal{
+export class CreateWalletModel{
     private component = new CreateWalletComponent()
 
     async createWallet12Word(){
