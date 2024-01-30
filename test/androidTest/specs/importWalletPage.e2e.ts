@@ -14,53 +14,58 @@ describe ('Import Wallet Page Scenario', () => {
         await action.click(component.splashScreenImportWalletBtn)
     })
 
-    it('[Display] Check Back Btn',async () => {
+    it('[Display] => Check Back Btn',async () => {
         // assert
         await assert.checkElementDisplayed(component.importWalletBackBtn)
     })
 
-    it('[Display] Check Private Key Field',async () => {
+    it('[Display] => Check Private Key Field',async () => {
         // assert
         await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
     })
 
-    it('[Display] Check Paste Btn',async () => {
+    it('[Display] => Check Paste Btn',async () => {
         // assert
         await assert.checkElementDisplayed(component.importWalletPasteBtn)
     })
 
-    it('[Display] Check Import Wallet Btn',async () => {
+    it('[Display] => Check Import Wallet Btn',async () => {
         // assert
         await assert.checkElementDisplayed(component.importWalletImportBtn)
+    })
+
+    it('[Display] => Check Import Wallet Btn should be Disable',async () => {
+        // assert
         await assert.checkDisabled(component.importWalletImportBtn)
     })
 
-    it('[Wording] Check Back Btn Wording',async () => {
+    it('[Wording] => Check Back Btn Wording',async () => {
         // assert
         await assert.checkText(component.importWalletBackBtn, '')
     })
 
-    it('[Wording] Check Import Wallet Btn Wording',async () => {
+    it('[Wording] => Check Import Wallet Btn Wording',async () => {
         // assert
-        await assert.checkText(component.importWalletImportBtn, 'Import Wallet')
+        await assert.checkText(component.importWalletImportBtnText, 'Import Wallet')
     })
 
-    it('[Wording] Check Import Wallet Title Wording',async () => {
+    it('[Wording] => Check Import Wallet Title Wording',async () => {
         // assert
         await assert.checkText(component.importWalletTitleText, 'Import Wallet')
     })
 
-    it('[Wording] Check Import Wallet Header Wording',async () => {
+    it('[Wording] => Check Import Wallet Header Wording',async () => {
         // assert
-        await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic or Private Key')
+        await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic')
     })
 
-    it('[Wording] Check Import Wallet Description Wording',async () => {
+    it('[Wording] => Check Import Wallet Description Wording',async () => {
         // assert
-        await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.')
+        await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases for all wallet types.')
     })
 
-    it('[Tap] Check Back Btn Tap',async () => {
+    it('[Tap] => Check Back Btn Tap',async () => {
+        // action
         await action.click(component.importWalletBackBtn)
 
         // assert
@@ -70,14 +75,15 @@ describe ('Import Wallet Page Scenario', () => {
         await action.click(component.splashScreenImportWalletBtn)
     })
 
-    it('[Tap] Check Paste Btn Tap',async () => {
+    it('[Tap] => Check Paste Btn Tap',async () => {
+        // action
         await action.setClipboard('copytoclipboard')
 
         await action.click(component.importWalletPasteBtn)
     })
 
-    //* === Check Private Key Wrong Format ===
-    it('[Functional] Check Private Key Wrong Format',async () => {
+    it('[Functional] => Check Private Key Wrong Format',async () => {
+        // action
         await action.enterText(component.importWalletPrivatekeyField, 'test test test test test test test test test test test test test test test test test test test test test test test test test test')
         
         // assert
@@ -90,8 +96,8 @@ describe ('Import Wallet Page Scenario', () => {
         await action.clearText(component.importWalletPrivatekeyField)
     })
 
-    //* === Check Private Key Fail ===
-    it('[Functional] Check Private Key Fail',async () => {
+    it('[Functional] => Check Private Key Fail',async () => {
+        // action
         await action.click(component.importWalletPrivatekeyField)
         await action.enterText(component.importWalletPrivatekeyField, 'his how have has water fire seven one two tree monster bruh')
 
@@ -108,8 +114,8 @@ describe ('Import Wallet Page Scenario', () => {
 
     })
 
-    //* === Check Private Key Success ===
-    it('[Functional] Check Private Key Success',async () => {
+    it('[Functional] => Check Private Key Success',async () => {
+        // action
         await action.click(component.importWalletPrivatekeyField)
         await action.enterText(component.importWalletPrivatekeyField, `${process.env.MNEMONIC_PHRASE}`)
 
@@ -119,6 +125,7 @@ describe ('Import Wallet Page Scenario', () => {
         // action
         await action.click(component.importWalletImportBtn) // This one for de-select from keyboard
         await action.click(component.importWalletImportBtn)
+        await action.pause(3000)
         
         // assert
         await assert.checkElementDisplayed(component.loadText)
