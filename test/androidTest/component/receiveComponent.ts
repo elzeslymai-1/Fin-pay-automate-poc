@@ -42,6 +42,7 @@ export class receiveComponent {
     receiveBottomTextBitkub = `android=new UiSelector().text("Bitkub Chain Testnet (KUB)").className("android.widget.TextView")`
 
     receiveSetAmount10KUBText = `android=new UiSelector().text("10 KUB").className("android.widget.TextView")`
+    receiveSetAmount0KUBText = `android=new UiSelector().text("0 KUB").className("android.widget.TextView")`
     receiveRemoveSetAmountBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Scan Component

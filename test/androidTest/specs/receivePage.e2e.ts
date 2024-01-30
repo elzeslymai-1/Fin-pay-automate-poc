@@ -13,7 +13,7 @@ describe('Select Token Page Test Scenario',() => {
 
         await action.click(component.splashScreenCreateWalletBtn)
 
-        await action.click(component.createWallet12WordBtn)
+        await action.click(component.createWallet12wordBtn)
         await action.click(component.createWalletContinueBtn)
         await action.pause(5000)
 
@@ -114,10 +114,8 @@ describe('Select Token Page Test Scenario',() => {
         // action
         await action.enterText(component.selectTokenTextField, 'kuB')
 
-        // action for not exist
-        await action.waitForExist(component.selectTokenWTKToken, 2000, true)
-
         // assert
+        await assert.checkElementNotDisplayed(component.selectTokenWTKToken)
         await assert.checkElementDisplayed(component.selectTokenKUBToken)
 
         // after (clear text)
@@ -128,10 +126,8 @@ describe('Select Token Page Test Scenario',() => {
         // action
         await action.enterText(component.selectTokenTextField, 'Wtk')
 
-        // action for not exist
-        await action.waitForExist(component.selectTokenKUBToken, 2000, true)
-
         // assert
+        await assert.checkElementNotDisplayed(component.selectTokenKUBToken)
         await assert.checkElementDisplayed(component.selectTokenWTKToken)
 
         // after (clear text)
@@ -142,9 +138,9 @@ describe('Select Token Page Test Scenario',() => {
         // action
         await action.enterText(component.selectTokenTextField, 'ETH')
 
-        // action for not exist
-        await action.waitForExist(component.selectTokenWTKToken, 2000, true)
-        await action.waitForExist(component.selectTokenKUBToken, 2000, true)
+        // assert
+        await assert.checkElementNotDisplayed(component.selectTokenWTKToken)
+        await assert.checkElementNotDisplayed(component.selectTokenKUBToken)
 
         // after (clear text)
         await action.clearText(component.selectTokenTextField)
@@ -330,8 +326,8 @@ describe('Receive Token Page Test Scenario',() => {
 
         await action.click(component.receiveRemoveSetAmountBtn)
 
-        // action for not exist
-        await action.waitForExist(component.receiveRemoveSetAmountBtn, 2000, true)
+        // assert
+        await assert.checkElementNotDisplayed(component.receiveRemoveSetAmountBtn)
     })
 })
 
@@ -386,7 +382,18 @@ describe('Set Receive Amount Page Test Scenario',() => {
         await action.click(component.receiveSetAmountBtn)
     })
 
-    it('[Tap] => Check Continue Btn Tap',async () => {
+    it('[Function] => Check Continue without set amount',async () => {
+        // action        
+        await action.click(component.setAmountContinueBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.receiveSetAmount0KUBText)
+
+        // after (back to Set Amount)
+        await action.click(component.receiveSetAmountBtn)
+    })
+
+    it('[Function] => Check Continue with 10 KUB',async () => {
         // action
         await action.enterText(component.setAmountTextField, '10')
         
