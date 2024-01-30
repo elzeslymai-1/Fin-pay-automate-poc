@@ -82,7 +82,7 @@ describe('Splash Screen Page Scenario', () => {
         await assert.checkText(component.importWalletHeaderText,'Import Wallet')
 
         //after
-        await action.click(component.createWalletBackBtn)
+        await action.click(component.importWalletBackBtn)
     })
 
     afterAll(async () => {
