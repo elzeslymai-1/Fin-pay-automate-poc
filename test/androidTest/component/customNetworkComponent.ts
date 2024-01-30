@@ -46,25 +46,25 @@ export class customNetworkComponent {
 
     customNetworkNetworkURLText = `android=new UiSelector().resourceId("addcustomnetwork-form-url")`
     customNetworkNetworkURLInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-url")`
-    customNetworkNetworkURLInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(6)`
+    customNetworkNetworkURLInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(0)`
     customNetworkNetworkURLInfoText = `android=new UiSelector().resourceId("tooltip-text-url")`
-    customNetworkNetworkUrlTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-url")`
+    customNetworkNetworkURLTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-url")`
 
     customNetworkChainIDText = `android=new UiSelector().resourceId("addcustomnetwork-form-chainid")`
     customNetworkChainIDInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-chainid")`
-    customNetworkChainIDInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(10)`
+    customNetworkChainIDInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(0)`
     customNetworkChainIDInfoText = `android=new UiSelector().resourceId("tooltip-text-chainid")`
     customNetworkChainIDTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-chainid")`
     
     customNetworkSymbolText = `android=new UiSelector().resourceId("addcustomnetwork-form-symbol")`
-    customNetworkSymbolInfoBtn = `android=new UiSelector().text("").resourceId("addcustomnetwork-tooltip-symbol")`
-    customNetworkSymbolInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(14)`
+    customNetworkSymbolInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-symbol")`
+    customNetworkSymbolInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(0)`
     customNetworkSymbolInfoText = `android=new UiSelector().resourceId("tooltip-text-symbol")`
     customNetworkSymbolTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-symbol")`
     
     customNetworkExplorerText = `android=new UiSelector().resourceId("addcustomnetwork-form-blockexplorer")`
     customNetworkExplorerInfoBtn = `android=new UiSelector().resourceId("addcustomnetwork-tooltip-blockexplorer")`
-    customNetworkExplorerInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(18)`
+    customNetworkExplorerInfoBtnText = `android=new UiSelector().text("").className("android.widget.TextView").index(0)`
     customNetworkExplorerInfoText = `android=new UiSelector().resourceId("tooltip-text-blockexplorer")`
     customNetworkExplorerTextField = `android=new UiSelector().resourceId("addcustomnetwork-input-blockexplorer")`
 
