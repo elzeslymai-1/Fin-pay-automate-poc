@@ -1,4 +1,4 @@
-import { Action } from "../../mainComponent/mainFunction/Action"
+import { Action } from "../../mainComponent/mainFunction/Action.js"
 
 const action = new Action()
 export class ImportWalletComponent {
