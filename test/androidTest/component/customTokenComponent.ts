@@ -25,14 +25,30 @@ export class customTokenComponent {
     customTokenKubToken = `android=new UiSelector().text("KUB").className("android.widget.TextView")`
     customTokenWToken = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
     customTokenGoerliToken = `android=new UiSelector().text("Goerli").className("android.widget.TextView")`
-    customTokenFinTestToken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
+    customTokenFinTestToken = `android=new UiSelector().text("fins token").className("android.widget.TextView")`
 
     customTokenAddCustomTokenBtn = `android=new UiSelector().text("Add Custom Token").className("android.widget.TextView")`
-    customTokenTokenAddressTextField = `android=new UiSelector().text("Token address (0x...)").className("android.widget.EditText")`
-    customTokenAddFinToken = `android=new UiSelector().text("FinTestToken").className("android.widget.TextView")`
-    customTokenNoResultText = `android=new UiSelector().text("No Result").className("android.widget.TextView")`
-    customTokenCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
-    customTokenConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
+
+    // Add Token Component
+    addTokenTitleText = `android=new UiSelector().text("Custom token").className("android.view.View")`
+    addTokenAddressHeadText = `android=new UiSelector().text("Token address").className("android.widget.TextView")`
+    addTokenBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    addTokenAddressTextField = `android=new UiSelector().className("android.widget.EditText")`
+    addTokenPasteBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    
+    addTokenFinToken = `android=new UiSelector().text("fins token").className("android.widget.TextView")`
+    addTokenAddress = `android=new UiSelector().text("Token Address").className("android.widget.TextView")`
+    addTokenSymbol = `android=new UiSelector().text("Token Symbol").className("android.widget.TextView")`
+    addTokenName = `android=new UiSelector().text("Token Name").className("android.widget.TextView")`
+    addTokenBalance = `android=new UiSelector().text("Token Balance").className("android.widget.TextView")`
+    addTokenWarningText = `android=new UiSelector().text("By adding this as a custom token, you confirm that all further interactions with it are at your own risk.").className("android.widget.TextView")`
+    addTokenNoResultText = `android=new UiSelector().text("No Result").className("android.widget.TextView")`
+    addTokenAlreadyExistText = `android=new UiSelector().text("Token already exist").className("android.widget.TextView")`
+    
+    addTokenCheckbox = `android=new UiSelector().className("android.widget.CheckBox")`
+    addTokenCheckboxText = `android=new UiSelector().text("I understand and agree").className("android.widget.TextView")`
+    addTokenCancelBtn = `android=new UiSelector().text("Cancel").className("android.widget.TextView")`
+    addTokenConfirmBtn = `android=new UiSelector().text("Confirm").className("android.widget.TextView")`
 
     // Network Component
     networkTitleText = `android=new UiSelector().text("Select Network").className("android.widget.TextView")`
