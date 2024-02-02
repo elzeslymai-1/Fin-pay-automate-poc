@@ -36,7 +36,6 @@ export const config: Options.Testrunner = {
     specs: [
         [
             // "./Test/iosTest/specs/**.e2e.ts"
-            './test/mainComponent/commands.js',
             './Test/iosTest/specs/splashScreenPage.e2e.ts',
             './Test/iosTest/specs/importWalletPage.e2e.ts',
             './Test/iosTest/specs/createWalletPage.e2e.ts',
