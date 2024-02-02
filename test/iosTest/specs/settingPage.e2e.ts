@@ -186,4 +186,8 @@ describe('Setting Page Test Scenario', () => {
         await action.click(component.sessionsBackBtn)
     })
     
+    afterAll(async () => {
+        // remove apps
+        await action.removeApps(`${process.env.BUNDLE_ID}`)
+    })
 })
