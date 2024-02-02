@@ -36,10 +36,12 @@ export const config: Options.Testrunner = {
     specs: [
         [
             // "./Test/iosTest/specs/**.e2e.ts"
+            './test/mainComponent/commands.js',
             './Test/iosTest/specs/splashScreenPage.e2e.ts',
             './Test/iosTest/specs/importWalletPage.e2e.ts',
             './Test/iosTest/specs/createWalletPage.e2e.ts',
-            './Test/iosTest/specs/backupWalletPage.e2e.ts'
+            './Test/iosTest/specs/backupWalletPage.e2e.ts',
+            './Test/iosTest/specs/homePage.e2e.ts'
         ]
     ],
     // Patterns to exclude.
@@ -220,6 +222,10 @@ export const config: Options.Testrunner = {
      * @param {object}         browser      instance of created browser/device session
      */
     // before: function (capabilities, specs) {
+    //     // Add commands to WebdriverIO
+    //     Object.keys(commands).forEach((key) => {
+    //         browser.addCommand(key, commands[key])
+    //     })
     // },
     /**
      * Runs before a WebdriverIO command gets executed.
