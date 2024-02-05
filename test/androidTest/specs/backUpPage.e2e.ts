@@ -16,31 +16,32 @@ describe('Back Up Pop Test Scenario', () => {
         await action.click(component.createWallet12wordBtn)
 
         await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
 
         await action.click(component.successBackupBtn)
     })
 
-    it('[Display] Check Pop-up Continue Btn', async () => {
+    it('[Display] => Check Pop-up Continue Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupPopupContinueBtn)
     })
 
-    it('[Wording] Check Pop-up Header Text', async () => {
+    it('[Wording] => Check Pop-up Header Text', async () => {
         //assert
         await assert.checkText(component.backupPopupText, "Do this step in private place")
     })
 
-    it('[Wording] Check Pop-up Description Text', async () => {
+    it('[Wording] => Check Pop-up Description Text', async () => {
         //assert
         await assert.checkText(component.backupPopupDescriptionText, "Your recovery phrase is what grants you ( and anyone who has it ) access to your funds. Be sure to store it in a safe place.")
     })
 
-    it('[Wording] Check Pop-up Continue Btn Text', async () => {
+    it('[Wording] => Check Pop-up Continue Btn Text', async () => {
         //assert
-        await assert.checkText(component.backupPopupContinueBtn, "Continue")
+        await assert.checkText(component.backupPopupContinueBtnText, "Continue")
     })
 
-    it('[Tap] Check Pop-up Btn Tap', async () => {
+    it('[Tap] => Check Pop-up Btn Tap', async () => {
         // action
         await action.click(component.backupPopupContinueBtn)
 
@@ -51,67 +52,67 @@ describe('Back Up Pop Test Scenario', () => {
 
 describe('Back Up Mnemonic Test Scenario', () => {
 
-    it('[Display] Check Back Btn', async () => {
+    it('[Display] => Check Back Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupBackBtn)
     })
 
-    it('[Display] Check Copy Btn', async () => {
+    it('[Display] => Check Copy Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupCopyBtn)
     })
 
-    it('[Display] Check Check Box', async () => {
+    it('[Display] => Check Check Box', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupCheckbox)
     })
 
-    it('[Display] Check Continue Btn', async () => {
+    it('[Display] => Check Continue Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.backupContinueBtn)
     })
 
-    it('[Display] Check Continue Btn Should be Disabled', async () => {
+    it('[Display] => Check Continue Btn Should be Disabled', async () => {
         // assert
         await assert.checkDisabled(component.backupContinueBtn)
     })
 
-    it('[Wording] Check Back Up Title Text', async () => {
+    it('[Wording] => Check Back Up Title Text', async () => {
         // assert
         await assert.checkText(component.backupTitleText, 'Back up Mnemonic phrase')
     })
 
-    it('[Wording] Check Back Up Header Text', async () => {
+    it('[Wording] => Check Back Up Header Text', async () => {
         // assert
         await assert.checkText(component.backupHeaderText, 'Your Mnemonic phrase')
     })
 
-    it('[Wording] Check Back Up Description Text', async () => {
+    it('[Wording] => Check Back Up Description Text', async () => {
         // assert
         await assert.checkText(component.backupDescriptionText, 'Remember to record your words in the same order as they appear below.')
     })
 
-    it('[Wording] Check Back Btn Text', async () => {
+    it('[Wording] => Check Back Btn Text', async () => {
         // assert
         await assert.checkText(component.backupBackBtn, '')
     })
 
-    it('[Wording] Check Copy Btn Text', async () => {
+    it('[Wording] => Check Copy Btn Text', async () => {
         // assert
-        await assert.checkText(component.backupCopyBtn, 'copy to clipboard')
+        await assert.checkText(component.backupCopyBtnText, 'copy to clipboard')
     })
 
-    it('[Wording] Check Check Box Text', async () => {
+    it('[Wording] => Check Check Box Text', async () => {
         // assert
         await assert.checkText(component.backupCheckboxText, 'I understand that if I lose my recovery phrase, I will not be able to access my funds.')
     })
 
-    it('[Wording] Check Continue Btn', async () => {
+    it('[Wording] => Check Continue Btn', async () => {
         // assert
-        await assert.checkText(component.backupContinueBtn, 'Continue')
+        await assert.checkText(component.backupContinueBtnText, 'Continue')
     })
 
-    it('[Tap] Check Back Btn Tap', async () => {
+    it('[Tap] => Check Back Btn Tap', async () => {
         // action
         await action.click(component.backupBackBtn)
 
@@ -123,13 +124,13 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await action.click(component.backupPopupContinueBtn)
     })
 
-    it('[Tap] Check Copy Btn Tap', async () => {
+    it('[Tap] => Check Copy Btn Tap', async () => {
         // action
         await action.click(component.backupCopyBtn)
         // await action.waitForDisplayed(component.backupCopyText)
     })
 
-    it('[Tap] Check Check Box Btn Tap', async () => {
+    it('[Tap] => Check Check Box Btn Tap', async () => {
         // action
         await action.click(component.backupCheckbox)
 
@@ -137,7 +138,7 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await assert.checkNotDisabled(component.backupContinueBtn)
     })
 
-    it('[Tap] Check Continue Btn Tap', async () => {
+    it('[Tap] => Check Continue Btn Tap', async () => {
         // action
         await action.click(component.backupContinueBtn)
 
@@ -149,13 +150,17 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
-    it('[Functional] Backup with 12-Mnemonic Phrase', async () => {
+    it('[Functional] => Backup with 12-Mnemonic Phrase', async () => {
         //action
         await action.click(component.splashScreenCreateWalletBtn)
+
         await action.click(component.createWallet12wordBtn)
+
         await action.click(component.createWalletContinueBtn)
         await action.pause(3000)
+
         await action.click(component.successBackupBtn)
+
         await action.click(component.backupPopupContinueBtn)
 
         // assert
@@ -166,7 +171,7 @@ describe('Back Up Mnemonic Test Scenario', () => {
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
     })
 
-    it('[Functional] Backup with 24-Mnemonic Phrase', async () => {
+    it('[Functional] => Backup with 24-Mnemonic Phrase', async () => {
         //action
         await action.click(component.splashScreenCreateWalletBtn)
         await action.click(component.createWallet24wordBtn)
@@ -189,43 +194,43 @@ describe('Correct Mnemonic Phrase Test Scenario', () => {
         await action.click(component.backupContinueBtn)
     })
 
-    it('[Display] Check Mnemonic Phrase Back Btn', async () => {
+    it('[Display] => Check Mnemonic Phrase Back Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.correctMnemonicBackBtn)
     })
     
-    it('[Display] Check Mnemonic Phrase Continue Btn', async () => {
+    it('[Display] => Check Mnemonic Phrase Continue Btn', async () => {
         // assert
         await assert.checkElementDisplayed(component.correctMnemonicContinueBtn)
         await assert.checkDisabled(component.correctMnemonicContinueBtn)
     })
 
-    it('[Wording] Check Mnemonic Phrase Title Text', async () => {
+    it('[Wording] => Check Mnemonic Phrase Title Text', async () => {
         // assert
         await assert.checkText(component.correctMnemonicTitleText, 'Back up Mnemonic phrase')
     })
 
-    it('[Wording] Check Mnemonic Phrase Header Text', async () => {
+    it('[Wording] => Check Mnemonic Phrase Header Text', async () => {
         // assert
         await assert.checkText(component.correctMnemonicHeaderText, 'Your Mnemonic phrase')
     })
 
-    it('[Wording] Check Mnemonic Phrase Description Text', async () => {
+    it('[Wording] => Check Mnemonic Phrase Description Text', async () => {
         // assert
         await assert.checkText(component.correctMnemonicDescriptionText, 'Remember to record your words in the same order as they appear below.')
     })
 
-    it('[Wording] Check Mnemonic Phrase Back Btn Text', async () => {
+    it('[Wording] => Check Mnemonic Phrase Back Btn Text', async () => {
         // assert
         await assert.checkText(component.correctMnemonicBackBtn, '')
     })
 
-    it('[Wording] Check Mnemonic Phrase Continue Btn', async () => {
+    it('[Wording] => Check Mnemonic Phrase Continue Btn', async () => {
         // assert
-        await assert.checkText(component.correctMnemonicContinueBtn, 'Continue')
+        await assert.checkText(component.correctMnemonicContinueBtnText, 'Continue')
     })
 
-    it('[Tap] Check Correct Mnemonic Phrase Back Btn Tap',async () => {
+    it('[Tap] => Check Correct Mnemonic Phrase Back Btn Tap',async () => {
         // action
         await action.click(component.correctMnemonicBackBtn)
 

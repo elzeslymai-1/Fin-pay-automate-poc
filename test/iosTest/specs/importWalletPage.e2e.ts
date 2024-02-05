@@ -1,8 +1,8 @@
-import { importWalletComponent } from '../component/importWalletComponent.js'
+import { ImportWalletComponent } from '../component/importWalletComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
-const component = new importWalletComponent()
+const component = new ImportWalletComponent()
 const action = new Action()
 const assert = new Assertion()
 
