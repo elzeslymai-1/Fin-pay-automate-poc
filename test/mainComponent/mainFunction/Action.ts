@@ -56,10 +56,10 @@ export class Action {
         switch (x) {
             case 'left':
 
-                startX = width * 0.8; // 80% of the screen width
-                startY = height / 2; // Center of the screen
-                endX = width * 0.2; // 20% of the screen width
-                endY = height / 2; // Center of the screen
+                startX = width * 0.8; // 80% of the screen width ; 0 is the left
+                startY = height / 2; // Center of the screen ; 0 is the top
+                endX = width * 0.2; // 20% of the screen width ; 0 is the left
+                endY = height / 2; // Center of the screen ; 0 is the top
 
                 await browser.performActions([
                     {
@@ -78,10 +78,10 @@ export class Action {
 
             case 'up':
 
-                startX = width / 2; // Center of the screen
-                startY = height * 0.8; // 80% of the screen width
-                endX = width / 2; // Center of the screen
-                endY = height * 0.2; // 20% of the screen width
+                startX = width / 2; // Center of the screen ; 0 is the left
+                startY = height * 0.8; // 80% of the screen width ; 0 is the top
+                endX = width / 2; // Center of the screen ; 0 is the left
+                endY = height * 0.2; // 20% of the screen width ; 0 is the top
 
                 await browser.performActions([
                     {
@@ -97,6 +97,29 @@ export class Action {
                     },
                 ]);
                 break
+
+            case 'down':
+
+                startX = width / 2; // Center of the screen ; 0 is the left
+                startY = height * 0.2; // 80% of the screen width ; 0 is the top
+                endX = width / 2; // Center of the screen ; 0 is the left
+                endY = height * 0.8; // 20% of the screen width ; 0 is the top
+
+                await browser.performActions([
+                    {
+                        type: 'pointer',
+                        id: 'finger1',
+                        parameters: { pointerType: 'touch' },
+                        actions: [
+                            { type: 'pointerMove', duration: 0, x: startX, y: startY },
+                            { type: 'pointerDown', button: 0 },
+                            { type: 'pointerMove', duration: 100, x: endX, y: endY },
+                            { type: 'pointerUp', button: 0 },
+                        ],
+                    },
+                ]);
+                break
+
         }
     }
 
@@ -107,6 +130,10 @@ export class Action {
 
     public async hideKeyboard() {
         await browser.hideKeyboard('pressKey', 'Done')
+    }
+
+    public async tabKeyboard(key: string) {
+        await driver.hideKeyboard('pressKey', key)
     }
 
     public async selectOptionByIndex(locator: string, value: number) {

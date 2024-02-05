@@ -3,11 +3,17 @@ export class createWalletComponent {
     // Create Wallet Page Component
     createWalletTitleText = `android=new UiSelector().text("Create Wallet").className("android.view.View")`
 
-    createWalletBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-    createWalletInfoIconBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
+    createWalletBackBtn = `android=new UiSelector().resourceId("createwallet-header-backbtn")`
+    createWalletBackBtnText = `android=new UiSelector().text("").className("android.widget.TextView")`
+
+    createWalletInfoIconBtn = `android=new UiSelector().resourceId("createwallet-header-mnemonicinfobtn")`
+    createWalletInfoIconBtnText = `android=new UiSelector().text("").className("android.widget.TextView")`
+
     createWallet12wordBtn = `android=new UiSelector().text("12-word Mnemonic wallet").className("android.widget.TextView")`
     createWallet24wordBtn = `android=new UiSelector().text("24-word Mnemonic wallet").className("android.widget.TextView")`
-    createWalletContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
+    
+    createWalletContinueBtn = `android=new UiSelector().resourceId("createwallet-continue-btn")`
+    createWalletContinueBtnText = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
 
     // Information Page Component
     infoTitleText = `android=new UiSelector().text("Mnemonic code").className("android.view.View")`
@@ -23,11 +29,14 @@ export class createWalletComponent {
     createSuccessText = `android=new UiSelector().text("CREATE WALLET SUCCESS").className("android.widget.TextView")`
 
     // Create Wallet Success Page Component
-    successText = `android=new UiSelector().text("You're all done!").className("android.widget.TextView")`
-    successDescriptionText = `android=new UiSelector().text("You have successfully added a new wallet").className("android.widget.TextView")`
+    successText = `android=new UiSelector().resourceId("createwallet-success-title")`
+    successDescriptionText = `android=new UiSelector().resourceId("createwallet-success-description")`
 
-    successContinueBtn = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
-    successBackupBtn = `android=new UiSelector().text("Back Up Wallet").className("android.widget.TextView")`
+    successContinueBtn = `android=new UiSelector().resourceId("createwallet-success-continue")`
+    successContinueBtnText = `android=new UiSelector().text("Continue").className("android.widget.TextView")`
+
+    successBackupBtn = `android=new UiSelector().resourceId("createwallet-success-backup")`
+    successBackupBtnText = `android=new UiSelector().text("Back Up Wallet").className("android.widget.TextView")`
 
     // Home Page Component
     homeIconBar = `android=new UiSelector().text("Home").className("android.widget.TextView")`
