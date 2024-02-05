@@ -51,9 +51,17 @@ export class receiveComponent {
     scanTitleText = `android=new UiSelector().text("Scan QR code").className("android.view.View")`
     scanBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
+    // Deny Download QR Component
+    denyDownloadTitleText = `android=new UiSelector().text("Access Your Photos").className("android.widget.TextView")`
+    denyDownloadDescText = `android=new UiSelector().text("Please allow the app to access your photo album in your privacy settings.").className("android.widget.TextView")`
+    denyDownloadOKBtn = `android=new UiSelector().text("OK").className("android.widget.TextView")`
+
     // Download QR Component
     downloadPermissionBtn1 = `android=new UiSelector().resourceId("com.android.permissioncontroller:id/permission_allow_button")`
+    downloadPermissionDeny1 = `android=new UiSelector().resourceId("com.android.permissioncontroller:id/permission_deny_button")`
+
     downloadPermissionBtn2 = `android=new UiSelector().resourceId("com.android.permissioncontroller:id/permission_allow_all_button")`
+    downloadPermissionDeny2 = `android=new UiSelector().resourceId("com.android.permissioncontroller:id/permission_deny_button")`
 
     downloadSuccessText = `android=new UiSelector().text("Save to media libary").className("android.widget.TextView")`
 

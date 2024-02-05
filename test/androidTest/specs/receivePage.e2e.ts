@@ -147,11 +147,45 @@ describe('Select Token Page Test Scenario',() => {
     })
 })
 
-describe('Receive Token Page Test Scenario',() => {
+describe('Deny Download QR permission Test Scenerio',() => {
     beforeAll(async () => {
         await action.click(component.selectTokenKUBToken)
+        await action.click(component.receiveDownloadQRBtn)
+
+        await action.click(component.downloadPermissionDeny1)
+        await action.click(component.downloadPermissionDeny2)
     })
 
+    it('[Display] => Check OK Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.denyDownloadOKBtn)
+    })
+
+    it('[Wording] => Check Title Text',async () => {
+        // assert
+        await assert.checkText(component.denyDownloadTitleText, 'Access Your Photos')
+    })
+
+    it('[Wording] => Check Description Text',async () => {
+        // assert
+        await assert.checkText(component.denyDownloadDescText, 'Please allow the app to access your photo album in your privacy settings.')
+    })
+
+    it('[Wording] => Check OK Btn Text',async () => {
+        // assert
+        await assert.checkText(component.denyDownloadOKBtn, 'OK')
+    })
+
+    it('[Tap] => Check OK Btn Tap',async () => {
+        // action
+        await action.click(component.denyDownloadOKBtn)
+
+        // assert
+        await assert.checkElementNotDisplayed(component.denyDownloadTitleText)
+    })
+})
+
+describe('Receive Token Page Test Scenario',() => {
     it('[Display] => Check Back Btn',async () => {
         // assert
         await assert.checkElementDisplayed(component.receiveBackBtn)
