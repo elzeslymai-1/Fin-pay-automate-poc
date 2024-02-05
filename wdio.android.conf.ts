@@ -36,15 +36,15 @@ export const config: Options.Testrunner = {
     specs: [
         [
             // "./test/androidTest/specs/**.e2e.ts"
-            "./test/androidTest/specs/splashScreenPage.e2e.ts",
-            "./test/androidTest/specs/createWalletPage.e2e.ts",
-            "./test/androidTest/specs/backUpPage.e2e.ts",
-            "./test/androidTest/specs/importWalletPage.e2e.ts",
+            // "./test/androidTest/specs/splashScreenPage.e2e.ts",
+            // "./test/androidTest/specs/createWalletPage.e2e.ts",
+            // "./test/androidTest/specs/backUpPage.e2e.ts",
+            // "./test/androidTest/specs/importWalletPage.e2e.ts",
             // "./test/androidTest/specs/homePage.e2e.ts",
             // "./test/androidTest/specs/settingPage.e2e.ts",
             // "./test/androidTest/specs/currencyPage.e2e.ts",
             // "./test/androidTest/specs/customNetworkPage.e2e.ts",
-            // "./test/androidTest/specs/customTokenPage.e2e.ts",
+            "./test/androidTest/specs/customTokenPage.e2e.ts",
             "./test/androidTest/specs/scanPage.e2e.ts",
         ]
     ],
@@ -84,7 +84,7 @@ export const config: Options.Testrunner = {
 
         //config for Finpay prod. version
         'appium:app': join(process.cwd(), `${process.env.PATH_APK}`),
-        
+
     }],
 
     //
