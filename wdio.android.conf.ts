@@ -45,6 +45,7 @@ export const config: Options.Testrunner = {
             // "./test/androidTest/specs/currencyPage.e2e.ts",
             // "./test/androidTest/specs/customNetworkPage.e2e.ts",
             // "./test/androidTest/specs/customTokenPage.e2e.ts",
+            "./test/androidTest/specs/scanPage.e2e.ts",
         ]
     ],
     // Patterns to exclude.
