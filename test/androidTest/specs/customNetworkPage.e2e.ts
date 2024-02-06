@@ -531,11 +531,16 @@ describe('Add Network Success Test Scenario', () => {
         // assert
         await assert.checkText(component.homeChain, 'goerli')
 
-        // after (remove and back to Add Custom Network Success)
+        // action
         await action.click(component.homeSettingBtn)
         await action.click(component.settingNetworkManageBtn)
 
         await action.click(component.networkManagementCustomTab)
+
+        // assert
+        await assert.checkElementDisplayed(component.customTabGoerliBtn)
+
+        // after (remove and back to Add Custom Network Success)
         await action.click(component.customTabGoerliRemoveBtn)
 
         await action.click(component.confirmRemoveRemoveBtn)
@@ -614,7 +619,8 @@ describe('Confirm Remove Chain Test Scenario', () => {
         await action.click(component.confirmRemoveRemoveBtn)
 
         // assert
-        await assert.checkElementNotDisplayed(component.customTabGoerliRemoveBtn)
+        await assert.checkElementNotDisplayed(component.customTabGoerliBtn)
+        await assert.checkElementDisplayed(component.customTabNoNetworkText)
     })
 
     afterAll(async () => {

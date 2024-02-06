@@ -14,6 +14,8 @@ export class customNetworkComponent {
     // Custom Network Tab Component
     customTabNoNetworkText = `android=new UiSelector().text("No Custom Network").className("android.widget.TextView")`
     customTabAddCustomNetworkBtn = `android=new UiSelector().text("Add Custom Network").className("android.widget.TextView")`
+    
+    customTabGoerliBtn = `android=new UiSelector().resourceId("addnetwork-chainlist-goerli")`
     customTabGoerliRemoveBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
 
     // Confirm Remove Pop-up Component
