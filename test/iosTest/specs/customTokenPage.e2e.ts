@@ -1,14 +1,14 @@
 import { CustomTokenComponent } from '../component/customTokenComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
-import { CreateWalletModel } from '../component/createWalletComponent.js'
 import { CustomNetworkModel } from '../component/customNetworkComponent.js'
+import { ImportWalletModel } from '../component/importWalletComponent.js'
 
 const component = new CustomTokenComponent()
 const action = new Action()
 const assert = new Assertion()
-const createWalletModel = new CreateWalletModel()
 const customNetworkModel = new CustomNetworkModel()
+const importWalletModel = new ImportWalletModel()
 
 
 describe('Custom Token Page Test Scenario', () => {
@@ -17,7 +17,7 @@ describe('Custom Token Page Test Scenario', () => {
         await action.installApps('apps/FinPay.app')     // install apps
         await action.launchApps(`${process.env.BUNDLE_ID}`)     //launch app
 
-        await createWalletModel.createWallet12Word()    // create wallet
+        await importWalletModel.importWallet(`${process.env.MNEMONIC_PHRASE_NO_BALANCE}`)   // import wallet
         await action.click(component.homeTabSettingBtn)     // go to setting page
         await action.click(component.settingCustomTokenBtn)     // go to custom page
     })

@@ -1,19 +1,20 @@
 import { HomeComponent } from '../component/homeComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
-import { CreateWalletModel } from '../component/createWalletComponent.js'
+import { ImportWalletModel } from '../component/importWalletComponent.js'
 
 const action = new Action()
 const assert = new Assertion()
 const component = new HomeComponent()
-const createWalletModel = new CreateWalletModel()
+const importWalletModel = new ImportWalletModel()
+
 
 describe('Home Menu Bar Test Scenario', () => {
     beforeAll(async () => {
         await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
 
-        await createWalletModel.createWallet12Word()
+        await importWalletModel.importWallet(`${process.env.MNEMONIC_PHRASE_NO_BALANCE}`)   // import wallet
     })
 
     it('[Display] Check Home Btn', async () => {
