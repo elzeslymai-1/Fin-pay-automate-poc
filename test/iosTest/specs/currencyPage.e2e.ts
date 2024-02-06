@@ -1,19 +1,19 @@
 import { CurrencyComponent } from '../component/currencyComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
-import { CreateWalletModel } from '../component/createWalletComponent.js'
+import { ImportWalletModel } from '../component/importWalletComponent.js'
 
 const action = new Action()
 const assert = new Assertion()
 const component = new CurrencyComponent()
-const createWalletModel = new CreateWalletModel()
+const importWalletModel = new ImportWalletModel()
 
 describe('Currency Page Test Scenario', () => {
     beforeAll(async () => {
         await action.installApps('apps/FinPay.app')     // install apps
         await action.launchApps(`${process.env.BUNDLE_ID}`)     //launch app
 
-        await createWalletModel.createWallet12Word()    // create wallet
+        await importWalletModel.importWallet(`${process.env.MNEMONIC_PHRASE_NO_BALANCE}`)   // import wallet
         await action.click(component.homeTabSettingBtn)     // go to setting page
         await action.click(component.settingCurrencyUSDBtn)     // go to currency page
     })
