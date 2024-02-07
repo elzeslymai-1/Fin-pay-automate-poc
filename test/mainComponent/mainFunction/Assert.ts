@@ -14,7 +14,6 @@ export class Assertion {
     }
 
     public async checkElementNotDisplayed(locator: string) {
-        await action.waitForDisplayed(locator)
         await expect($(locator)).not.toBeDisplayed()
     }
 

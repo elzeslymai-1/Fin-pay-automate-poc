@@ -1,10 +1,11 @@
-import { sendComponent } from '../component/sendComponent.js'
+import { sendComponent, sendModel } from '../component/sendComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const component = new sendComponent()
 const action = new Action()
 const assert = new Assertion()
+const model = new sendModel()
 
 describe('Send Page Test Scenario', () => {
     beforeAll(async () => {
@@ -19,6 +20,21 @@ describe('Send Page Test Scenario', () => {
         await action.click(component.importWalletImportBtn)
         await action.pause(5000)
 
+        // action for add test token
+        await action.click(component.homeSettingBtn)
+        await action.click(component.settingCustomTokenBtn)
+
+        await action.click(component.customTokenAddTokenBtn)
+
+        await action.enterText(component.addTokenTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.pause(2000)
+
+        await action.click(component.addTokenCheckBox)
+        await action.click(component.addTokenConfirmBtn)
+
+        await action.click(component.customTokenBackBtn)
+
+        await action.click(component.homeBtn)
         await action.click(component.homeSendBtn)
     })
 
@@ -131,20 +147,45 @@ describe('Send Page Test Scenario', () => {
 
     it('[Tap] => Check Max Btn Tap',async () => {
         // action
+        await action.click(component.sendSelectTokenKUB)
+        await action.click(component.selectTokenFST)
+
         await action.click(component.sendAmountMaxBtn)
-        
-        // action for check don't exist
-        await action.waitForExist(component.sendAmountPlaceHolder, 2000, true)
+
+        // assert for check balance with real balance
+        const fst = await model.getNativeFst();
+        await assert.checkText(component.sendAmountTextField, fst)
 
         // after (clear text)
         await action.clearText(component.sendAmountTextField)
 
     })
 
+    it('[Error] => Check Transaction Error',async () => {
+        // action
+        await action.click(component.sendSelectTokenFST)
+        await action.click(component.selectTokenWTK)
+
+        await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
+        await action.enterText(component.sendAmountTextField, '1')
+
+        await action.click(component.sendNextBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.transacErrorTitleText)
+        await assert.checkElementDisplayed(component.transacErrorOKBtn)
+
+        // after (close error popup)
+        await action.click(component.transacErrorOKBtn)
+    })
+
     it('[Tap] => Check Next Btn Tap',async () => {
         // action
+        await action.click(component.sendSelectTokenWTK)
+        await action.click(component.selectTokenKUB)
+
         await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
-        await action.enterText(component.sendAmountTextField, '0.0001')
+        await action.enterText(component.sendAmountTextField, '1')
 
         // assert
         await assert.checkNotDisabled(component.sendNextBtn)
@@ -154,6 +195,7 @@ describe('Send Page Test Scenario', () => {
 
         // assert
         await assert.checkElementDisplayed(component.confirmTitleText)
+        await assert.checkText(component.confirm1KUBText, '1 KUB')
 
         // after (back to Send)
         await action.click(component.confirmBackBtn)
@@ -201,6 +243,11 @@ describe('Select Token Page Test Scenario', () => {
         await assert.checkElementDisplayed(component.selectTokenWTK)
     })
 
+    it('[Display] => Check FST Token Btn',async () => {
+        // assert
+        await assert.checkElementDisplayed(component.selectTokenFST)
+    })
+
     it('[Wording] => Check Title Text',async () => {
         // assert
         await assert.checkText(component.selectTokenTitleText, 'Select Token')
@@ -231,6 +278,16 @@ describe('Select Token Page Test Scenario', () => {
         await assert.checkText(component.selectTokenWTKFullName, 'WToken')
     })
 
+    it('[Wording] => Check FST Token Btn Text',async () => {
+        // assert
+        await assert.checkText(component.selectTokenFST, 'FST')
+    })
+
+    it('[Wording] => Check FST Token Fullname Text',async () => {
+        // assert
+        await assert.checkText(component.selectTokenFSTFullName, 'fins token')
+    })
+
     it('[Wording] => Check Bottom Text',async () => {
         // assert
         await assert.checkText(component.selectTokenBottomText, 'Didn’t see your token? Import')
@@ -258,28 +315,40 @@ describe('Select Token Page Test Scenario', () => {
         await action.click(component.sendSelectTokenKUB)
     })
 
+    it('[Tap] => Check FST Token Btn Tap',async () => {
+        // action
+        await action.click(component.selectTokenFST)
+
+        // assert
+        await assert.checkElementDisplayed(component.sendSelectTokenFST)
+
+        // after (back to Select Token)
+        await action.click(component.sendSelectTokenFST)
+    })
+
     it('[Search] => Check Search function',async () => {
         // action
         await action.enterText(component.selectTokenSearchTextField, 'kub')
 
-        // action for check not exist
-        await action.waitForExist(component.selectTokenWTK, 2000, true)
+        // assert
+        await assert.checkElementNotDisplayed(component.selectTokenWTK)
 
         // action
         await action.enterText(component.selectTokenSearchTextField, 'eth')
 
-        // action for check not exist
-        await action.waitForExist(component.selectTokenKUB, 2000, true)
-        await action.waitForExist(component.selectTokenWTK, 2000, true)
+        // assert
+        await assert.checkElementNotDisplayed(component.selectTokenKUB)
+        await assert.checkElementNotDisplayed(component.selectTokenWTK)
 
         // after (back to Send)
         await action.clearText(component.selectTokenSearchTextField)
-        await action.click(component.selectTokenKUB)
+        await action.click(component.selectTokenFST)
     })
 })
 
 describe('Confirm Send Page Test Scenario', () => {
     beforeAll(async () => {
+        await action.enterText(component.sendAmountTextField, '0.001')
         await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
 
         await action.click(component.sendNextBtn)
@@ -376,6 +445,7 @@ describe('Confirm Send Page Test Scenario', () => {
 
         // after (back to Confirm Send)
         await action.click(component.sendNextBtn)
+        await action.pause(2000)
     })
 
     it('[Tap] => Check Confirm Btn Tap',async () => {
@@ -420,6 +490,19 @@ describe('Send Success Page Test Scenario', () => {
 
         // assert
         await assert.checkElementDisplayed(component.historyTitleText)
+    })
+
+    it('[Function] => Check FST balance',async () => {
+        // action
+        await action.click(component.homeBtn)
+        await action.click(component.homeSendBtn)
+        await action.click(component.sendSelectTokenKUB)
+        await action.click(component.selectTokenFST)
+        await action.click(component.sendAmountMaxBtn)
+
+        // assert for check balance with real balance
+        const fst = await model.getNativeFst();
+        await assert.checkText(component.sendAmountTextField, fst)
     })
 
     afterAll(async () => {
