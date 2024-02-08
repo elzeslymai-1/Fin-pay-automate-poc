@@ -1,24 +1,25 @@
 export class splashScreenComponent {
 
     //Splash Screen Component
-    splashScreenWelcomeText1 = '~Welcome to the \nFIN PAY'
-    splashScreenDescriptionText1 = '~To get started, create a new wallet or import \none from a seed phrase.'
+    splashScreenWelcomeText1 = '~guideline-title-1'
+    splashScreenDescriptionText1 = '~guideline-description-1'
     
-    splashScreenWelcomeText2 = '~All your crypto in one place'
-    splashScreenDescriptionText2 = '~Now you can trade crypto directly from the\nCrypto wallet with your existing.'
+    splashScreenWelcomeText2 = '~guideline-title-2'
+    splashScreenDescriptionText2 = '~guideline-description-2'
     
-    splashScreenWelcomeText3 = '~Discover the best of Web3'
-    splashScreenDescriptionText3 = '~Find and connect to leading apps and\ncollections with the in-app browser.'
+    splashScreenWelcomeText3 = '~guideline-title-3'
+    splashScreenDescriptionText3 = '~guideline-description-3'
 
-    splashScreenCreateWalletBtn = '~Create a new wallet'
-    splashScreenImportWalletBtn = '~Import a wallet'
-    createWalletBackBtn = '~'
-
+    splashScreenCreateWalletBtn = '~guideline-createwallet-btn'
+    splashScreenImportWalletBtn = '~guideline-importwallet-btn'
+    
     //  Create new Wallet Component
-    createNewWalletHeaderText = 'XCUIElementTypeStaticText'
+    createWalletBackBtn = '~createwallet-header-backbtn'
+    createNewWalletHeaderText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Create Wallet"`]'
     
     // Import Wallet Component
     importWalletHeaderText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Import Wallet"`]'
+    importWalletBackBtn = '~'
 }
 
 

@@ -1,4 +1,3 @@
-import { expect } from '@wdio/globals'
 import { homeComponent } from '../component/homeComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
@@ -7,179 +6,620 @@ const component = new homeComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Home Page Test Senario', () => {
+describe('Home Menu Bar Test Scenario', () => {
     beforeAll(async () => {
+        await action.installApps(`${process.env.PATH_APK}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
+
+        await action.click(component.splashScreenCreateWalletBtn)
+
+        await action.click(component.createWallet12wordBtn)
+
+        await action.click(component.createWalletContinueBtn)
+        await action.pause(3000)
+
+        await action.click(component.successContinueBtn)
     })
 
-    // === Check Menu Bar ===
     it('[Display] Check Home Btn', async () => {
-        await action.waitForDisplayed(component.homeBtn)
-        await assert.checkText(component.homeBtn, 'Home')
+        // assert
+        await assert.checkElementDisplayed(component.menuHomeBtn)
     })
 
     it('[Display] Check History Btn', async () => {
-        await action.waitForDisplayed(component.homeHistoryBtn)
-        await assert.checkText(component.homeHistoryBtn, 'History')
+        // assert
+        await assert.checkElementDisplayed(component.menuHistoryBtn)
     })
 
     it('[Display] Check DApps Btn', async () => {
-        await action.waitForDisplayed(component.homeDappBtn)
-        await assert.checkText(component.homeDappBtn, 'DApps')
+        // assert
+        await assert.checkElementDisplayed(component.menuDappBtn)
     })
 
     it('[Display] Check Setting Btn', async () => {
-        await action.waitForDisplayed(component.homeSettingBtn)
-        await assert.checkText(component.homeSettingBtn, 'Setting')
+        // assert
+        await assert.checkElementDisplayed(component.menuSettingBtn)
     })
 
-    // === Check Home Page ===
+    it('[Wording] Check Menu Home Btn', async () => {
+        // assert
+        await assert.checkText(component.menuHomeBtn, 'Home')
+    })
+
+    it('[Wording] Check Menu History Btn', async () => {
+        // assert
+        await assert.checkText(component.menuHistoryBtn, 'History')
+    })
+
+    it('[Wording] Check Menu DApps Btn', async () => {
+        // assert
+        await assert.checkText(component.menuDappBtn, 'DApps')
+    })
+
+    it('[Wording] Check Menu Setting Btn', async () => {
+        // assert
+        await assert.checkText(component.menuSettingBtn, 'Setting')
+    })
+
+    it('[Tap] Check Menu History Btn Tap', async () => {
+        // action
+        await action.click(component.menuHistoryBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.historyTitleText)
+    })
+
+    it('[Tap] Check Menu DApps Btn Tap', async () => {
+        // action
+        await action.click(component.menuDappBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.dappTrendingTitleText)
+    })
+
+    it('[Tap] Check Menu Setting Btn Tap', async () => {
+        // action
+        await action.click(component.menuSettingBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.settingTitleText)
+    })
+
+    it('[Tap] Check Menu Home Btn Tap', async () => {
+        // action
+        await action.click(component.menuHomeBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletIconBtn)
+    })
+})
+
+describe('Home Page Test Scenario', () => {
     it('[Display] Check Wallet Icon Btn', async () => {
-        await action.waitForDisplayed(component.homeWalletIconBtn)
-        await assert.checkText(component.homeWalletIconBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeWalletIconBtn)
     })
 
     it('[Display] Check Network Btn', async () => {
-        await action.waitForDisplayed(component.homeNetworkBtn)
-        await assert.checkText(component.homeNetworkBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeNetworkBtn)
+    })
+
+    it('[Display] Check Notification Btn', async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.homeNotiIconBtn)
+    })
+
+    it('[Display] Check Notification Btn should be Disable', async () => {
+        // assert
+        await assert.checkDisabled(component.homeNotiIconBtn)
+    })
+
+    it('[Display] Check Copy Address Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.homeCopyAddressBtn)
     })
 
     it('[Display] Check Send Btn', async () => {
-        await action.waitForDisplayed(component.homeSendBtn)
-        await assert.checkText(component.homeSendBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeSendBtn)
     })
 
     it('[Display] Check Receive Btn', async () => {
-        await action.waitForDisplayed(component.homeReceiveBtn)
-        await assert.checkText(component.homeReceiveBtn, '')
+        // assert
+        await assert.checkElementDisplayed(component.homeReceiveBtn)
     })
 
     it('[Display] Check Scan Btn', async () => {
-        await action.waitForDisplayed(component.homeScanBtn)
-        await assert.checkText(component.homeScanBtn, 'Scan')
+        // assert
+        await assert.checkElementDisplayed(component.homeScanBtn)
     })
 
-    it('[Display] Check Search Btn', async () => {
-        await action.waitForDisplayed(component.homeSearchIconBtn)
-        await assert.checkText(component.homeSearchIconBtn, '')
+    it('[Display] Check Buy Btn', async () => {
+        // assert (under development feature)
+        await assert.checkElementDisplayed(component.homeBuyBtnXpath)
     })
 
-    // === Check Menu Tap ===
-    it('[Tap] Check History Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeHistoryBtn)
-        await action.click(component.homeHistoryBtn)
-
-        await action.waitForDisplayed(component.historyTitleText)
-        await assert.checkText(component.historyTitleText, 'Transactions History')
+    it('[Display] Check Buy Btn should be Disable', async () => {
+        // assert
+        await assert.checkDisabled(component.homeBuyBtnXpath)
     })
 
-    it('[Tap] Check DApps Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeDappBtn)
-        await action.click(component.homeDappBtn)
-
-        await action.waitForDisplayed(component.dappTrendingTitleText)
-        await assert.checkText(component.dappTrendingTitleText, 'Trending DApps')
+    it('[Display] Check Search TextField', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.homeSearchTextField)
     })
 
-    it('[Tap] Check Setting Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeSettingBtn)
-        await action.click(component.homeSettingBtn)
-
-        await action.waitForDisplayed(component.settingTitleText)
-        await assert.checkText(component.settingTitleText, 'Setting')
+    it('[Display] Check KUB Test net token', async () => {
+        // assert (Test net chain token)
+        await assert.checkElementDisplayed(component.bitkubTestnetKUB)
     })
 
-    it('[Tap] Check Home Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeBtn)
-        await action.click(component.homeBtn)
+    it('[Display] Check WTK Test net token', async () => {
+        // assert (Test net chain token)
+        await assert.checkElementDisplayed(component.bitkubTestnetWTK)
+    })
 
-        await action.waitForDisplayed(component.homeWalletIconBtn)
+    it('[Wording] Check Wallet Icon Btn', async () => {
+        // assert
         await assert.checkText(component.homeWalletIconBtn, '')
     })
 
-    // === Check Home Page Tap ===
+    it('[Wording] Check Network Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeNetworkBtn, '')
+    })
+
+    it('[Wording] Check Notification Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeNotiIconBtn, '')
+    })
+
+    it('[Wording] Check Copy Address Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeCopyAddressBtn, '')
+    })
+
+    it('[Wording] Check Send Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeSendBtn, 'Send')
+    })
+
+    it('[Wording] Check Receive Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeReceiveBtn, 'Receive')
+    })
+
+    it('[Wording] Check Scan Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeScanBtn, 'Scan')
+    })
+
+    it('[Wording] Check Buy Btn Text', async () => {
+        // assert
+        await assert.checkText(component.homeBuyBtn, 'Buy')
+    })
+
+    it('[Wording] Check Search TextField placeholder', async () => {
+        // assert
+        await assert.checkText(component.homeSearchTextField, 'Search...')
+    })
+
+    it('[Wording] Check KUB token text', async () => {
+        // assert
+        await assert.checkText(component.bitkubTestnetKUB, 'KUB')
+    })
+
+    it('[Wording] Check WTK token Text', async () => {
+        // assert
+        await assert.checkText(component.bitkubTestnetWTK, 'WTK')
+    })
+
     it('[Tap] Check Wallet Icon Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeWalletIconBtn)
+        // action
         await action.click(component.homeWalletIconBtn)
 
-        await action.waitForDisplayed(component.walletTitleText)
-        await assert.checkText(component.walletTitleText, 'Wallets')
+        // assert
+        await assert.checkElementDisplayed(component.walletTitleText)
 
-        // To close wallet pop-up
+        // assert (under development feature)
+        await assert.checkDisabled(component.walletSettingBtnXpath)
+
+        // after (close pop-up)
         await action.click(component.homeWalletIconBtn)
     })
 
     it('[Tap] Check Network Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeNetworkBtn)
+        // action
         await action.click(component.homeNetworkBtn)
 
-        await action.waitForDisplayed(component.networkTitleText)
-        await assert.checkText(component.networkTitleText, 'Select Network')
+        // assert
+        await assert.checkElementDisplayed(component.networkTitleText)
 
-        // To close network pop-up
+        // after (close pop-up)
         await action.click(component.homeNetworkBtn)
     })
 
+    it('[Tap] Check Copy Address Btn Tap',async () => {
+        // action
+        await action.click(component.homeCopyAddressBtn)
+        // Missing assert
+    })
+
     it('[Tap] Check Send Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeSendBtn)
+        // action
         await action.click(component.homeSendBtn)
 
-        await action.waitForDisplayed(component.sendTitleText)
-        await assert.checkText(component.sendTitleText, 'Send')
+        // assert
+        await assert.checkElementDisplayed(component.sendTitleText)
 
-        await action.waitForDisplayed(component.sendBackBtn)
+        // after (back to Home)
         await action.click(component.sendBackBtn)
     })
 
     it('[Tap] Check Receive Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeReceiveBtn)
+        // action
         await action.click(component.homeReceiveBtn)
 
-        await action.waitForDisplayed(component.receiveTitleText)
-        await assert.checkText(component.receiveTitleText, 'Select Token')
+        // assert
+        await assert.checkElementDisplayed(component.receiveTitleText)
 
-        await action.waitForDisplayed(component.receiveBackBtn)
+        // after (back to Home)
         await action.click(component.receiveBackBtn)
     })
 
     it('[Tap] Check Scan Btn Tap', async () => {
-        await action.waitForDisplayed(component.homeScanBtn)
+        // action
         await action.click(component.homeScanBtn)
 
-        await action.waitForDisplayed(component.androidCameraAccessText)
-        await assert.checkText(component.androidCameraAccessText, 'Allow Fins: Defi Wallet to take pictures and record video?')
-
-        await action.waitForDisplayed(component.androidWhileuseappBtn)
-        await assert.checkText(component.androidWhileuseappBtn, 'While using the app')
-
+        // action (for handle permission access)
         await action.click(component.androidWhileuseappBtn)
 
-        await action.waitForDisplayed(component.scanTitleText)
-        await assert.checkText(component.scanTitleText, 'Scan QR code')
+        // assert
+        await assert.checkElementDisplayed(component.scanTitleText)
 
-        await action.waitForDisplayed(component.scanBackBtn)
+        // after (back to Home)
         await action.click(component.scanBackBtn)
     })
 
-    it('[Tap] Check Search Btn', async () => {
-        await action.waitForDisplayed(component.homeSearchIconBtn)
-        await assert.checkText(component.homeSearchIconBtn, '')
+    it('[Tap] Check KUB Token Card Btn Tap', async () => {
+        // action (KUB)
+        await action.click(component.bitkubTestnetKUB)
 
-        await action.waitForDisplayed(component.homeSearchTextField)
-        await assert.checkElemenDisplayed(component.homeSearchTextField)
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardKUBTitleText)
 
-        await action.click(component.homeSearchTextField)
+        // after (back to Home)
+        await action.click(component.tokenCardBackBtn)
+    })
+
+    it('[Tap] Check WTK Token Card Btn Tap', async () => {
+        // action (WTK)
+        await action.click(component.bitkubTestnetWTK)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardWTKTitleText)
+
+        // after (back to Home)
+        await action.click(component.tokenCardBackBtn)
+    })
+
+    it('[Search] Check Search no result function',async () => {
+        // action
+        await action.enterText(component.homeSearchTextField, 'ETH')
+
+        // assert
+        await assert.checkElementDisplayed(component.homeSearchNoResultText)
+
+        // after (clear text)
+        await action.clearText(component.homeSearchTextField)
+    })
+
+    it('[Search] Check Search Function', async () => {
+        // action
         await action.enterText(component.homeSearchTextField, 'KUB')
 
-        // To hide keyboard layout
-        await action.hideKeyboard()
+        // assert
+        await assert.checkElementDisplayed(component.bitkubTestnetKUB)
 
-        await action.waitForDisplayed(component.bitkubTestnetKUB)
-        await assert.checkText(component.bitkubTestnetKUB, 'KUB')
+        // action (for check exist)
+        await action.waitForExist(component.bitkubTestnetWTK, 2000, true)
+
+        // action
+        await action.enterText(component.homeSearchTextField, 'WTK')
+
+        // assert
+        await assert.checkElementDisplayed(component.bitkubTestnetWTK)
+
+        // action (for check exist)
+        await action.waitForExist(component.bitkubTestnetKUB, 2000, true)
+
+        // after (clear text)
+        await action.clearText(component.homeSearchTextField)
+    })
+
+    it('[Function] Change Network Chain',async () => {
+        // action
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkAddNetworkBtn)
+
+        await action.click(component.networkManagementCustomTab)
+
+        await action.click(component.networkManagementAddcustomnetBtn)
+
+        // (Add and Switch to Goerli Chainnet)
+        await action.enterText(component.customnetNetworkUrlTextField, `${process.env.TEST_URL}`)
+        await action.pause(5000)
+
+        await action.click(component.customnetConfirmBtn)
+
+        await action.click(component.addnetSuccessSwitchgoerliBtn)
+
+        // action (Check Network Chain Name)
+        await action.click(component.goerliChainETH)
+
+        // assert
+        await assert.checkText(component.tokenCardETHChainNameText, 'goerli')
+
+        // after (back to Home) (change network chain to Bitkub Testnet)
+        await action.click(component.tokenCardBackBtn)
+
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkBitkubBtn)
+    })
+})
+
+describe('[KUB] Token Card Test Scenario', () => {
+    beforeAll(async () => {
+        await action.click(component.bitkubTestnetKUB)
+    })
+
+    it('[Display] Check Back Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBackBtn)
+    })
+
+    it('[Display] Check Send Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendBtn)
+    })
+
+    it('[Display] Check Receive Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveBtn)
+    })
+
+    it('[Display] Check Buy Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBuyBtn)
+    })
+
+    it('[Display] Check QR Code tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardQRCodeTab)
+    })
+
+    it('[Display] Check Information tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardInfoTab)
+    })
+
+    it('[Wording] Check Token Card title text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardKUBTitleText, 'KUB')
+    })
+
+    it('[Wording] Check Token Card Chain name text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardKUBChainNameText, 'Bitkub Chain Testnet')
+    })
+
+    it('[Wording] Check Token Card Token Name text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardKUBTokenNameText, 'KUB')
+    })
+
+    it('[Wording] Check Token Card Token Fullname text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardKUBTokenFullNameText, 'KUB')
+    })
+
+    it('[Wording] Check Token Card Send Btn text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardSendBtn, 'Send')
+    })
+
+    it('[Wording] Check Token Card Receive Btn text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardReceiveBtn, 'Receive')
+    })
+
+    it('[Wording] Check Token Card Buy Btn text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardBuyBtn, 'Buy')
+    })
+
+    it('[Wording] Check Token Card QR Code tab text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardQRCodeTab, 'QR Code')
+    })
+
+    it('[Wording] Check Token Card Information tab text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardInfoTab, 'Information')
+    })
+
+    it('[Wording] Check Token Card Warning text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardKUBWarningText, 'Only send Bitkub Chain Testnet (KUB) network assets to this address. Sending any other coins may result in permanent loss.')
+    })
+
+    it('[Tap] Check Token Card Back Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardBackBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.menuHomeBtn)
+
+        // after (back to Token Card)
+        await action.click(component.bitkubTestnetKUB)
+        await action.pause(1000)
+    })
+
+    it('[Tap] Check Token Card Send Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardSendBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardSendBackBtn)
+    })
+
+    it('[Tap] Check Token Card Receive Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardReceiveBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardReceiveBackBtn)
+    })
+
+    it('[Tap] Check Token Card QR Code tab tap', async () => {
+        // action
+        await action.click(component.tokenCardInfoTab)
+
+        // assert
+        await assert.checkText(component.tokenCardInfoText, 'Token Info')
+        await assert.checkText(component.tokenCardInfoSymbolText, 'Token Symbol')
+        await assert.checkText(component.tokenCardInfoNameText, 'Token Name')
+        await assert.checkText(component.tokenCardInfoCirculationText, 'Total circulation')
+        await assert.checkText(component.tokenCardInfoAboutText, 'About')
+
+        // after (back to Home)
+        await action.click(component.tokenCardBackBtn)
+    })
+})
+
+describe('[ETH] Token Card Test Scenario', () => {
+    beforeAll(async () => {
+        await action.click(component.homeNetworkBtn)
+
+        await action.click(component.networkGoerliBtn)
+
+        await action.click(component.goerliChainETH)
+    })
+
+    it('[Display] Check Back Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBackBtn)
+    })
+
+    it('[Display] Check Send Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendBtn)
+    })
+
+    it('[Display] Check Receive Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveBtn)
+    })
+
+    it('[Display] Check Buy Btn', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardBuyBtn)
+    })
+
+    it('[Display] Check QR Code tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardQRCodeTab)
+    })
+
+    it('[Display] Check Information tab', async () => {
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardInfoTab)
+    })
+
+    it('[Wording] Check Token Card title text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardETHTitleText, 'ETH')
+    })
+
+    it('[Wording] Check Token Card Chain name text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardETHChainNameText, 'goerli')
+    })
+
+    it('[Wording] Check Token Card Token Name text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardETHTokenNameText, 'ETH')
+    })
+
+    it('[Wording] Check Token Card Token Fullname text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardETHTokenFullNameText, 'Goerli')
+    })
+
+    it('[Wording] Check Token Card Warning text', async () => {
+        // assert
+        await assert.checkText(component.tokenCardETHWarningText, 'Only send goerli (ETH) network assets to this address. Sending any other coins may result in permanent loss.')
+    })
+
+    it('[Tap] Check Token Card Back Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardBackBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.menuHomeBtn)
+
+        // after (back to Token Card)
+        await action.click(component.goerliChainETH)
+        await action.pause(1000)
+    })
+
+    it('[Tap] Check Token Card Send Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardSendBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardSendTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardSendBackBtn)
+    })
+
+    it('[Tap] Check Token Card Receive Btn tap', async () => {
+        // action
+        await action.click(component.tokenCardReceiveBtn)
+
+        // assert
+        await assert.checkElementDisplayed(component.tokenCardReceiveTitleText)
+
+        // after (back to Token Card)
+        await action.click(component.tokenCardReceiveBackBtn)
+    })
+
+    it('[Tap] Check Token Card QR Code tab tap', async () => {
+        // action
+        await action.click(component.tokenCardInfoTab)
+
+        // assert
+        await assert.checkText(component.tokenCardInfoText, 'Token Info')
+        await assert.checkText(component.tokenCardInfoSymbolText, 'Token Symbol')
+        await assert.checkText(component.tokenCardInfoNameText, 'Token Name')
+        await assert.checkText(component.tokenCardInfoCirculationText, 'Total circulation')
+        await assert.checkText(component.tokenCardInfoAboutText, 'About')
+
+        // after (back to Home)
+        await action.click(component.tokenCardBackBtn)
     })
 
     afterAll(async () => {
-        await action.closeApps(`${process.env.PACKAGE_ID}`)
+        await action.removeApps(`${process.env.PACKAGE_ID}`)
     })
-
 })

@@ -39,7 +39,13 @@ export const config: Options.Testrunner = {
             './Test/iosTest/specs/splashScreenPage.e2e.ts',
             './Test/iosTest/specs/importWalletPage.e2e.ts',
             './Test/iosTest/specs/createWalletPage.e2e.ts',
-            './Test/iosTest/specs/backupWalletPage.e2e.ts'
+            './Test/iosTest/specs/backupWalletPage.e2e.ts',
+            './Test/iosTest/specs/homePage.e2e.ts',
+            './Test/iosTest/specs/settingPage.e2e.ts',
+            './Test/iosTest/specs/currencyPage.e2e.ts',
+            './Test/iosTest/specs/customTokenPage.e2e.ts',
+            './Test/iosTest/specs/customNetworkPage.e2e.ts',
+            './Test/iosTest/specs/receivePage.e2e.ts',
         ]
     ],
     // Patterns to exclude.
@@ -78,7 +84,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/FinsDefiWallet.app'),
+        'appium:app': join(process.cwd(), 'apps/FinPay.app'),
         'appium:bundleId': `${process.env.BUNDLE_ID}`,
     }],
 
@@ -220,6 +226,10 @@ export const config: Options.Testrunner = {
      * @param {object}         browser      instance of created browser/device session
      */
     // before: function (capabilities, specs) {
+    //     // Add commands to WebdriverIO
+    //     Object.keys(commands).forEach((key) => {
+    //         browser.addCommand(key, commands[key])
+    //     })
     // },
     /**
      * Runs before a WebdriverIO command gets executed.

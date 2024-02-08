@@ -1,24 +1,40 @@
-export class importWalletComponent {
+import { Action } from "../../mainComponent/mainFunction/Action.js"
+
+const action = new Action()
+export class ImportWalletComponent {
 
     // Splash Screen Component
-    splashScreenImportWalletBtn = '~Import a wallet'
+    splashScreenImportWalletBtn = '~guideline-importwallet-btn'
 
     // Import Wallet Page Component
     importWalletBackBtn = '~'
     importWalletTitleText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Import Wallet"`]'
-    importWalletHeaderText = '~Enter Mnemonic or Private Key'
-    importWalletDescriptionText = '~Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases and private keys for all wallet types.'
-    importWalletPrivatekeyField = 'XCUIElementTypeTextView'
-    importWalletPasteBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Private Key/ Mnemonic phrase 12 word/ Mnemonic phrase 24 word."`][3]/XCUIElementTypeOther[2]'
-    importWalletImportBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Import Wallet"`]'
+    importWalletHeaderText = '~importwallet-header-title'
+    importWalletDescriptionText = '~importwallet-header-description'
+    importWalletPrivatekeyField = '~importwallet-input-area'
+    importWalletPasteBtn = '-ios class chain:**/XCUIElementTypeOther[`name == "Mnemonic phrase 12 word/ Mnemonic phrase 24 word."`][3]/XCUIElementTypeOther[2]'
+    importWalletImportBtn = '~importwallet-submit-btn'
     importWalletMnemonicErrorMessageText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "Invalid mnemonic phrase."`]'
     
-    // Loading Screen Compoenet
-    importWalletLoadingText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "LOADING WALLET..."`]'
+    // Loading Screen Component
+    importWalletLoadingText = '~loading-modal-loadingwallet'
     
     // Import Success Component
-    importWalletSuccessText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "IMPORT WALLET SUCCESS"`]'    
+    importWalletSuccessText = '~loading-modal-createwalletsuccess'    
 
     // Home Page Component
     homeTabHomeBtn = '~Home, tab, 1 of 4'
+}
+
+export class ImportWalletModel{
+    private component = new ImportWalletComponent()
+
+    async importWallet(mnemonicPhrase: string){
+        await action.click(this.component.splashScreenImportWalletBtn)
+        await action.setClipboard(mnemonicPhrase)
+        await action.click(this.component.importWalletPasteBtn)
+        await action.acceptAlert()
+        await action.click(this.component.importWalletImportBtn)
+        await action.pause(3000)
+    }
 }

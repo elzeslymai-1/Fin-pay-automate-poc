@@ -1,16 +1,15 @@
-import { createWalletComponent } from "../component/createWalletComponent.js";
+import { CreateWalletComponent } from "../component/createWalletComponent.js";
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const action = new Action()
 const assert = new Assertion()
-const component = new createWalletComponent()
+const component = new CreateWalletComponent()
 
 describe('Create Wallet Page Scenario', () => {
     beforeAll(async () => {
         // before
-        await action.installApps('apps/FinsDefiWallet.app')
-
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
         await action.click(component.splashScreenCreateWalletBtn)
     })
@@ -139,7 +138,7 @@ describe('Create Wallet Success Page Scenario', () => {
 
     it('[Display] => Check Content Text Displayed', async () => {
         // assert
-        await assert.checkElementDisplayed(component.createWalletSuccessContentText)
+        await assert.checkElementDisplayed(component.createWalletSuccessDescriptionText)
     })
 
     it('[Display] => Check Continue Btn Displayed', async () => {
@@ -159,7 +158,7 @@ describe('Create Wallet Success Page Scenario', () => {
 
     it('[Wording] => Check Content Text Wording', async () => {
         //assert
-        await assert.checkText(component.createWalletSuccessContentText, "You have successfully added a new wallet")
+        await assert.checkText(component.createWalletSuccessDescriptionText, "You have successfully added a new wallet")
     })
 
     it('[Wording] => Check Continue Btn Wording', async () => {
@@ -198,7 +197,7 @@ describe('Create Wallet Success Page Scenario', () => {
 
 describe('Mnemonic Info Page Scenario', () => {
     beforeAll(async () => {
-        await action.installApps('apps/FinsDefiWallet.app')
+        await action.installApps('apps/FinPay.app')
         await action.launchApps(`${process.env.BUNDLE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)
@@ -253,7 +252,7 @@ describe('Mnemonic Info Page Scenario', () => {
     })
 
     afterAll(async () => {
-        // close apps
-        await action.closeApps(`${process.env.BUNDLE_ID}`)
+        // remove apps
+        await action.removeApps(`${process.env.BUNDLE_ID}`)
     })
 })
