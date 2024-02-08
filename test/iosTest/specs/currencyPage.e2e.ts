@@ -215,6 +215,7 @@ describe('Currency Page Test Scenario', () => {
 
         // after (clear text)
         await action.clearText(component.currencySearchTextField)
+        await action.tabKeyboard('return')
     })
 
     it('[Functional] Check Change Currency Btn tap', async () => {

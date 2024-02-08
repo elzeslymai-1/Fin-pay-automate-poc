@@ -141,6 +141,7 @@ describe('Custom Token Page Test Scenario', () => {
 
         // after
         await action.clearText(component.customTokenSearchTextField)
+        await action.tabKeyboard('return')
     })
 
     it('[Function] => Check Change Network Btn Tap',async () => {
