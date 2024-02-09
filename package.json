@@ -19,5 +19,8 @@
     "wdio": "wdio run ./wdio.conf.ts",
     "ios": "wdio run ./wdio.ios.conf.ts",
     "android": "wdio run ./wdio.android.conf.ts"
+  },
+  "dependencies": {
+    "ethers": "^6.10.0"
   }
 }
