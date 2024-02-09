@@ -22,6 +22,10 @@ export class Assertion {
         await expect($(locator)).toBeDisplayed()
     }
 
+    public async checkKeyBoardShowing() {
+        await expect(await driver.isKeyboardShown()).toBe(true)
+    }
+
     public async checkElementNotDisplayed(locator: string) {
         await expect($(locator)).not.toBeDisplayed()
     }
