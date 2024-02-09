@@ -46,6 +46,7 @@ export const config: Options.Testrunner = {
             './Test/iosTest/specs/customTokenPage.e2e.ts',
             './Test/iosTest/specs/customNetworkPage.e2e.ts',
             './Test/iosTest/specs/receivePage.e2e.ts',
+            './Test/iosTest/specs/scanPage.e2e.ts',
         ]
     ],
     // Patterns to exclude.

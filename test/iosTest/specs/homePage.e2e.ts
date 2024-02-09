@@ -391,6 +391,7 @@ describe('Home Page Test Scenario', () => {
 
         // after
         await action.clearText(component.homeSearchTextField)
+        await action.tabKeyboard('return')
     })
 
     it('[Functional] Check Change Network Chain', async () => {
@@ -411,6 +412,7 @@ describe('Home Page Test Scenario', () => {
 
         // paste clipboard
         await action.click(component.iosPasteBtn)
+        await action.tabKeyboard('return')
         await action.pause(5000)
 
         await action.click(component.customNetworkConfirmBtn)

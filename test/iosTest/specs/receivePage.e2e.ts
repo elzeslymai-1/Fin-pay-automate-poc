@@ -160,6 +160,7 @@ describe('Select Token Page Test Scenario', () => {
 
         // after (clear text)
         await action.clearText(component.selectTokenSearchTextField)
+        await action.tabKeyboard('return')
     })
 })
 
@@ -513,7 +514,8 @@ describe('Set Amount Page Test Scenario', () => {
 
     it('[Function] => Check Continue with 10 KUB', async () => {
         // action
-        await action.enterText(component.setAmountTextField, '10')
+        await action.click('~1')
+        await action.click('~0')
 
         await action.click(component.setAmountContinueBtn)
 
