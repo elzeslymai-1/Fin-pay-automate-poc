@@ -1,8 +1,4 @@
-import { ethers } from "ethers"
-import { ERC20_ABI } from '../component/erc20.abi.js'
-
 export class sendComponent {
-
     // beforeAll Component
     splashScreenImportWalletBtn = `android=new UiSelector().text("Import a wallet").className("android.widget.TextView")`
     importWalletImportBtn = `android=new UiSelector().text("Import Wallet").className("android.widget.TextView")`
@@ -107,19 +103,4 @@ export class sendComponent {
 
     homeKubBalance = `android=new UiSelector().resourceid("home-walletcardbalancetoken-KUB")`
     homeKubFiat = `android=new UiSelector().resourceId("home-walletcardbalancefiat-KUB")`
-}
-
-export class sendModel {
-    async getNativeFst() {
-        const customRpcEndpoint = `${process.env.BITKUBTESTNET_RPC}`
-        const provider = new ethers.JsonRpcProvider(customRpcEndpoint);
-
-        const fstTokenContract = new ethers.Contract(`${process.env.TEST_ADDTOKEN}`, ERC20_ABI, provider);
-
-        const balanceWei = await fstTokenContract.balanceOf(`${process.env.MNEMONIC_ADDRESS}`);
-        const decimals = await fstTokenContract.decimals();
-
-        const balanceFst = ethers.formatUnits(balanceWei, decimals);
-        return balanceFst;
-    }
 }

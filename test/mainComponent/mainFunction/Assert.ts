@@ -1,7 +1,16 @@
 import { expect } from '@wdio/globals'
 import { Action } from './Action.js'
+import { ERC20 } from '../contract/erc20.js'
 
+const erc20 = new ERC20()
 const action = new Action()
+
+interface BalanceConfig {
+    rpc: string;
+    tokenAddress: string;
+    walletAddress: string;
+}
+
 export class Assertion {
     public async checkToHaveElement(locator: string) {
         await action.waitForDisplayed(locator)
@@ -20,6 +29,13 @@ export class Assertion {
     public async checkText(locator: string, value: string) {
         await action.waitForDisplayed(locator)
         await expect($(locator)).toHaveText(value)
+    }
+
+    public async checkTokenBalance(locator: string, balanceConfig:BalanceConfig){
+        const balance = await erc20.getBalance(balanceConfig.rpc, balanceConfig.tokenAddress, balanceConfig.walletAddress)
+       
+        await action.waitForDisplayed(locator)
+        await expect($(locator)).toHaveText(balance)
     }
 
     public async checkTextContain(locator: string, value: string) {
@@ -72,6 +88,7 @@ export class Assertion {
         await expect($(locator)).toBeElementsArrayOfSize(value)
     }
 }
+
 
 
 

@@ -1,11 +1,10 @@
-import { sendComponent, sendModel } from '../component/sendComponent.js'
+import { sendComponent } from '../component/sendComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 
 const component = new sendComponent()
 const action = new Action()
 const assert = new Assertion()
-const model = new sendModel()
 
 describe('Send Page Test Scenario', () => {
     beforeAll(async () => {
@@ -152,9 +151,15 @@ describe('Send Page Test Scenario', () => {
 
         await action.click(component.sendAmountMaxBtn)
 
+        // config for get balance
+        const balanceConfig = {
+            rpc: `${process.env.BITKUB_TEST_NET_RPC}`,
+            tokenAddress: `${process.env.TEST_ADDTOKEN}`,
+            walletAddress: `${process.env.SEND_WALLET_ADDRESS}`
+        };
+        
         // assert for check balance with real balance
-        const fst = await model.getNativeFst();
-        await assert.checkText(component.sendAmountTextField, fst)
+        await assert.checkTokenBalance(component.sendAmountTextField,  balanceConfig)
 
         // after (clear text)
         await action.clearText(component.sendAmountTextField)
@@ -500,9 +505,15 @@ describe('Send Success Page Test Scenario', () => {
         await action.click(component.selectTokenFST)
         await action.click(component.sendAmountMaxBtn)
 
+        // config for get balance
+        const balanceConfig = {
+            rpc: `${process.env.BITKUB_TEST_NET_RPC}`,
+            tokenAddress: `${process.env.TEST_ADDTOKEN}`,
+            walletAddress: `${process.env.SEND_WALLET_ADDRESS}`
+        };
+        
         // assert for check balance with real balance
-        const fst = await model.getNativeFst();
-        await assert.checkText(component.sendAmountTextField, fst)
+        await assert.checkTokenBalance(component.sendAmountTextField,  balanceConfig)
     })
 
     afterAll(async () => {
