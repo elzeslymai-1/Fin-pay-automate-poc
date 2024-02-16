@@ -1,142 +1,149 @@
 import { ImportWalletComponent } from '../component/importWalletComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
+import AllureReporter from '@wdio/allure-reporter'
 
 const component = new ImportWalletComponent()
 const action = new Action()
 const assert = new Assertion()
 
-describe('Import Wallet Page Scenario', () => {
-    beforeAll(async () => {
-        await action.installApps('apps/FinPay.app')
-        await action.launchApps(`${process.env.BUNDLE_ID}`)
-        await action.click(component.splashScreenImportWalletBtn)
-    })
+describe('Import Wallet Page', () => {
+    // Import Wallet Page Scenario
+    describe('', () => {
+        beforeAll(async () => {
+            await action.installApps(`${process.env.PATH_IOS_APP}`)
+            await action.launchApps(`${process.env.BUNDLE_ID}`)
+            await action.click(component.splashScreenImportWalletBtn)
+        })
 
-    it('[Display] Check Back Btn',async () => {
-        // assert
-        await assert.checkElementDisplayed(component.importWalletBackBtn)
-    })
+        beforeEach(async () => {
+            AllureReporter.addSubSuite('Import Wallet Page Scenario')   // add sub suite for allure report
+        })
 
-    it('[Display] Check Private Key Field Displayed', async () => {
-        //assert
-        await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
-    })
+        it('[Display] Check Back Btn', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.importWalletBackBtn)
+        })
 
-    it('[Display] Check Paste Btn Displayed', async () => {
-        //assert
-        await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
-    })
+        it('[Display] Check Private Key Field Displayed', async () => {
+            //assert
+            await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
+        })
 
-    it('[Display] Check Import Wallet Btn Displayed', async () => {
-        //assert
-        await assert.checkElementDisplayed(component.importWalletImportBtn)
-    })
+        it('[Display] Check Paste Btn Displayed', async () => {
+            //assert
+            await assert.checkElementDisplayed(component.importWalletPrivatekeyField)
+        })
 
-    it('[Display] Check Import Wallet Btn Should be Disabled', async () => {
-        //assert
-        await assert.checkElementDisplayed(component.importWalletImportBtn)
-        await assert.checkDisabled(component.importWalletImportBtn)
-    })
+        it('[Display] Check Import Wallet Btn Displayed', async () => {
+            //assert
+            await assert.checkElementDisplayed(component.importWalletImportBtn)
+        })
 
-    it('[Wording] Check Back Btn Wording', async () => {
-        //assert
-        await assert.checkText(component.importWalletBackBtn, '')
-    })
+        it('[Display] Check Import Wallet Btn Should be Disabled', async () => {
+            //assert
+            await assert.checkElementDisplayed(component.importWalletImportBtn)
+            await assert.checkDisabled(component.importWalletImportBtn)
+        })
 
-    it('[Wording] Check Import Wallet Title Wording', async () => {
-        //assert
-        await assert.checkText(component.importWalletTitleText, 'Import Wallet')
-    })
+        it('[Wording] Check Back Btn Wording', async () => {
+            //assert
+            await assert.checkText(component.importWalletBackBtn, '')
+        })
 
-    it('[Wording] Check Import Wallet Header Wording', async () => {
-        //assert
-        await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic')
-    })
+        it('[Wording] Check Import Wallet Title Wording', async () => {
+            //assert
+            await assert.checkText(component.importWalletTitleText, 'Import Wallet')
+        })
 
-    it('[Wording] Check Import Wallet Description Wording', async () => {
-        //assert
-        await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases for all wallet types.')
-    })
+        it('[Wording] Check Import Wallet Header Wording', async () => {
+            //assert
+            await assert.checkText(component.importWalletHeaderText, 'Enter Mnemonic')
+        })
 
-    it('[Wording] Check Import wallet Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.importWalletImportBtn, 'Import Wallet')
-    })
+        it('[Wording] Check Import Wallet Description Wording', async () => {
+            //assert
+            await assert.checkText(component.importWalletDescriptionText, 'Input your mnemonic phrases with spacing. Supports 12-word, 24-word mnemonic phrases for all wallet types.')
+        })
 
-    it('[Tap] Check Back Btn Tap', async () => {
-        await action.click(component.importWalletBackBtn)
+        it('[Wording] Check Import wallet Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.importWalletImportBtn, 'Import Wallet')
+        })
 
-        //assert
-        await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
+        it('[Tap] Check Back Btn Tap', async () => {
+            await action.click(component.importWalletBackBtn)
 
-        //after
-        await action.click(component.splashScreenImportWalletBtn)
-    })
+            //assert
+            await assert.checkElementDisplayed(component.splashScreenImportWalletBtn)
 
-    it('[Tap] Check Paste Btn Tap', async () => {
-        await action.setClipboard(`${process.env.MNEMONIC_PHRASE}`)
-        await action.click(component.importWalletPasteBtn)
-        await action.acceptAlert()
+            //after
+            await action.click(component.splashScreenImportWalletBtn)
+        })
 
-        //assert
-        await assert.checkEnabled(component.importWalletImportBtn)
+        it('[Tap] Check Paste Btn Tap', async () => {
+            await action.setClipboard(`${process.env.MNEMONIC_PHRASE_WITH_BALANCE}`)
+            await action.click(component.importWalletPasteBtn)
+            await action.acceptAlert()
 
-        //after
-        await action.click(component.importWalletBackBtn)
-    })
+            //assert
+            await assert.checkEnabled(component.importWalletImportBtn)
 
-    it('[Functional] Check Mnemonic Phrase Wrong Format', async () => {
-        await action.click(component.splashScreenImportWalletBtn)
+            //after
+            await action.click(component.importWalletBackBtn)
+        })
 
-        await action.setClipboard('test test')
-        await action.click(component.importWalletPasteBtn)
-        await action.acceptAlert()
+        it('[Functional] Check Mnemonic Phrase Wrong Format', async () => {
+            await action.click(component.splashScreenImportWalletBtn)
 
-        //assert
-        await assert.checkText(component.importWalletMnemonicErrorMessageText, 'Invalid mnemonic phrase.')
-        await assert.checkDisabled(component.importWalletImportBtn)
+            await action.setClipboard('test test')
+            await action.click(component.importWalletPasteBtn)
+            await action.acceptAlert()
 
-        //after
-        await action.click(component.importWalletBackBtn)
-    })
+            //assert
+            await assert.checkText(component.importWalletMnemonicErrorMessageText, 'Invalid mnemonic phrase.')
+            await assert.checkDisabled(component.importWalletImportBtn)
 
-    it('[Functional] Check Import Wallet Failed', async () => {
-        await action.click(component.splashScreenImportWalletBtn)
+            //after
+            await action.click(component.importWalletBackBtn)
+        })
 
-        await action.setClipboard('t t t t t t t t t t t t')
-        await action.click(component.importWalletPasteBtn)
-        await action.acceptAlert()
+        it('[Functional] Check Import Wallet Failed', async () => {
+            await action.click(component.splashScreenImportWalletBtn)
 
-        await action.click(component.importWalletImportBtn)
+            await action.setClipboard('t t t t t t t t t t t t')
+            await action.click(component.importWalletPasteBtn)
+            await action.acceptAlert()
 
-        //assert
-        await assert.checkText(component.importWalletMnemonicErrorMessageText, 'Invalid mnemonic phrase.')
-        await assert.checkDisabled(component.importWalletImportBtn)
+            await action.click(component.importWalletImportBtn)
 
-        //after
-        await action.click(component.importWalletBackBtn)
-    })
+            //assert
+            await assert.checkText(component.importWalletMnemonicErrorMessageText, 'Invalid mnemonic phrase.')
+            await assert.checkDisabled(component.importWalletImportBtn)
 
-    it('[Functional] Check Import Wallet Success', async () => {
-        await action.click(component.splashScreenImportWalletBtn)
+            //after
+            await action.click(component.importWalletBackBtn)
+        })
 
-        await action.setClipboard(`${process.env.MNEMONIC_PHRASE}`)
-        await action.click(component.importWalletPasteBtn)
-        await action.acceptAlert()
+        it('[Functional] Check Import Wallet Success', async () => {
+            await action.click(component.splashScreenImportWalletBtn)
 
-        await action.click(component.importWalletImportBtn)
+            await action.setClipboard(`${process.env.MNEMONIC_PHRASE_WITH_BALANCE}`)
+            await action.click(component.importWalletPasteBtn)
+            await action.acceptAlert()
 
-        //assert
-        await assert.checkText(component.importWalletLoadingText, 'LOADING WALLET...')
-        await action.pause(3000)
-        await assert.checkText(component.importWalletSuccessText, 'IMPORT WALLET SUCCESS')
-        await action.pause(3000)
-        await assert.checkElementDisplayed(component.homeTabHomeBtn)
-    })
+            await action.click(component.importWalletImportBtn)
 
-    afterAll(async () => {
-        // remove apps
-        await action.removeApps(`${process.env.BUNDLE_ID}`)
+            //assert
+            await assert.checkText(component.importWalletLoadingText, 'LOADING WALLET...')
+            await action.pause(3000)
+            await assert.checkText(component.importWalletSuccessText, 'IMPORT WALLET SUCCESS')
+            await action.pause(3000)
+            await assert.checkElementDisplayed(component.homeTabHomeBtn)
+        })
+
+        afterAll(async () => {
+            await action.removeApps(`${process.env.BUNDLE_ID}`)     // remove apps
+        })
     })
 })

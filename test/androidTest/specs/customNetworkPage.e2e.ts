@@ -8,7 +8,7 @@ const assert = new Assertion()
 
 describe('Network Management Page Test Scenario', () => {
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        await action.installApps(`${process.env.PATH_ANDROID_APP}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)
@@ -382,7 +382,7 @@ describe('Custom Network Page Test Scenario', () => {
 
     it('[Function] => Check Add Custom Network Success', async () => {
         // action
-        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.GOERLI_TEST_NET_URL}`)
         await action.pause(2000)
 
         // assert
@@ -431,7 +431,7 @@ describe('Custom Network Page Test Scenario', () => {
 
     it('[Validation] => Check Message Chain ID already exist', async () => {
         // action
-        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.GOERLI_TEST_NET_URL}`)
         await action.pause(2000)
 
         // action for deselect the textfield
@@ -488,7 +488,7 @@ describe('Add Network Success Test Scenario', () => {
 
         await action.click(component.customTabAddCustomNetworkBtn)
 
-        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.GOERLI_TEST_NET_URL}`)
         await action.pause(3000)
 
         await action.click(component.customNetworkConfirmBtn)
@@ -547,7 +547,7 @@ describe('Add Network Success Test Scenario', () => {
 
         await action.click(component.customTabAddCustomNetworkBtn)
 
-        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.enterText(component.customNetworkNetworkURLTextField, `${process.env.GOERLI_TEST_NET_URL}`)
         await action.pause(3000)
 
         await action.click(component.customNetworkConfirmBtn)

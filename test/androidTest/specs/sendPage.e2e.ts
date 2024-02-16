@@ -8,12 +8,12 @@ const assert = new Assertion()
 
 describe('Send Page Test Scenario', () => {
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        await action.installApps(`${process.env.PATH_ANDROID_APP}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenImportWalletBtn)
 
-        await action.enterText(component.importWalletPrivatekeyField, `${process.env.MNEMONIC_PHRASE}`)
+        await action.enterText(component.importWalletPrivatekeyField, `${process.env.MNEMONIC_PHRASE_WITH_BALANCE}`)
         await assert.checkNotDisabled(component.importWalletImportBtn)
 
         await action.click(component.importWalletImportBtn)
@@ -25,7 +25,7 @@ describe('Send Page Test Scenario', () => {
 
         await action.click(component.customTokenAddTokenBtn)
 
-        await action.enterText(component.addTokenTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.enterText(component.addTokenTextField, `${process.env.FST_TOKEN_ADDRESS}`)
         await action.pause(2000)
 
         await action.click(component.addTokenCheckBox)
@@ -154,7 +154,7 @@ describe('Send Page Test Scenario', () => {
         // config for get balance
         const balanceConfig = {
             rpc: `${process.env.BITKUB_TEST_NET_RPC}`,
-            tokenAddress: `${process.env.TEST_ADDTOKEN}`,
+            tokenAddress: `${process.env.FST_TOKEN_ADDRESS}`,
             walletAddress: `${process.env.SEND_WALLET_ADDRESS}`
         };
         
@@ -171,7 +171,7 @@ describe('Send Page Test Scenario', () => {
         await action.click(component.sendSelectTokenFST)
         await action.click(component.selectTokenWTK)
 
-        await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
+        await action.enterText(component.sendToTextField, `${process.env.RECEIVE_WALLET_ADDRESS}`)
         await action.enterText(component.sendAmountTextField, '1')
 
         await action.click(component.sendNextBtn)
@@ -189,7 +189,7 @@ describe('Send Page Test Scenario', () => {
         await action.click(component.sendSelectTokenWTK)
         await action.click(component.selectTokenKUB)
 
-        await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
+        await action.enterText(component.sendToTextField, `${process.env.RECEIVE_WALLET_ADDRESS}`)
         await action.enterText(component.sendAmountTextField, '1')
 
         // assert
@@ -354,7 +354,7 @@ describe('Select Token Page Test Scenario', () => {
 describe('Confirm Send Page Test Scenario', () => {
     beforeAll(async () => {
         await action.enterText(component.sendAmountTextField, '0.001')
-        await action.enterText(component.sendToTextField, `${process.env.TEST_WALLET}`)
+        await action.enterText(component.sendToTextField, `${process.env.RECEIVE_WALLET_ADDRESS}`)
 
         await action.click(component.sendNextBtn)
         await action.pause(2000)
@@ -508,7 +508,7 @@ describe('Send Success Page Test Scenario', () => {
         // config for get balance
         const balanceConfig = {
             rpc: `${process.env.BITKUB_TEST_NET_RPC}`,
-            tokenAddress: `${process.env.TEST_ADDTOKEN}`,
+            tokenAddress: `${process.env.FST_TOKEN_ADDRESS}`,
             walletAddress: `${process.env.SEND_WALLET_ADDRESS}`
         };
         

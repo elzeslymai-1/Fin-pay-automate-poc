@@ -128,43 +128,4 @@ export class HomeComponent {
 
     // Add Network Success Component
     addNetworkSuccessSwitchNetworkBtn = '~addcustomchain-bottomsheet-switchbtn'
-
-
-
-
-
-
-
-
-
-
-
-
-    // Bitkub Chain Testnet Token Component (Home)
-    bitkubTestnetWTK = `android=new UiSelector().text("WTK").className("android.widget.TextView")`
-    bitkubTestnetWTKFullName = `android=new UiSelector().text("WToken").className("android.widget.TextView")`
-
-    // Goerli Chain Token Component (Home)
-    goerliChainETH = `android=new UiSelector().text("ETH").className("android.widget.TextView")`
-    goerliChainETHFullName = `android=new UiSelector().text("Goerli").className("android.widget.TextView")`
-
-
-    //* vv- Can't find enable = false in Buy Btn here -vv
-
-
-    tokenCardInfoText = `android=new UiSelector().text("Token Info").className("android.widget.TextView")`
-    tokenCardInfoSymbolText = `android=new UiSelector().text("Token Symbol").className("android.widget.TextView")`
-    tokenCardInfoNameText = `android=new UiSelector().text("Token Name").className("android.widget.TextView")`
-    tokenCardInfoCirculationText = `android=new UiSelector().text("Total circulation").className("android.widget.TextView")`
-    tokenCardInfoAboutText = `android=new UiSelector().text("About").className("android.widget.TextView")`
-
-    tokenCardSendTitleText = `android=new UiSelector().text("Send").className("android.view.View")`
-    tokenCardSendBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    tokenCardReceiveTitleText = `android=new UiSelector().text("Receive Token").className("android.view.View")`
-    tokenCardReceiveBackBtn = `android=new UiSelector().text("").className("android.widget.TextView")`
-
-    // XPATH
-    homeBuyBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup[4]`
-    walletSettingBtnXpath = `/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]`
 }

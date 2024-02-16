@@ -8,7 +8,7 @@ const assert = new Assertion()
 
 describe ('Import Wallet Page Scenario', () => {
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        await action.installApps(`${process.env.PATH_ANDROID_APP}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenImportWalletBtn)
@@ -117,7 +117,7 @@ describe ('Import Wallet Page Scenario', () => {
     it('[Functional] => Check Private Key Success',async () => {
         // action
         await action.click(component.importWalletPrivatekeyField)
-        await action.enterText(component.importWalletPrivatekeyField, `${process.env.MNEMONIC_PHRASE}`)
+        await action.enterText(component.importWalletPrivatekeyField, `${process.env.MNEMONIC_PHRASE_WITH_BALANCE}`)
 
         // assert
         await assert.checkNotDisabled(component.importWalletImportBtn)

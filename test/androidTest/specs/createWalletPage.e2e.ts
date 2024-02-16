@@ -8,7 +8,7 @@ const assert = new Assertion()
 
 describe('Create Wallet Page Scenario', () => {
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        await action.installApps(`${process.env.PATH_ANDROID_APP}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)

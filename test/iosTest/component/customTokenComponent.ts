@@ -1,3 +1,6 @@
+import { Action } from "../../mainComponent/mainFunction/Action.js"
+
+const action = new Action()
 export class CustomTokenComponent {
 
     // Menu Bar
@@ -65,7 +68,7 @@ export class CustomTokenComponent {
 
     addTokenNameText = '~Token Name'
     addTokenNameValueText = '-ios class chain:**/XCUIElementTypeStaticText[`name == "fins token"`][2]'
-    
+
     addTokenBalanceText = '~Token Balance'
     addTokenBalanceValueText = '~0.0'
 
@@ -80,3 +83,24 @@ export class CustomTokenComponent {
     addTokenConfirmBtn = '~Confirm'
 
 }
+
+export class CustomTokenModel extends CustomTokenComponent{
+    public async addToken(tokenAddress: string){
+        await action.click(this.homeTabSettingBtn)
+        await action.click(this.settingCustomTokenBtn)
+
+        await action.click(this.customTokenAddCustomTokenBtn)
+        switch(tokenAddress){
+            case 'FST':
+                await action.setClipboard(`${process.env.FST_TOKEN_ADDRESS}`)   // Set FST Address to clipboard
+                break
+        }
+
+        await action.click(this.addTokenPasteBtn)
+        await action.acceptAlert()
+        await action.click(this.addTokenCheckboxBtn)
+        await action.click(this.addTokenConfirmBtn)
+        await action.click(this.customTokenBackBtn)
+        await action.click(this.homeTabHomeBtn)
+    }
+} 
