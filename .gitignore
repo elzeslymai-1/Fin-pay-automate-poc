@@ -7,3 +7,7 @@ apps/
 
 # vscode setting spelling
 .vscode
+
+# allure report
+allure-results
+allure-report

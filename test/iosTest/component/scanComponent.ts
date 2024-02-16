@@ -86,9 +86,9 @@ export class ScanModel extends ScanComponent {
         const dateTime = new Date()
 
         // if date < 9 put 0 in front of date
-        const date = dateTime.getDate() < 9 ? `0${dateTime.getDate()}` : `${dateTime.getDate()}`
-        const hour = dateTime.getHours() < 9 ? `0${dateTime.getHours()}` : `${dateTime.getHours()}`
-        const minute = dateTime.getMinutes() < 9 ? `0${dateTime.getMinutes()}` : `${dateTime.getMinutes()}`
+        const date = dateTime.getDate() < 10 ? `0${dateTime.getDate()}` : `${dateTime.getDate()}`
+        const hour = dateTime.getHours() < 10 ? `0${dateTime.getHours()}` : `${dateTime.getHours()}`
+        const minute = dateTime.getMinutes() < 10 ? `0${dateTime.getMinutes()}` : `${dateTime.getMinutes()}`
 
         return `~Photo, ${date} ${dateTime.toLocaleString('default', { month: 'long' })}, ${hour}:${minute}`
     }

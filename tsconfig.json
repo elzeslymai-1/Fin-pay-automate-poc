@@ -12,7 +12,7 @@
             "@wdio/globals/types",
             "expect-webdriverio",
             "@wdio/jasmine-framework",
-            "@wdio/appium-service"
+            "@wdio/appium-service",
         ],
         "skipLibCheck": true,
         "noEmit": true,

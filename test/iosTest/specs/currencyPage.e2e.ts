@@ -2,270 +2,278 @@ import { CurrencyComponent } from '../component/currencyComponent.js'
 import { Action } from '../../mainComponent/mainFunction/Action.js'
 import { Assertion } from '../../mainComponent/mainFunction/Assert.js'
 import { ImportWalletModel } from '../component/importWalletComponent.js'
+import AllureReporter from '@wdio/allure-reporter'
 
 const action = new Action()
 const assert = new Assertion()
 const component = new CurrencyComponent()
 const importWalletModel = new ImportWalletModel()
 
-describe('Currency Page Test Scenario', () => {
-    beforeAll(async () => {
-        await action.installApps('apps/FinPay.app')     // install apps
-        await action.launchApps(`${process.env.BUNDLE_ID}`)     //launch app
+describe('Setting Currency Page', () => {
 
-        await importWalletModel.importWallet(`${process.env.MNEMONIC_PHRASE_NO_BALANCE}`)   // import wallet
-        await action.click(component.homeTabSettingBtn)     // go to setting page
-        await action.click(component.settingCurrencyUSDBtn)     // go to currency page
-    })
+    // Currency Page Test Scenario
+    describe('', () => {
+        beforeAll(async () => {
+            await action.installApps(`${process.env.PATH_IOS_APP}`)     // install apps
+            await action.launchApps(`${process.env.BUNDLE_ID}`)     //launch app
 
-    it('[Display] Check Back Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyBackBtn)
-    })
+            await importWalletModel.importWallet(`${process.env.MNEMONIC_PHRASE_NO_BALANCE}`)   // import wallet
+            await action.click(component.homeTabSettingBtn)     // go to setting page
+            await action.click(component.settingCurrencyUSDBtn)     // go to currency page
+        })
 
-    it('[Display] Check Search TextField Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencySearchTextField)
-    })
+        beforeEach(async () => {
+            AllureReporter.addSubSuite('Currency Page Test Scenario')   // add sub suite for allure report
+        })
 
-    it('[Display] Check USD Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyUSDBtn)
-    })
+        it('[Display] Check Back Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyBackBtn)
+        })
 
-    it('[Display] Check EUR Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyEURBtn)
-    })
+        it('[Display] Check Search TextField Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencySearchTextField)
+        })
 
-    it('[Display] Check JPY Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyJPYBtn)
-    })
+        it('[Display] Check USD Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyUSDBtn)
+        })
 
-    it('[Display] Check CNY Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyCNYBtn)
-    })
+        it('[Display] Check EUR Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyEURBtn)
+        })
 
-    it('[Display] Check THB Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyTHBBtn)
-    })
+        it('[Display] Check JPY Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyJPYBtn)
+        })
 
-    it('[Display] Check GBP Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyGBPBtn)
-    })
+        it('[Display] Check CNY Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyCNYBtn)
+        })
 
-    it('[Display] Check GBP Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyGBPBtn)
-    })
+        it('[Display] Check THB Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyTHBBtn)
+        })
 
-    it('[Display] Check RUB Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyRUBBtn)
-    })
+        it('[Display] Check GBP Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyGBPBtn)
+        })
 
-    it('[Display] Check RUB Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyRUBBtn)
-    })
+        it('[Display] Check GBP Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyGBPBtn)
+        })
 
-    it('[Display] Check CAD Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyCADBtn)
-    })
+        it('[Display] Check RUB Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyRUBBtn)
+        })
 
-    it('[Display] Check CAD Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyCADBtn)
-    })
+        it('[Display] Check RUB Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyRUBBtn)
+        })
 
-    it('[Display] Check TRY Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyTRYBtn)
-    })
+        it('[Display] Check CAD Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyCADBtn)
+        })
 
-    it('[Display] Check TRY Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyTRYBtn)
-    })
+        it('[Display] Check CAD Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyCADBtn)
+        })
 
-    it('[Display] Check BRL Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyBRLBtn)
-    })
+        it('[Display] Check TRY Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyTRYBtn)
+        })
 
-    it('[Display] Check BRL Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyBRLBtn)
-    })
+        it('[Display] Check TRY Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyTRYBtn)
+        })
 
-    it('[Display] Check KHR Btn Displayed', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyKHRBtn)
-    })
+        it('[Display] Check BRL Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyBRLBtn)
+        })
 
-    it('[Display] Check KHR Btn Should be Disable', async () => {
-        // assert
-        await assert.checkElementDisplayed(component.currencyKHRBtn)
-    })
+        it('[Display] Check BRL Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyBRLBtn)
+        })
 
-    it('[Wording] Check Currency Title text', async () => {
-        // assert
-        await assert.checkText(component.currencyTitleText, 'Currency')
-    })
+        it('[Display] Check KHR Btn Displayed', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyKHRBtn)
+        })
 
-    it('[Wording] Check Currency Back Btn text', async () => {
-        // assert
-        await assert.checkText(component.currencyBackBtn, '')
-    })
+        it('[Display] Check KHR Btn Should be Disable', async () => {
+            // assert
+            await assert.checkElementDisplayed(component.currencyKHRBtn)
+        })
 
-    it('[Wording] Check Currency Search place holder text', async () => {
-        // assert
-        await assert.checkText(component.currencySearchTextField, 'Search...')
-    })
+        it('[Wording] Check Currency Title text', async () => {
+            // assert
+            await assert.checkText(component.currencyTitleText, 'Currency')
+        })
 
-    it('[Wording] Check USD Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyUSDBtn, 'USD - United States Dollar')
-    })
+        it('[Wording] Check Currency Back Btn text', async () => {
+            // assert
+            await assert.checkText(component.currencyBackBtn, '')
+        })
 
-    it('[Wording] Check EUR Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyEURBtn, 'EUR - Euro')
-    })
+        it('[Wording] Check Currency Search place holder text', async () => {
+            // assert
+            await assert.checkText(component.currencySearchTextField, 'Search...')
+        })
 
-    it('[Wording] Check JPY Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyJPYBtn, 'JPY - Japanese Yen')
-    })
+        it('[Wording] Check USD Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyUSDBtn, 'USD - United States Dollar')
+        })
 
-    it('[Wording] Check CNY Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyCNYBtn, 'CNY - Chinese Yuan')
-    })
+        it('[Wording] Check EUR Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyEURBtn, 'EUR - Euro')
+        })
 
-    it('[Wording] Check THB Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyTHBBtn, 'THB - Thai Baht')
-    })
+        it('[Wording] Check JPY Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyJPYBtn, 'JPY - Japanese Yen')
+        })
 
-    it('[Wording] Check GBP Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyGBPBtn, 'GBP - Pound Sterling')
-    })
+        it('[Wording] Check CNY Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyCNYBtn, 'CNY - Chinese Yuan')
+        })
 
-    it('[Wording] Check RUB Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyRUBBtn, 'RUB - Russian Ruble')
-    })
+        it('[Wording] Check THB Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyTHBBtn, 'THB - Thai Baht')
+        })
 
-    it('[Wording] Check CAD Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyCADBtn, 'CAD - Canadian Dollar')
-    })
+        it('[Wording] Check GBP Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyGBPBtn, 'GBP - Pound Sterling')
+        })
 
-    it('[Wording] Check TRY Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyTRYBtn, 'TRY - Turkish Lira')
-    })
+        it('[Wording] Check RUB Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyRUBBtn, 'RUB - Russian Ruble')
+        })
 
-    it('[Wording] Check BRL Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyBRLBtn, 'BRL - Brazilian Real')
-    })
+        it('[Wording] Check CAD Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyCADBtn, 'CAD - Canadian Dollar')
+        })
 
-    it('[Wording] Check KHR Btn Wording', async () => {
-        // assert
-        await assert.checkText(component.currencyKHRBtn, 'KHR - Riel')
-    })
+        it('[Wording] Check TRY Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyTRYBtn, 'TRY - Turkish Lira')
+        })
 
-    it('[Tap] Check Currency Back Btn tap', async () => {
-        // action
-        await action.click(component.currencyBackBtn)
+        it('[Wording] Check BRL Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyBRLBtn, 'BRL - Brazilian Real')
+        })
 
-        // assert
-        await assert.checkElementDisplayed(component.settingTitleText)
+        it('[Wording] Check KHR Btn Wording', async () => {
+            // assert
+            await assert.checkText(component.currencyKHRBtn, 'KHR - Riel')
+        })
 
-        // after (back to Currency)
-        await action.click(component.settingCurrencyUSDBtn)
-    })
+        it('[Tap] Check Currency Back Btn tap', async () => {
+            // action
+            await action.click(component.currencyBackBtn)
 
-    it('[Functional] Check Search not found',async () => {
-        // action
-        await action.enterText(component.currencySearchTextField, 'Martians')
+            // assert
+            await assert.checkElementDisplayed(component.settingTitleText)
 
-        // assert
-        await assert.checkElementDisplayed(component.currencySearchNotfoundText)
+            // after (back to Currency)
+            await action.click(component.settingCurrencyUSDBtn)
+        })
 
-        // after (clear text)
-        await action.clearText(component.currencySearchTextField)
-    })
+        it('[Functional] Check Search not found', async () => {
+            // action
+            await action.enterText(component.currencySearchTextField, 'Martians')
 
-    it('[Functional] Check Search Btn', async () => {
-        // action
-        await action.enterText(component.currencySearchTextField, 'Japanese')
+            // assert
+            await assert.checkElementDisplayed(component.currencySearchNotfoundText)
 
-        // assert
-        await assert.checkTextContain(component.currencyJPYBtn, 'JPY - Japanese Yen')
-        await assert.checkElementNotDisplayed(component.currencyUSDBtn)
+            // after (clear text)
+            await action.clearText(component.currencySearchTextField)
+        })
 
-        // after (clear text)
-        await action.clearText(component.currencySearchTextField)
-        await action.tabKeyboard('return')
-    })
+        it('[Functional] Check Search Btn', async () => {
+            // action
+            await action.enterText(component.currencySearchTextField, 'Japanese')
 
-    it('[Functional] Check Change Currency Btn tap', async () => {
-        // action
-        await action.click(component.currencyJPYBtn)
+            // assert
+            await assert.checkTextContain(component.currencyJPYBtn, 'JPY - Japanese Yen')
+            await assert.checkElementNotDisplayed(component.currencyUSDBtn)
 
-        await action.click(component.currencyBackBtn)
+            // after (clear text)
+            await action.clearText(component.currencySearchTextField)
+        })
 
-        // assert
-        await assert.checkTextContain(component.settingCurrencyJPYBtn, 'JPY')
+        it('[Functional] Check Change Currency Btn tap', async () => {
+            // action
+            await action.click(component.currencyJPYBtn)
 
-        // action
-        await action.click(component.homeTabHomeBtn)
+            await action.click(component.currencyBackBtn)
 
-        // assert
-        await assert.checkText(component.homeBalanceText, '¥0')
-        await assert.checkText(component.homeTokenCardKubValueText, '¥0')
-        await assert.checkText(component.homeTokenCardWtkValueText, '¥0')
+            // assert
+            await assert.checkTextContain(component.settingCurrencyJPYBtn, 'JPY')
 
-        // action
-        await action.click(component.homeSendBtn)
+            // action
+            await action.click(component.homeTabHomeBtn)
 
-        await action.click(component.sendSelectTokenBtn)
+            // assert
+            await assert.checkText(component.homeBalanceText, '¥0')
+            await assert.checkText(component.homeTokenCardKubValueText, '¥0')
+            await assert.checkText(component.homeTokenCardWtkValueText, '¥0')
 
-        // assert
-        await assert.checkTextContain(component.sendSelectTokenKUBValueText, '¥0')
-        await assert.checkTextContain(component.sendSelectTokenWTKValueText, '¥0')
+            // action
+            await action.click(component.homeSendBtn)
 
-        // action (back to Home)
-        await action.click(component.sendSelectTokenBackBtn)
+            await action.click(component.sendSelectTokenBtn)
 
-        await action.click(component.sendBackBtn)
+            // assert
+            await assert.checkTextContain(component.sendSelectTokenKUBValueText, '¥0')
+            await assert.checkTextContain(component.sendSelectTokenWTKValueText, '¥0')
 
-        // action
-        await action.click(component.homeReceiveBtn)
+            // action (back to Home)
+            await action.click(component.sendSelectTokenBackBtn)
 
-        // assert
-        await assert.checkTextContain(component.receiveSelectTokenKUBValueText, '¥0')
-        await assert.checkTextContain(component.receiveSelectTokenWTKValueText, '¥0')
+            await action.click(component.sendBackBtn)
 
-        // after (back to Currency)
-        await action.click(component.receiveBackBtn)
+            // action
+            await action.click(component.homeReceiveBtn)
 
-        await action.click(component.homeTabSettingBtn)
+            // assert
+            await assert.checkTextContain(component.receiveSelectTokenKUBValueText, '¥0')
+            await assert.checkTextContain(component.receiveSelectTokenWTKValueText, '¥0')
 
-        await action.click(component.settingCurrencyJPYBtn)
-    })
+            // after (back to Currency)
+            await action.click(component.receiveBackBtn)
 
-    afterAll(async () => {
-        // remove apps
-        await action.removeApps(`${process.env.BUNDLE_ID}`)
+            await action.click(component.homeTabSettingBtn)
+
+            await action.click(component.settingCurrencyJPYBtn)
+        })
+
+        afterAll(async () => {
+            // remove apps
+            await action.removeApps(`${process.env.BUNDLE_ID}`)
+        })
     })
 })

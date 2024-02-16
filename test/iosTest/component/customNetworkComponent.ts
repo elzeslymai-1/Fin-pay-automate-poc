@@ -112,8 +112,8 @@ export class CustomNetworkModel extends CustomNetworkComponent {
 
         // paste clipboard
         await action.click(this.iosPasteBtn)
+        await action.tapKeyboard()   // out of keyboard
         await action.pause(5000)
-        await action.tabKeyboard('return')
 
         await action.click(this.customNetworkConfirmBtn)
 

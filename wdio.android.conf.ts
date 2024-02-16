@@ -84,7 +84,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), `${process.env.PATH_APK}`),
+        'appium:app': join(process.cwd(), `${process.env.PATH_ANDROID_APP}`),
     }],
 
     //

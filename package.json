@@ -4,6 +4,7 @@
   "devDependencies": {
     "@testing-library/webdriverio": "^3.2.1",
     "@types/jasmine": "^5.1.4",
+    "@wdio/allure-reporter": "^8.31.1",
     "@wdio/appium-service": "^8.26.1",
     "@wdio/cli": "^8.26.1",
     "@wdio/jasmine-framework": "^8.26.1",
@@ -17,8 +18,10 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
-    "ios": "wdio run ./wdio.ios.conf.ts",
-    "android": "wdio run ./wdio.android.conf.ts"
+    "ios": "npm run delete && wdio run ./wdio.ios.conf.ts && npm run report",
+    "android": "wdio run ./wdio.android.conf.ts",
+    "delete": "rm -rf ./allure-results && rm -rf ./allure-report",
+    "report": "allure generate --clean ./allure-results && allure open"
   },
   "dependencies": {
     "ethers": "^6.10.0"

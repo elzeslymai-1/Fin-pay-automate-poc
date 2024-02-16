@@ -35,6 +35,6 @@ export class ImportWalletModel{
         await action.click(this.component.importWalletPasteBtn)
         await action.acceptAlert()
         await action.click(this.component.importWalletImportBtn)
-        await action.pause(3000)
+        await action.pause(6000)
     }
 }

@@ -9,7 +9,7 @@ const assert = new Assertion()
 describe('Custom Token Page Test Scenario', () => {
 
     beforeAll(async () => {
-        await action.installApps(`${process.env.PATH_APK}`)
+        await action.installApps(`${process.env.PATH_ANDROID_APP}`)
         await action.launchAndroidApps(`${process.env.PACKAGE_ID}`)
 
         await action.click(component.splashScreenCreateWalletBtn)
@@ -118,7 +118,7 @@ describe('Custom Token Page Test Scenario', () => {
 
         await action.click(component.customTabAddNetwork)
 
-        await action.enterText(component.customNetworkURLTextField, `${process.env.TEST_URL}`)
+        await action.enterText(component.customNetworkURLTextField, `${process.env.GOERLI_TEST_NET_URL}`)
         await action.pause(3000)
 
         await action.click(component.customNetworkConfirmBtn)
@@ -174,7 +174,7 @@ describe('Add Custom Token Test Scenario',() => {
 
     it('[Display] => Check CheckBox',async () => {
         // action
-        await action.enterText(component.addTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.enterText(component.addTokenAddressTextField, `${process.env.FST_TOKEN_ADDRESS}`)
 
         // assert
         await assert.checkElementDisplayed(component.addTokenCheckbox)
@@ -286,7 +286,7 @@ describe('Add Custom Token Test Scenario',() => {
 
     it('[Tap] => Check CheckBox Btn Tap',async () => {
         // action
-        await action.enterText(component.addTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.enterText(component.addTokenAddressTextField, `${process.env.FST_TOKEN_ADDRESS}`)
         await action.pause(3000)
 
         await action.click(component.addTokenCheckbox)
@@ -308,7 +308,7 @@ describe('Add Custom Token Test Scenario',() => {
 
     it('[Tap] => Check Confirm Btn Tap',async () => {
         // action
-        await action.enterText(component.addTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.enterText(component.addTokenAddressTextField, `${process.env.FST_TOKEN_ADDRESS}`)
         await action.pause(3000)
 
         await action.click(component.addTokenCheckbox)
@@ -332,7 +332,7 @@ describe('Add Custom Token Test Scenario',() => {
 
     it('[Search] => Check token already exist',async () => {
         // action
-        await action.enterText(component.addTokenAddressTextField, `${process.env.TEST_ADDTOKEN}`)
+        await action.enterText(component.addTokenAddressTextField, `${process.env.FST_TOKEN_ADDRESS}`)
 
         // assert
         await assert.checkElementDisplayed(component.addTokenAlreadyExistText)

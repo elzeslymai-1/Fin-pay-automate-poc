@@ -32,11 +32,13 @@ export class Action {
     public async enterText(locator: string, value: string) {
         await this.waitForDisplayed(locator)
         await (await $(locator)).setValue(value)
+        await this.tapKeyboard()
     }
 
     public async clearText(locator: string) {
         await this.waitForDisplayed(locator)
         await (await $(locator)).clearValue()
+        await this.tapKeyboard()
     }
 
     public async pause(value: number) {
@@ -132,8 +134,8 @@ export class Action {
         await browser.hideKeyboard('pressKey', 'Done')
     }
 
-    public async tabKeyboard(key: string) {
-        await driver.hideKeyboard('pressKey', key)
+    public async tapKeyboard() {
+        await driver.sendKeys(["\n"])
     }
 
     public async selectOptionByIndex(locator: string, value: number) {
@@ -149,7 +151,7 @@ export class Action {
         await (await $(locator)).getText()
     }
 
-    public async getValue(locator: string) {
+    public async getValue(locator: string): Promise<string> {
         await this.waitForDisplayed(locator)
         return (await (await $(locator)).getValue())
     }
@@ -170,6 +172,7 @@ export class Action {
 
     public async removeApps(bundleId: string) {
         await driver.removeApp(bundleId)
+        await this.pause(500)
     }
 
     public async closeApps(bundleId: string) {

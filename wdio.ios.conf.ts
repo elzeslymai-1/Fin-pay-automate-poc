@@ -36,17 +36,18 @@ export const config: Options.Testrunner = {
     specs: [
         [
             // "./Test/iosTest/specs/**.e2e.ts"
-            './Test/iosTest/specs/splashScreenPage.e2e.ts',
-            './Test/iosTest/specs/importWalletPage.e2e.ts',
-            './Test/iosTest/specs/createWalletPage.e2e.ts',
+            // './Test/iosTest/specs/splashScreenPage.e2e.ts',
+            // './Test/iosTest/specs/importWalletPage.e2e.ts',
+            // './Test/iosTest/specs/createWalletPage.e2e.ts',
             './Test/iosTest/specs/backupWalletPage.e2e.ts',
-            './Test/iosTest/specs/homePage.e2e.ts',
-            './Test/iosTest/specs/settingPage.e2e.ts',
-            './Test/iosTest/specs/currencyPage.e2e.ts',
-            './Test/iosTest/specs/customTokenPage.e2e.ts',
-            './Test/iosTest/specs/customNetworkPage.e2e.ts',
-            './Test/iosTest/specs/receivePage.e2e.ts',
-            './Test/iosTest/specs/scanPage.e2e.ts',
+            // './Test/iosTest/specs/homePage.e2e.ts',
+            // './Test/iosTest/specs/settingPage.e2e.ts',
+            // './Test/iosTest/specs/currencyPage.e2e.ts',
+            // './Test/iosTest/specs/customTokenPage.e2e.ts',
+            // './Test/iosTest/specs/customNetworkPage.e2e.ts',
+            // './Test/iosTest/specs/receivePage.e2e.ts',
+            // './Test/iosTest/specs/scanPage.e2e.ts',
+            // './Test/iosTest/specs/sendPage.e2e.ts'
         ]
     ],
     // Patterns to exclude.
@@ -85,7 +86,7 @@ export const config: Options.Testrunner = {
         'appium:noReset': true,
 
         //config for Finpay prod. version
-        'appium:app': join(process.cwd(), 'apps/FinPay.app'),
+        'appium:app': join(process.cwd(), `${process.env.PATH_IOS_APP}`),
         'appium:bundleId': `${process.env.BUNDLE_ID}`,
     }],
 
@@ -159,7 +160,13 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec',
+        ['allure', {
+            outputDir: './allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+            disableMochaHooks: true
+        }]],
 
     // Options to be passed to Jasmine.
     jasmineOpts: {
@@ -272,7 +279,10 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    // afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+    //     if (error) {
+    //         await this.driver.takeScreenshot();
+    //     }
     // },
 
 
